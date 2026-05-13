@@ -1064,205 +1064,233 @@
 <!-- ══════════════════════ 03b · OUTILS DE TRAVAIL ══════════════════════ -->
 <section id="outils-travail" style="max-width:1280px;margin:0 auto;padding:8rem 5rem 5rem">
   <div class="reveal"><div class="eyebrow"><span class="n">03b</span>Environnement &amp; Outils</div><h2>Les outils que j'utilise<br/>chaque jour.</h2></div>
+  <p class="reveal" style="margin-top:-1rem">Développement sur Linux avec des outils professionnels utilisés en entreprise. Même stack que les équipes senior.</p>
 
-  <!-- Placeholder helper CSS interne -->
   <style>
     .tool-placeholder {
-      background: var(--g100);
-      border: 2px dashed var(--g300);
-      border-radius: 3px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2.5rem 1rem;
-      text-align: center;
-      min-height: 220px;
+      background: var(--g100); border: 2px dashed var(--g300); border-radius: 3px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 2.5rem 1rem; text-align: center; min-height: 180px;
     }
-    .tool-placeholder .ph-icon { font-size: 2.5rem; margin-bottom: 0.75rem; opacity: .4; }
-    .tool-placeholder .ph-title { font-family: var(--mono); font-size: 0.72rem; font-weight: 700; color: var(--g400); letter-spacing: 0.1em; }
-    .tool-placeholder .ph-path  { font-family: var(--mono); font-size: 0.62rem; color: var(--g300); margin-top: 0.4rem; }
+    .tool-placeholder .ph-icon  { font-size: 2rem; margin-bottom: 0.5rem; opacity:.35; }
+    .tool-placeholder .ph-title { font-family: var(--mono); font-size: 0.7rem; font-weight: 700; color: var(--g400); letter-spacing:.1em; }
+    .tool-placeholder .ph-path  { font-family: var(--mono); font-size: 0.6rem; color: var(--g300); margin-top:.3rem; }
+    .tool-why { margin-top:1rem; padding:0.9rem 1.1rem; background:var(--g100); border-left:3px solid var(--g300); border-radius:0 3px 3px 0; font-size:0.8rem; color:var(--g400); }
+    .tool-why strong { color:var(--white); }
   </style>
 
-  <!-- Grille des 5 outils principaux -->
-  <div class="g3" style="margin-top:2rem">
+  <!-- ══ PhpStorm ══ -->
+  <div class="reveal" style="margin-top:3.5rem">
+    <div class="eyebrow">PhpStorm — IDE principal JetBrains</div>
+    <div class="g3" style="margin-top:1.5rem">
 
-    <!-- PhpStorm -->
     <div class="reveal">
-      <div class="card-tag" style="margin-bottom:0.75rem">PhpStorm — IDE principal</div>
+      <div class="card-tag" style="margin-bottom:0.75rem">PhpStorm — Vue projet</div>
       <div style="border:1px solid var(--g200);border-radius:3px;overflow:hidden">
         <div style="background:var(--g100);padding:0.5rem 0.9rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--g200)">
-          <div style="display:flex;gap:5px"><div style="width:10px;height:10px;border-radius:50%;background:#ff5f56;opacity:.8"></div><div style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;opacity:.8"></div><div style="width:10px;height:10px;border-radius:50%;background:#27c93f;opacity:.8"></div></div>
-          <div style="flex:1;font-family:var(--mono);font-size:0.62rem;color:var(--g400);text-align:center">PhpStorm — LightChurch</div>
+          <div style="display:flex;gap:5px">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f56;opacity:.8"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;opacity:.8"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#27c93f;opacity:.8"></div>
+          </div>
+          <div style="flex:1;font-family:var(--mono);font-size:0.62rem;color:var(--g400);text-align:center">PhpStorm 2024 — lightchurch</div>
         </div>
-        <img src="screenshots/phpstorm.png" alt="PhpStorm IDE" style="width:100%;display:block"
+        <img src="screenshots/phpstorm.png" alt="PhpStorm — Vue projet" style="width:100%;display:block"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
         <div class="tool-placeholder" style="display:none">
           <div class="ph-icon">🖥️</div>
-          <div class="ph-title">Screenshot PhpStorm</div>
+          <div class="ph-title">PhpStorm — Vue projet</div>
           <div class="ph-path">screenshots/phpstorm.png</div>
         </div>
       </div>
-      <p style="margin-top:0.75rem;font-size:0.83rem;color:var(--g400)">IDE JetBrains. TypeScript natif, refactoring intelligent, débogueur Node, terminal Zsh intégré. Détection d'erreurs en temps réel sans exécuter le code.</p>
+      <p style="margin-top:0.75rem;font-size:0.83rem;color:var(--g400)">Structure complète du projet visible dans l'arbre de fichiers. Navigation instantanée entre frontend/backend. Détection d'erreurs TypeScript en temps réel, sans avoir à exécuter le code.</p>
     </div>
 
-    <!-- GitKraken -->
     <div class="reveal">
-      <div class="card-tag" style="margin-bottom:0.75rem">GitKraken — Git visuel</div>
+      <div class="card-tag" style="margin-bottom:0.75rem">PhpStorm — Éditeur & débogage</div>
       <div style="border:1px solid var(--g200);border-radius:3px;overflow:hidden">
         <div style="background:var(--g100);padding:0.5rem 0.9rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--g200)">
-          <div style="display:flex;gap:5px"><div style="width:10px;height:10px;border-radius:50%;background:#ff5f56;opacity:.8"></div><div style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;opacity:.8"></div><div style="width:10px;height:10px;border-radius:50%;background:#27c93f;opacity:.8"></div></div>
-          <div style="flex:1;font-family:var(--mono);font-size:0.62rem;color:var(--g400);text-align:center">GitKraken — lighchurch</div>
+          <div style="display:flex;gap:5px">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f56;opacity:.8"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;opacity:.8"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#27c93f;opacity:.8"></div>
+          </div>
+          <div style="flex:1;font-family:var(--mono);font-size:0.62rem;color:var(--g400);text-align:center">PhpStorm — index.ts</div>
         </div>
-        <img src="screenshots/gitkraken.png" alt="GitKraken" style="width:100%;display:block"
+        <img src="screenshots/phpstorme2.png" alt="PhpStorm — Éditeur & débogage" style="width:100%;display:block"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
         <div class="tool-placeholder" style="display:none">
-          <div class="ph-icon">🐙</div>
-          <div class="ph-title">Screenshot GitKraken</div>
+          <div class="ph-icon">🖥️</div>
+          <div class="ph-title">PhpStorm — Éditeur & débogage</div>
+          <div class="ph-path">screenshots/phpstorme2.png</div>
+        </div>
+      </div>
+      <p style="margin-top:0.75rem;font-size:0.83rem;color:var(--g400)">Autocomplétion TypeScript intelligente, refactoring sûr, terminal Zsh intégré. Le débogueur Node.js permet de poser des breakpoints et d'inspecter les variables en cours d'exécution.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="card-tag" style="margin-bottom:0.75rem">PhpStorm — Inspections & qualité</div>
+      <div style="border:1px solid var(--g200);border-radius:3px;overflow:hidden">
+        <div style="background:var(--g100);padding:0.5rem 0.9rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--g200)">
+          <div style="display:flex;gap:5px">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f56;opacity:.8"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;opacity:.8"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#27c93f;opacity:.8"></div>
+          </div>
+          <div style="flex:1;font-family:var(--mono);font-size:0.62rem;color:var(--g400);text-align:center">PhpStorm — Code Analysis</div>
+        </div>
+        <img src="screenshots/jetbrains3.png" alt="PhpStorm — Inspections & qualité" style="width:100%;display:block"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="tool-placeholder" style="display:none">
+          <div class="ph-icon">🖥️</div>
+          <div class="ph-title">PhpStorm — Inspections & qualité</div>
+          <div class="ph-path">screenshots/jetbrains3.png</div>
+        </div>
+      </div>
+      <p style="margin-top:0.75rem;font-size:0.83rem;color:var(--g400)">Inspections statiques du code : imports inutilisés, types incorrects, code mort. Tous ces problèmes sont détectés avant le build, sans exécuter l'application.</p>
+    </div>
+
+    </div>
+    <div class="g3" style="margin-top:1.5rem">
+      <div class="tool-why"><strong>Pourquoi PhpStorm ?</strong> — Support TypeScript/React natif, débogueur Node intégré, terminal Zsh sans quitter l'IDE. JetBrains est la référence des équipes professionnelles web.</div>
+      <div class="tool-why"><strong>Ce que ça m'a apporté</strong> — Détecter les bugs de types avant d'atteindre le navigateur. Refactorer en confiance : renommer une fonction la renomme partout dans le projet.</div>
+      <div class="tool-why"><strong>Usage quotidien sur LightChurch</strong> — Écriture du code TypeScript/React, débogage des middlewares Express, navigation entre les 30+ fichiers du projet sans se perdre.</div>
+    </div>
+  </div>
+
+  <!-- ══ GitKraken ══ -->
+  <div class="reveal" style="margin-top:4rem">
+    <div class="eyebrow">GitKraken — Gestion Git visuelle</div>
+    <div class="g2" style="margin-top:1.5rem">
+
+    <div class="reveal">
+      <div class="card-tag" style="margin-bottom:0.75rem">GitKraken — Graphe de branches</div>
+      <div style="border:1px solid var(--g200);border-radius:3px;overflow:hidden">
+        <div style="background:var(--g100);padding:0.5rem 0.9rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--g200)">
+          <div style="display:flex;gap:5px">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f56;opacity:.8"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;opacity:.8"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#27c93f;opacity:.8"></div>
+          </div>
+          <div style="flex:1;font-family:var(--mono);font-size:0.62rem;color:var(--g400);text-align:center">GitKraken — lighchurch</div>
+        </div>
+        <img src="screenshots/gitkraken.png" alt="GitKraken — Graphe de branches" style="width:100%;display:block"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="tool-placeholder" style="display:none">
+          <div class="ph-icon">🖥️</div>
+          <div class="ph-title">GitKraken — Graphe de branches</div>
           <div class="ph-path">screenshots/gitkraken.png</div>
         </div>
       </div>
-      <p style="margin-top:0.75rem;font-size:0.83rem;color:var(--g400)">Interface graphique Git. Visualisation du graphe de branches main/develop, historique des commits, résolution de conflits visuelle.</p>
+      <p style="margin-top:0.75rem;font-size:0.83rem;color:var(--g400)">Vue graphique du dépôt Git : branches main/develop, historique des commits, merges et rebases. La timeline montre l'évolution complète du projet en un coup d'œil.</p>
     </div>
 
-    <!-- Terminal Linux -->
     <div class="reveal">
-      <div class="card-tag" style="margin-bottom:0.75rem">Terminal Zsh — Ubuntu Linux</div>
+      <div class="card-tag" style="margin-bottom:0.75rem">GitKraken — Historique des commits</div>
       <div style="border:1px solid var(--g200);border-radius:3px;overflow:hidden">
         <div style="background:var(--g100);padding:0.5rem 0.9rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--g200)">
-          <div style="display:flex;gap:5px"><div style="width:10px;height:10px;border-radius:50%;background:#ff5f56;opacity:.8"></div><div style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;opacity:.8"></div><div style="width:10px;height:10px;border-radius:50%;background:#27c93f;opacity:.8"></div></div>
-          <div style="flex:1;font-family:var(--mono);font-size:0.62rem;color:var(--g400);text-align:center">~/lighchurch — zsh</div>
-        </div>
-        <img src="screenshots/terminal-nvm.png" alt="Terminal Zsh" style="width:100%;display:block"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-        <div class="tool-placeholder" style="display:none">
-          <div class="ph-icon">🖤</div>
-          <div class="ph-title">Screenshot Terminal + NVM</div>
-          <div class="ph-path">screenshots/terminal-nvm.png</div>
-        </div>
-      </div>
-      <p style="margin-top:0.75rem;font-size:0.83rem;color:var(--g400)">Terminal Zsh sous Ubuntu 24.04. NVM pour gérer Node.js, Docker Compose pour les services, SSH pour le VPS.</p>
-    </div>
-
-    <!-- Ubuntu Linux -->
-    <div class="reveal">
-      <div class="card-tag" style="margin-bottom:0.75rem">Ubuntu Linux — OS de dev</div>
-      <div style="border:1px solid var(--g200);border-radius:3px;overflow:hidden">
-        <div style="background:var(--g100);padding:0.5rem 0.9rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--g200)">
-          <div style="display:flex;gap:5px"><div style="width:10px;height:10px;border-radius:50%;background:#ff5f56;opacity:.8"></div><div style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;opacity:.8"></div><div style="width:10px;height:10px;border-radius:50%;background:#27c93f;opacity:.8"></div></div>
-          <div style="flex:1;font-family:var(--mono);font-size:0.62rem;color:var(--g400);text-align:center">Ubuntu 24.04 LTS</div>
-        </div>
-        <img src="screenshots/ubuntu-desktop.png" alt="Ubuntu Desktop" style="width:100%;display:block"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-        <div class="tool-placeholder" style="display:none">
-          <div class="ph-icon">🐧</div>
-          <div class="ph-title">Screenshot Ubuntu Desktop</div>
-          <div class="ph-path">screenshots/ubuntu-desktop.png</div>
-        </div>
-      </div>
-      <p style="margin-top:0.75rem;font-size:0.83rem;color:var(--g400)">Dev sur Linux = même OS que le VPS de production. Pas de surprises entre les environnements. Maîtrise des commandes système, permissions, SSH.</p>
-    </div>
-
-    <!-- DB Designer -->
-    <div class="reveal">
-      <div class="card-tag" style="margin-bottom:0.75rem">dbdesigner.net — Modélisation BDD</div>
-      <div style="border:1px solid var(--g200);border-radius:3px;overflow:hidden">
-        <div style="background:var(--g100);padding:0.5rem 0.9rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--g200)">
-          <div style="display:flex;gap:5px"><div style="width:10px;height:10px;border-radius:50%;background:#ff5f56;opacity:.8"></div><div style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;opacity:.8"></div><div style="width:10px;height:10px;border-radius:50%;background:#27c93f;opacity:.8"></div></div>
-          <div style="flex:1;font-family:var(--mono);font-size:0.62rem;color:var(--g400);text-align:center">dbdesigner.net — light_church</div>
-        </div>
-        <img src="screenshots/dbdesigner.png" alt="DB Designer" style="width:100%;display:block"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-        <div class="tool-placeholder" style="display:none">
-          <div class="ph-icon">🗄️</div>
-          <div class="ph-title">Screenshot DB Designer</div>
-          <div class="ph-path">screenshots/dbdesigner.png</div>
-        </div>
-      </div>
-      <p style="margin-top:0.75rem;font-size:0.83rem;color:var(--g400)">Outil visuel de modélisation de base de données en ligne. Permet de concevoir le schéma ERD avant d'écrire le SQL — visualiser les tables, les relations et les clés étrangères.</p>
-    </div>
-
-    <!-- NVM -->
-    <div class="reveal">
-      <div class="card-tag" style="margin-bottom:0.75rem">NVM — Gestion Node.js</div>
-      <div class="carbon-wrap" style="margin-top:0">
-        <div class="carbon-window">
-          <div class="carbon-header">
-            <div class="carbon-dots"><div class="carbon-dot red"></div><div class="carbon-dot yellow"></div><div class="carbon-dot green"></div></div>
-            <div class="carbon-lang">bash</div>
-            <div class="carbon-filename">nvm — versions Node</div>
+          <div style="display:flex;gap:5px">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f56;opacity:.8"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;opacity:.8"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#27c93f;opacity:.8"></div>
           </div>
-          <div class="carbon-body">
-            <div class="carbon-line"><span class="carbon-ln">1</span><span class="carbon-code"><span class="cmt"># Installer NVM</span></span></div>
-            <div class="carbon-line"><span class="carbon-ln">2</span><span class="carbon-code">curl -o- https://raw.githubusercontent.com/</span></div>
-            <div class="carbon-line"><span class="carbon-ln">3</span><span class="carbon-code">  nvm-sh/nvm/v0.40.3/install.sh | bash</span></div>
-            <div class="carbon-line"><span class="carbon-ln">4</span><span class="carbon-code"></span></div>
-            <div class="carbon-line"><span class="carbon-ln">5</span><span class="carbon-code"><span class="cmt"># Mes versions installées</span></span></div>
-            <div class="carbon-line"><span class="carbon-ln">6</span><span class="carbon-code"><span class="cfn">nvm</span> ls</span></div>
-            <div class="carbon-line"><span class="carbon-ln">7</span><span class="carbon-code">  v20.19.6    <span class="cmt"># projets legacy</span></span></div>
-            <div class="carbon-line"><span class="carbon-ln">8</span><span class="carbon-code">  v24.6.0</span></div>
-            <div class="carbon-line"><span class="carbon-ln">9</span><span class="carbon-code"><span class="cs">→ v24.11.1</span>   <span class="cmt"># LightChurch (active)</span></span></div>
-            <div class="carbon-line"><span class="carbon-ln">10</span><span class="carbon-code">  v25.2.1</span></div>
-            <div class="carbon-line"><span class="carbon-ln">11</span><span class="carbon-code"></span></div>
-            <div class="carbon-line"><span class="carbon-ln">12</span><span class="carbon-code"><span class="cmt"># Switcher en une commande</span></span></div>
-            <div class="carbon-line"><span class="carbon-ln">13</span><span class="carbon-code"><span class="cfn">nvm</span> use <span class="cno">24</span>   <span class="cmt"># → v24.11.1</span></span></div>
-          </div>
+          <div style="flex:1;font-family:var(--mono);font-size:0.62rem;color:var(--g400);text-align:center">GitKraken — commit history</div>
+        </div>
+        <img src="screenshots/git.png" alt="GitKraken — Historique des commits" style="width:100%;display:block"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="tool-placeholder" style="display:none">
+          <div class="ph-icon">🖥️</div>
+          <div class="ph-title">GitKraken — Historique des commits</div>
+          <div class="ph-path">screenshots/git.png</div>
         </div>
       </div>
-      <p style="margin-top:0.75rem;font-size:0.83rem;color:var(--g400)">NVM évite les conflits de versions Node entre projets. Sans NVM, changer de version Node sur Linux nécessite <code style="font-family:var(--mono)">sudo</code> et casse souvent les dépendances globales.</p>
+      <p style="margin-top:0.75rem;font-size:0.83rem;color:var(--g400)">Chaque commit est visible avec son message, son auteur et les fichiers modifiés. Utile pour comprendre l'historique du projet et retrouver une régression.</p>
     </div>
 
+    </div>
+    <div class="g3" style="margin-top:1.5rem">
+      <div class="tool-why"><strong>Pourquoi GitKraken ?</strong> — Interface graphique qui rend Git Flow visuel. Voir les branches <code style="font-family:var(--mono)">main/develop/feature/*</code> sous forme de graphe évite les confusions avec la ligne de commande seule.</div>
+      <div class="tool-why"><strong>Ce que ça m'a apporté</strong> — Comprendre réellement ce que fait chaque opération Git. Résoudre les conflits de merge visuellement, sans risquer d'écraser du code par erreur.</div>
+      <div class="tool-why"><strong>Usage quotidien sur LightChurch</strong> — Visualiser l'état de toutes les branches, créer les feature branches, vérifier que develop est bien synchronisé avec main avant chaque release.</div>
+    </div>
   </div>
 
-  <!-- Explication dbdesigner -->
-  <div class="reveal" style="margin-top:2.5rem">
-    <div class="eyebrow">dbdesigner.net — Conception avant le SQL</div>
-    <div class="g2" style="margin-top:1rem">
-      <div>
-        <h3>Pourquoi modéliser visuellement avant de coder ?</h3>
-        <p>Avant d'écrire une seule ligne de SQL, j'ai d'abord modélisé toute la base de données sur <strong style="color:var(--white)">dbdesigner.net</strong>. Cet outil en ligne permet de créer un diagramme ERD (Entity Relationship Diagram) : on dessine les tables, on définit les colonnes, et on trace les relations entre elles.</p>
-        <div style="margin-top:1.25rem">
-          <p>C'est cette phase de conception qui m'a permis de :</p>
-          <ul style="list-style:none;margin-top:0.75rem">
-            <li style="padding:0.4rem 0;border-bottom:1px solid var(--g200);font-size:0.88rem;color:var(--g500)">✦ Identifier les 14 tables nécessaires avant de commencer</li>
-            <li style="padding:0.4rem 0;border-bottom:1px solid var(--g200);font-size:0.88rem;color:var(--g500)">✦ Définir les clés étrangères et les règles CASCADE</li>
-            <li style="padding:0.4rem 0;border-bottom:1px solid var(--g200);font-size:0.88rem;color:var(--g500)">✦ Repérer les redondances à éliminer (normalisation)</li>
-            <li style="padding:0.4rem 0;border-bottom:1px solid var(--g200);font-size:0.88rem;color:var(--g500)">✦ Anticiper les relations complexes (churches ↔ events ↔ admins)</li>
-            <li style="padding:0.4rem 0;font-size:0.88rem;color:var(--g500)">✦ Générer le SQL automatiquement depuis le schéma visuel</li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <div class="card">
-          <span class="card-tag">Workflow de conception BDD</span>
-          <div style="font-family:var(--mono);font-size:0.78rem;line-height:2.2;margin-top:0.5rem">
-            <div style="display:flex;align-items:center;gap:0.75rem">
-              <span style="color:var(--g300);font-weight:700">01</span>
-              <span style="color:var(--g500)">Lister les entités métier (admin, church, event…)</span>
-            </div>
-            <div style="width:1px;height:12px;background:var(--g200);margin-left:10px"></div>
-            <div style="display:flex;align-items:center;gap:0.75rem">
-              <span style="color:var(--g300);font-weight:700">02</span>
-              <span style="color:var(--g500)">Définir les attributs de chaque table</span>
-            </div>
-            <div style="width:1px;height:12px;background:var(--g200);margin-left:10px"></div>
-            <div style="display:flex;align-items:center;gap:0.75rem">
-              <span style="color:var(--g300);font-weight:700">03</span>
-              <span style="color:var(--g500)">Tracer les relations (1:1, 1:N, N:M) sur dbdesigner</span>
-            </div>
-            <div style="width:1px;height:12px;background:var(--g200);margin-left:10px"></div>
-            <div style="display:flex;align-items:center;gap:0.75rem">
-              <span style="color:var(--g300);font-weight:700">04</span>
-              <span style="color:var(--g500)">Définir les contraintes (CASCADE, SET NULL, UNIQUE)</span>
-            </div>
-            <div style="width:1px;height:12px;background:var(--g200);margin-left:10px"></div>
-            <div style="display:flex;align-items:center;gap:0.75rem">
-              <span style="color:var(--g300);font-weight:700">05</span>
-              <span style="color:var(--white);font-weight:600">Export SQL → schema.sql → Docker init</span>
-            </div>
+  <!-- ══ Linux ══ -->
+  <div class="reveal" style="margin-top:4rem">
+    <div class="eyebrow">Linux — Environnement de développement</div>
+    <div class="g3" style="margin-top:1.5rem">
+
+    <div class="reveal">
+      <div class="card-tag" style="margin-bottom:0.75rem">Ubuntu 24.04 — Bureau</div>
+      <div style="border:1px solid var(--g200);border-radius:3px;overflow:hidden">
+        <div style="background:var(--g100);padding:0.5rem 0.9rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--g200)">
+          <div style="display:flex;gap:5px">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f56;opacity:.8"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;opacity:.8"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#27c93f;opacity:.8"></div>
           </div>
+          <div style="flex:1;font-family:var(--mono);font-size:0.62rem;color:var(--g400);text-align:center">Ubuntu 24.04 LTS</div>
+        </div>
+        <img src="screenshots/linux.png" alt="Ubuntu 24.04 — Bureau" style="width:100%;display:block"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="tool-placeholder" style="display:none">
+          <div class="ph-icon">🖥️</div>
+          <div class="ph-title">Ubuntu 24.04 — Bureau</div>
+          <div class="ph-path">screenshots/linux.png</div>
         </div>
       </div>
+      <p style="margin-top:0.75rem;font-size:0.83rem;color:var(--g400)">Environnement de bureau Ubuntu 24.04 LTS. Développer sur Linux signifie développer dans le même environnement que le serveur de production — pas de surprises au déploiement.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="card-tag" style="margin-bottom:0.75rem">Terminal Zsh — Commandes Docker</div>
+      <div style="border:1px solid var(--g200);border-radius:3px;overflow:hidden">
+        <div style="background:var(--g100);padding:0.5rem 0.9rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--g200)">
+          <div style="display:flex;gap:5px">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f56;opacity:.8"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;opacity:.8"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#27c93f;opacity:.8"></div>
+          </div>
+          <div style="flex:1;font-family:var(--mono);font-size:0.62rem;color:var(--g400);text-align:center">~/lighchurch — zsh</div>
+        </div>
+        <img src="screenshots/linux2.png" alt="Terminal Zsh — Commandes Docker" style="width:100%;display:block"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="tool-placeholder" style="display:none">
+          <div class="ph-icon">🖥️</div>
+          <div class="ph-title">Terminal Zsh — Commandes Docker</div>
+          <div class="ph-path">screenshots/linux2.png</div>
+        </div>
+      </div>
+      <p style="margin-top:0.75rem;font-size:0.83rem;color:var(--g400)">Terminal Zsh avec Docker Compose, npm, git. Toutes les commandes de build, de test et de déploiement sont exécutées ici, dans le même environnement que le VPS.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="card-tag" style="margin-bottom:0.75rem">NVM — Gestion versions Node.js</div>
+      <div style="border:1px solid var(--g200);border-radius:3px;overflow:hidden">
+        <div style="background:var(--g100);padding:0.5rem 0.9rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--g200)">
+          <div style="display:flex;gap:5px">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f56;opacity:.8"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;opacity:.8"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#27c93f;opacity:.8"></div>
+          </div>
+          <div style="flex:1;font-family:var(--mono);font-size:0.62rem;color:var(--g400);text-align:center">terminal — nvm ls</div>
+        </div>
+        <img src="screenshots/nvm.png" alt="NVM — Gestion versions Node.js" style="width:100%;display:block"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <div class="tool-placeholder" style="display:none">
+          <div class="ph-icon">🖥️</div>
+          <div class="ph-title">NVM — Gestion versions Node.js</div>
+          <div class="ph-path">screenshots/nvm.png</div>
+        </div>
+      </div>
+      <p style="margin-top:0.75rem;font-size:0.83rem;color:var(--g400)">NVM (Node Version Manager) permet de basculer entre plusieurs versions de Node.js selon le projet. LightChurch tourne sur Node v24.11.1 LTS — version identique sur le VPS.</p>
+    </div>
+
+    </div>
+    <div class="g3" style="margin-top:1.5rem">
+      <div class="tool-why"><strong>Pourquoi Linux ?</strong> — Le VPS de production tourne sous Linux. Développer sur le même OS élimine les bugs "ça marche en local mais pas sur le serveur". Maîtrise des permissions, des processus et de SSH.</div>
+      <div class="tool-why"><strong>Ce que ça m'a apporté</strong> — Comprendre les commandes système, gérer Docker nativement, écrire des scripts bash pour automatiser les tâches répétitives. Compétence directement valorisable en entreprise.</div>
+      <div class="tool-why"><strong>Usage quotidien sur LightChurch</strong> — <code style="font-family:var(--mono)">docker compose up</code> pour lancer la stack locale, <code style="font-family:var(--mono)">ssh user@vps</code> pour accéder au serveur, <code style="font-family:var(--mono)">git push</code> pour déclencher le CI/CD.</div>
     </div>
   </div>
 
@@ -4429,6 +4457,195 @@
       <img src="screenshots/map.png" alt="LightChurch — Carte interactive" style="width:100%;display:block" />
     </div>
     <p style="margin-top:0.75rem;font-size:0.85rem;color:var(--g400)">Carte Leaflet publique — recherche par ville, filtres Églises / Événements, clustering des marqueurs calculé via Web Worker. Accessible sans authentification.</p>
+  </div>
+
+
+
+  <!-- ── Carte interactive — détails ── -->
+  <div class="reveal" style="margin-top:4rem">
+    <div class="eyebrow">Carte publique — zoom et détail</div>
+  </div>
+  <div class="g2" style="margin-top:1.5rem">
+    <div class="reveal">
+      <div style="display:flex;align-items:baseline;gap:0.75rem;margin-bottom:0.75rem">
+        <span style="font-family:var(--mono);font-size:0.65rem;color:var(--g400);letter-spacing:0.1em;text-transform:uppercase">Vue Europe — clusters</span>
+        <span style="font-family:var(--mono);font-size:0.65rem;color:var(--g300)">lightchurch.fr/map</span>
+      </div>
+      <div style="border:1px solid var(--g200);border-radius:3px;overflow:hidden">
+        <div style="background:var(--g100);padding:0.5rem 0.9rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--g200)">
+          <div style="display:flex;gap:5px">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f56;opacity:.7"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;opacity:.7"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#27c93f;opacity:.7"></div>
+          </div>
+          <div style="flex:1;background:var(--g200);border-radius:2px;padding:0.2rem 0.6rem;font-family:var(--mono);font-size:0.62rem;color:var(--g400);max-width:240px;margin:0 auto">lightchurch.fr/map</div>
+        </div>
+        <img src="screenshots/lighchurch-map/map-4.png" alt="Vue Europe — clusters" style="width:100%;display:block"/>
+      </div>
+      <p style="margin-top:0.6rem;font-size:0.82rem;color:var(--g400)">Vue macro : 40+ résultats sur la France et l'Europe. Les clusters regroupent automatiquement les marqueurs proches — calcul fait côté client via Supercluster. Badge distinct Églises / Événements.</p>
+    </div>
+    <div class="reveal">
+      <div style="display:flex;align-items:baseline;gap:0.75rem;margin-bottom:0.75rem">
+        <span style="font-family:var(--mono);font-size:0.65rem;color:var(--g400);letter-spacing:0.1em;text-transform:uppercase">Recherche + liste événements</span>
+        <span style="font-family:var(--mono);font-size:0.65rem;color:var(--g300)">lightchurch.fr/map?q=paris</span>
+      </div>
+      <div style="border:1px solid var(--g200);border-radius:3px;overflow:hidden">
+        <div style="background:var(--g100);padding:0.5rem 0.9rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--g200)">
+          <div style="display:flex;gap:5px">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f56;opacity:.7"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;opacity:.7"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#27c93f;opacity:.7"></div>
+          </div>
+          <div style="flex:1;background:var(--g200);border-radius:2px;padding:0.2rem 0.6rem;font-family:var(--mono);font-size:0.62rem;color:var(--g400);max-width:240px;margin:0 auto">lightchurch.fr/map?q=paris</div>
+        </div>
+        <img src="screenshots/lighchurch-map/map-1.png" alt="Recherche + liste événements" style="width:100%;display:block"/>
+      </div>
+      <p style="margin-top:0.6rem;font-size:0.82rem;color:var(--g400)">Recherche ville avec autocomplétion (API data.gouv.fr via proxy backend). La liste latérale affiche les événements à proximité avec countdown. Filtres Église / Événement.</p>
+    </div>
+  </div>
+
+  <div class="g2" style="margin-top:1.5rem">
+    <div class="reveal">
+      <div style="display:flex;align-items:baseline;gap:0.75rem;margin-bottom:0.75rem">
+        <span style="font-family:var(--mono);font-size:0.65rem;color:var(--g400);letter-spacing:0.1em;text-transform:uppercase">Fiche église — drawer</span>
+        <span style="font-family:var(--mono);font-size:0.65rem;color:var(--g300)">lightchurch.fr/map</span>
+      </div>
+      <div style="border:1px solid var(--g200);border-radius:3px;overflow:hidden">
+        <div style="background:var(--g100);padding:0.5rem 0.9rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--g200)">
+          <div style="display:flex;gap:5px">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f56;opacity:.7"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;opacity:.7"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#27c93f;opacity:.7"></div>
+          </div>
+          <div style="flex:1;background:var(--g200);border-radius:2px;padding:0.2rem 0.6rem;font-family:var(--mono);font-size:0.62rem;color:var(--g400);max-width:240px;margin:0 auto">lightchurch.fr/map</div>
+        </div>
+        <img src="screenshots/lighchurch-map/map-3.png" alt="Fiche église — drawer" style="width:100%;display:block"/>
+      </div>
+      <p style="margin-top:0.6rem;font-size:0.82rem;color:var(--g400)">Clic sur un marqueur église → drawer latéral avec toutes les infos : adresse, horaires, dénomination, contact, bouton itinéraire. Sans rechargement de page.</p>
+    </div>
+    <div class="reveal">
+      <div style="display:flex;align-items:baseline;gap:0.75rem;margin-bottom:0.75rem">
+        <span style="font-family:var(--mono);font-size:0.65rem;color:var(--g400);letter-spacing:0.1em;text-transform:uppercase">Fiche événement — drawer</span>
+        <span style="font-family:var(--mono);font-size:0.65rem;color:var(--g300)">lightchurch.fr/map</span>
+      </div>
+      <div style="border:1px solid var(--g200);border-radius:3px;overflow:hidden">
+        <div style="background:var(--g100);padding:0.5rem 0.9rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--g200)">
+          <div style="display:flex;gap:5px">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f56;opacity:.7"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;opacity:.7"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#27c93f;opacity:.7"></div>
+          </div>
+          <div style="flex:1;background:var(--g200);border-radius:2px;padding:0.2rem 0.6rem;font-family:var(--mono);font-size:0.62rem;color:var(--g400);max-width:240px;margin:0 auto">lightchurch.fr/map</div>
+        </div>
+        <img src="screenshots/lighchurch-map/map-2.png" alt="Fiche événement — drawer" style="width:100%;display:block"/>
+      </div>
+      <p style="margin-top:0.6rem;font-size:0.82rem;color:var(--g400)">Fiche événement : localisation précise, intervenant, date/heure, langue, bouton S'inscrire. Données chargées dynamiquement depuis l'API au clic sur le marqueur.</p>
+    </div>
+  </div>
+
+  <!-- ── Dashboard Pasteur ── -->
+  <div class="reveal" style="margin-top:4rem">
+    <div class="eyebrow">Dashboard Pasteur — espace privé</div>
+    <h3 style="margin-top:0.5rem">Interface réservée aux comptes validés</h3>
+    <p>Après validation du compte par le SUPER_ADMIN, le pasteur accède à son espace privé pour gérer son église, ses événements et consulter le réseau pastoral.</p>
+  </div>
+
+
+  <div class="reveal">
+    <div style="display:flex;align-items:baseline;gap:1rem;margin-bottom:1rem">
+      <span style="font-family:var(--mono);font-size:0.65rem;color:var(--g400);letter-spacing:0.1em;text-transform:uppercase">Mes Événements — liste</span>
+      <span style="font-family:var(--mono);font-size:0.65rem;color:var(--g300)">lightchurch.fr/dashboard/events</span>
+    </div>
+    <div style="border:1px solid var(--g200);border-radius:3px;overflow:hidden">
+      <div style="background:var(--g100);padding:0.6rem 1rem;display:flex;align-items:center;gap:0.6rem;border-bottom:1px solid var(--g200)">
+        <div style="display:flex;gap:6px">
+          <div style="width:11px;height:11px;border-radius:50%;background:#ff5f56;opacity:.7"></div>
+          <div style="width:11px;height:11px;border-radius:50%;background:#ffbd2e;opacity:.7"></div>
+          <div style="width:11px;height:11px;border-radius:50%;background:#27c93f;opacity:.7"></div>
+        </div>
+        <div style="flex:1;background:var(--g200);border-radius:2px;padding:0.25rem 0.75rem;font-family:var(--mono);font-size:0.68rem;color:var(--g400);max-width:320px;margin:0 auto">lightchurch.fr/dashboard/events</div>
+      </div>
+      <img src="screenshots/captures-pastor/pastor-1.png" alt="Mes Événements — liste" style="width:100%;display:block"/>
+    </div>
+    <p style="margin-top:0.75rem;font-size:0.85rem;color:var(--g400)">Vue liste des événements du pasteur — statuts UPCOMING / ONGOING / COMPLETED / CANCELLED calculés dynamiquement. Filtres, recherche, tri. Compteur d'intéressés en temps réel.</p>
+  </div>
+
+  <div class="g2" style="margin-top:1.5rem">
+    <div class="reveal">
+      <div style="display:flex;align-items:baseline;gap:0.75rem;margin-bottom:0.75rem">
+        <span style="font-family:var(--mono);font-size:0.65rem;color:var(--g400);letter-spacing:0.1em;text-transform:uppercase">Mes Événements — vue cartes</span>
+        <span style="font-family:var(--mono);font-size:0.65rem;color:var(--g300)">lightchurch.fr/dashboard/events</span>
+      </div>
+      <div style="border:1px solid var(--g200);border-radius:3px;overflow:hidden">
+        <div style="background:var(--g100);padding:0.5rem 0.9rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--g200)">
+          <div style="display:flex;gap:5px">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f56;opacity:.7"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;opacity:.7"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#27c93f;opacity:.7"></div>
+          </div>
+          <div style="flex:1;background:var(--g200);border-radius:2px;padding:0.2rem 0.6rem;font-family:var(--mono);font-size:0.62rem;color:var(--g400);max-width:240px;margin:0 auto">lightchurch.fr/dashboard/events</div>
+        </div>
+        <img src="screenshots/captures-pastor/pastor-2.png" alt="Mes Événements — vue cartes" style="width:100%;display:block"/>
+      </div>
+      <p style="margin-top:0.6rem;font-size:0.82rem;color:var(--g400)">Vue kanban des événements — même données, affichage en grille. Basculement liste/carte sans rechargement. Bouton 'Créer un événement' flottant.</p>
+    </div>
+    <div class="reveal">
+      <div style="display:flex;align-items:baseline;gap:0.75rem;margin-bottom:0.75rem">
+        <span style="font-family:var(--mono);font-size:0.65rem;color:var(--g400);letter-spacing:0.1em;text-transform:uppercase">Créer un événement — wizard</span>
+        <span style="font-family:var(--mono);font-size:0.65rem;color:var(--g300)">lightchurch.fr/dashboard/events/new</span>
+      </div>
+      <div style="border:1px solid var(--g200);border-radius:3px;overflow:hidden">
+        <div style="background:var(--g100);padding:0.5rem 0.9rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--g200)">
+          <div style="display:flex;gap:5px">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f56;opacity:.7"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;opacity:.7"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#27c93f;opacity:.7"></div>
+          </div>
+          <div style="flex:1;background:var(--g200);border-radius:2px;padding:0.2rem 0.6rem;font-family:var(--mono);font-size:0.62rem;color:var(--g400);max-width:240px;margin:0 auto">lightchurch.fr/dashboard/events/new</div>
+        </div>
+        <img src="screenshots/captures-pastor/pastor-5.png" alt="Créer un événement — wizard" style="width:100%;display:block"/>
+      </div>
+      <p style="margin-top:0.6rem;font-size:0.82rem;color:var(--g400)">Formulaire multi-étapes pour créer un événement : Infos générales → Date & Heure → Lieu & Localisation → Options & Détails → Récapitulatif. Un événement supprimé reste visible pour la traçabilité.</p>
+    </div>
+  </div>
+
+  <div class="g2" style="margin-top:1.5rem">
+    <div class="reveal">
+      <div style="display:flex;align-items:baseline;gap:0.75rem;margin-bottom:0.75rem">
+        <span style="font-family:var(--mono);font-size:0.65rem;color:var(--g400);letter-spacing:0.1em;text-transform:uppercase">Mon Église — horaires</span>
+        <span style="font-family:var(--mono);font-size:0.65rem;color:var(--g300)">lightchurch.fr/dashboard/church</span>
+      </div>
+      <div style="border:1px solid var(--g200);border-radius:3px;overflow:hidden">
+        <div style="background:var(--g100);padding:0.5rem 0.9rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--g200)">
+          <div style="display:flex;gap:5px">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f56;opacity:.7"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;opacity:.7"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#27c93f;opacity:.7"></div>
+          </div>
+          <div style="flex:1;background:var(--g200);border-radius:2px;padding:0.2rem 0.6rem;font-family:var(--mono);font-size:0.62rem;color:var(--g400);max-width:240px;margin:0 auto">lightchurch.fr/dashboard/church</div>
+        </div>
+        <img src="screenshots/captures-pastor/pastor-3.png" alt="Mon Église — horaires" style="width:100%;display:block"/>
+      </div>
+      <p style="margin-top:0.6rem;font-size:0.82rem;color:var(--g400)">Gestion des horaires récurrents : jour, heure, type d'activité (Culte, Réunion de prière, Étude biblique…). Minimum 1 horaire obligatoire. Mise à jour via transaction SQL atomique.</p>
+    </div>
+    <div class="reveal">
+      <div style="display:flex;align-items:baseline;gap:0.75rem;margin-bottom:0.75rem">
+        <span style="font-family:var(--mono);font-size:0.65rem;color:var(--g400);letter-spacing:0.1em;text-transform:uppercase">Réseau Pastoral — annuaire</span>
+        <span style="font-family:var(--mono);font-size:0.65rem;color:var(--g300)">lightchurch.fr/dashboard/network</span>
+      </div>
+      <div style="border:1px solid var(--g200);border-radius:3px;overflow:hidden">
+        <div style="background:var(--g100);padding:0.5rem 0.9rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--g200)">
+          <div style="display:flex;gap:5px">
+            <div style="width:10px;height:10px;border-radius:50%;background:#ff5f56;opacity:.7"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#ffbd2e;opacity:.7"></div>
+            <div style="width:10px;height:10px;border-radius:50%;background:#27c93f;opacity:.7"></div>
+          </div>
+          <div style="flex:1;background:var(--g200);border-radius:2px;padding:0.2rem 0.6rem;font-family:var(--mono);font-size:0.62rem;color:var(--g400);max-width:240px;margin:0 auto">lightchurch.fr/dashboard/network</div>
+        </div>
+        <img src="screenshots/captures-pastor/pastor-4.png" alt="Réseau Pastoral — annuaire" style="width:100%;display:block"/>
+      </div>
+      <p style="margin-top:0.6rem;font-size:0.82rem;color:var(--g400)">Annuaire de tous les pasteurs et églises validés du réseau. Recherche par nom, filtre par dénomination. Accès au profil public, coordonnées. Espace de mise en réseau inter-churches.</p>
+    </div>
   </div>
 
 </section>
