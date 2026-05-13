@@ -303,8 +303,16 @@
 
       /* ── Reset scroll & selection ── */
       html { scroll-behavior: auto !important; }
-      * { -webkit-print-color-adjust: exact !important;
-          print-color-adjust: exact !important; }
+
+      /* ── Fond blanc — économie encre imprimante ── */
+      * {
+        -webkit-print-color-adjust: economy !important;
+        print-color-adjust: economy !important;
+        background: transparent !important;
+        background-image: none !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+      }
 
       /* ── Masquer éléments non imprimables ── */
       nav,
@@ -314,11 +322,16 @@
       .nav-links,
       iframe { display: none !important; }
 
-      /* ── Corps — thème HTML préservé ── */
+      /* ── Corps blanc, texte noir ── */
       body {
+        background: #fff !important;
+        color: #111 !important;
         font-size: 10pt !important;
         line-height: 1.55 !important;
         font-family: 'Inter', Arial, sans-serif !important;
+      }
+      section, div, header, footer, aside, article {
+        background: transparent !important;
       }
 
       /* ── Animations désactivées ── */
@@ -380,19 +393,37 @@
         gap: 0.5rem !important;
       }
 
-      /* ── Code windows — fond sombre préservé ── */
+      /* ── Code windows — fond blanc, bordure grise ── */
       .carbon-wrap {
         page-break-inside: avoid;
         break-inside: avoid;
         padding: 0.5rem !important;
-        background: linear-gradient(135deg, #6d28d9 0%, #2e1065 50%, #0d0424 100%) !important;
+        background: #f4f4f4 !important;
+        border: 1px solid #ccc !important;
         border-radius: 6px !important;
       }
       .carbon-window {
         page-break-inside: avoid;
         break-inside: avoid;
-        box-shadow: none !important;
+        background: #f9f9f9 !important;
+        border: 1px solid #ddd !important;
       }
+      .carbon-header {
+        background: #e8e8e8 !important;
+        border-bottom: 1px solid #ccc !important;
+      }
+      .carbon-body {
+        background: #fff !important;
+      }
+      /* Code — texte lisible en noir */
+      .carbon-code, .carbon-code * { color: #111 !important; }
+      .carbon-ln { color: #999 !important; border-right: 1px solid #ddd !important; }
+      .cmt { color: #666 !important; font-style: italic !important; }
+      .ck { color: #0000aa !important; font-weight: 600 !important; }
+      .cfn { color: #006600 !important; }
+      .cs { color: #aa0000 !important; }
+      .cty { color: #880088 !important; }
+      .cop { color: #444 !important; }
       .carbon-body { font-size: 7.5pt !important; }
       .carbon-ln { min-width: 1.6rem !important; font-size: 7pt !important; }
 
