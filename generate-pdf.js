@@ -39,7 +39,7 @@ async function generatePDF() {
   });
 
   // Attendre que les animations reveal soient résolues
-  await page.waitForTimeout(1500);
+  await new Promise(r => setTimeout(r, 1500));
 
   // Forcer toutes les animations reveal à leur état final
   await page.evaluate(() => {
