@@ -2198,6 +2198,104 @@
 <section id="dev">
   <div class="reveal"><div class="eyebrow"><span class="n">04</span>Développement</div><h2>Méthode de travail<br/>et organisation.</h2></div>
 
+
+  <!-- ── MONOREPO ── -->
+  <div class="reveal" style="margin-top:2rem">
+    <div class="eyebrow">Structure du projet — Monorepo</div>
+    <h3>Backend et frontend dans le même dépôt Git</h3>
+    <p style="max-width:72ch;color:var(--g400)">LightChurch est organisé en <strong>monorepo</strong> : un seul dépôt Git contient le backend Node.js, le frontend React et toute la configuration d'infrastructure. Un <code style="font-family:var(--mono);color:var(--white)">git clone</code> suffit pour tout récupérer. Docker Compose orchestre les services — <strong>une seule commande lance l'application complète</strong>.</p>
+  </div>
+
+  <div class="g2" style="margin-top:1.25rem">
+    <!-- Arbre de fichiers -->
+    <div class="reveal">
+      <div class="carbon-wrap">
+        <div class="carbon-window">
+          <div class="carbon-header">
+            <div class="carbon-dots"><div class="carbon-dot red"></div><div class="carbon-dot yellow"></div><div class="carbon-dot green"></div></div>
+            <div class="carbon-lang">tree</div>
+            <div class="carbon-filename">lighchurch/ — structure monorepo</div>
+          </div>
+          <div class="carbon-body">
+            <div class="carbon-line"><span class="carbon-ln">1</span><span class="carbon-code"><span class="cfn">lighchurch</span>/                       <span class="cmt"># Un seul dépôt Git</span></span></div>
+            <div class="carbon-line"><span class="carbon-ln">2</span><span class="carbon-code">├── <span class="cty">lightchurch-backend</span>/        <span class="cmt"># Node.js + Express 5</span></span></div>
+            <div class="carbon-line"><span class="carbon-ln">3</span><span class="carbon-code">│   ├── routes/</span></div>
+            <div class="carbon-line"><span class="carbon-ln">4</span><span class="carbon-code">│   ├── middleware/</span></div>
+            <div class="carbon-line"><span class="carbon-ln">5</span><span class="carbon-code">│   ├── database/schema.sql</span></div>
+            <div class="carbon-line"><span class="carbon-ln">6</span><span class="carbon-code">│   ├── Dockerfile</span></div>
+            <div class="carbon-line"><span class="carbon-ln">7</span><span class="carbon-code">│   └── package.json</span></div>
+            <div class="carbon-line"><span class="carbon-ln">8</span><span class="carbon-code">├── <span class="cty">lightchurch-frontend</span>/       <span class="cmt"># React 19 + TypeScript + Vite</span></span></div>
+            <div class="carbon-line"><span class="carbon-ln">9</span><span class="carbon-code">│   ├── src/</span></div>
+            <div class="carbon-line"><span class="carbon-ln">10</span><span class="carbon-code">│   ├── Dockerfile</span></div>
+            <div class="carbon-line"><span class="carbon-ln">11</span><span class="carbon-code">│   └── package.json</span></div>
+            <div class="carbon-line"><span class="carbon-ln">12</span><span class="carbon-code">├── <span class="cty">nginx</span>/                       <span class="cmt"># Config reverse proxy</span></span></div>
+            <div class="carbon-line"><span class="carbon-ln">13</span><span class="carbon-code">├── <span class="cs">.github/workflows/deploy.yml</span> <span class="cmt"># CI/CD pipeline</span></span></div>
+            <div class="carbon-line"><span class="carbon-ln">14</span><span class="carbon-code">├── <span class="cs">docker-compose.yml</span>           <span class="cmt"># Orchestration prod</span></span></div>
+            <div class="carbon-line"><span class="carbon-ln">15</span><span class="carbon-code">└── <span class="cs">docker-compose.override.yml</span>  <span class="cmt"># Overrides dev local</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Commande unique -->
+    <div class="reveal">
+      <div class="carbon-wrap">
+        <div class="carbon-window">
+          <div class="carbon-header">
+            <div class="carbon-dots"><div class="carbon-dot red"></div><div class="carbon-dot yellow"></div><div class="carbon-dot green"></div></div>
+            <div class="carbon-lang">bash</div>
+            <div class="carbon-filename">Lancer le projet complet — 1 commande</div>
+          </div>
+          <div class="carbon-body">
+            <div class="carbon-line"><span class="carbon-ln">1</span><span class="carbon-code"><span class="cmt"># Cloner le projet entier (backend + frontend)</span></span></div>
+            <div class="carbon-line"><span class="carbon-ln">2</span><span class="carbon-code"><span class="cfn">git</span> clone https://github.com/stephane-job/lighchurch</span></div>
+            <div class="carbon-line"><span class="carbon-ln">3</span><span class="carbon-code"><span class="cfn">cd</span> lighchurch</span></div>
+            <div class="carbon-line"><span class="carbon-ln">4</span><span class="carbon-code"></span></div>
+            <div class="carbon-line"><span class="carbon-ln">5</span><span class="carbon-code"><span class="cmt"># Copier et remplir les variables d'environnement</span></span></div>
+            <div class="carbon-line"><span class="carbon-ln">6</span><span class="carbon-code"><span class="cfn">cp</span> .env.example .env</span></div>
+            <div class="carbon-line"><span class="carbon-ln">7</span><span class="carbon-code"></span></div>
+            <div class="carbon-line"><span class="carbon-ln">8</span><span class="carbon-code"><span class="cmt"># ↓ UNE seule commande lance tout</span></span></div>
+            <div class="carbon-line"><span class="carbon-ln">9</span><span class="carbon-code"><span class="cfn">docker</span> compose up</span></div>
+            <div class="carbon-line"><span class="carbon-ln">10</span><span class="carbon-code"></span></div>
+            <div class="carbon-line"><span class="carbon-ln">11</span><span class="carbon-code"><span class="cmt"># Docker démarre dans l'ordre :</span></span></div>
+            <div class="carbon-line"><span class="carbon-ln">12</span><span class="carbon-code"><span class="cmt">#  1. MySQL 8 → healthcheck ping</span></span></div>
+            <div class="carbon-line"><span class="carbon-ln">13</span><span class="carbon-code"><span class="cmt">#  2. Backend Express (attend MySQL healthy)</span></span></div>
+            <div class="carbon-line"><span class="carbon-ln">14</span><span class="carbon-code"><span class="cmt">#  3. Frontend Nginx + React (attend backend)</span></span></div>
+            <div class="carbon-line"><span class="carbon-ln">15</span><span class="carbon-code"></span></div>
+            <div class="carbon-line"><span class="carbon-ln">16</span><span class="carbon-code"><span class="cmt"># Application accessible sur :</span></span></div>
+            <div class="carbon-line"><span class="carbon-ln">17</span><span class="carbon-code"><span class="cs">http://localhost:3080</span>        <span class="cmt"># Frontend</span></span></div>
+            <div class="carbon-line"><span class="carbon-ln">18</span><span class="carbon-code"><span class="cs">http://localhost:3000</span>        <span class="cmt"># API backend</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Avantages monorepo -->
+  <div class="g3" style="margin-top:1.25rem">
+    <div class="card reveal" style="border-top:3px solid #8e44ad">
+      <span class="card-tag" style="color:#8e44ad">Un seul dépôt</span>
+      <h3>Cohérence totale</h3>
+      <p style="font-size:0.85rem">Un <code style="font-family:var(--mono);color:var(--white)">git clone</code> donne tout : backend, frontend, config Docker, pipeline CI/CD, schéma SQL. Pas de synchronisation entre dépôts, pas de versioning croisé à gérer.</p>
+    </div>
+    <div class="card reveal" style="border-top:3px solid #2496ed">
+      <span class="card-tag" style="color:#2496ed">Déploiement simplifié</span>
+      <h3>docker compose up</h3>
+      <p style="font-size:0.85rem">Docker Compose lit la structure du monorepo : <code style="font-family:var(--mono);color:var(--white)">context: ./lightchurch-backend</code> et <code style="font-family:var(--mono);color:var(--white)">context: ./lightchurch-frontend</code>. Un seul fichier orchestre les deux projets.</p>
+    </div>
+    <div class="card reveal" style="border-top:3px solid #27ae60">
+      <span class="card-tag" style="color:#27ae60">CI/CD unifié</span>
+      <h3>Un pipeline pour tout</h3>
+      <p style="font-size:0.85rem">GitHub Actions rebuild backend ET frontend à chaque <code style="font-family:var(--mono);color:var(--white)">git push main</code>. Un seul <code style="font-family:var(--mono);color:var(--white)">deploy.yml</code> gère le déploiement complet sur le VPS.</p>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:1rem">
+    <div style="background:var(--g100);border-left:3px solid var(--g300);border-radius:4px;padding:0.85rem 1rem;font-size:0.82rem;color:var(--g400);max-width:72ch">
+      <strong style="color:var(--g600)">Différence avec un polyrepo :</strong> avec deux dépôts séparés, chaque changement d'API nécessite un commit dans le backend ET un dans le frontend, avec des versions à synchroniser. Le monorepo élimine ce friction — une branche <code style="font-family:var(--mono)">feature/</code> peut modifier les deux projets atomiquement.
+    </div>
+  </div>
+
   <div class="g2" style="margin-top:1rem">
     <div class="reveal">
       <h3>Workflow Git — branches stratégiques</h3>
