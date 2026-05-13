@@ -287,22 +287,178 @@
     .nav-drop a.active { color: var(--white); background: var(--g100); }
     .nav-group > .nav-btn.active { color: var(--white); }
 
-    /* ── PRINT ── */
+    /* ══════════════════════════════════════════════════
+       PRINT / PDF — A4 optimisé pour jury de soutenance
+       Générer via : Chrome → Imprimer → Enregistrer PDF
+       Options : fond d'écran activé, marges minimales
+    ══════════════════════════════════════════════════ */
     @media print {
-      html { scroll-behavior: auto; }
-      #progress, nav { display: none !important; }
-      body { background: #fff; color: #000; font-size: 11pt; }
-      section { padding: 2rem 1.5rem !important; page-break-inside: avoid; }
-      .reveal { opacity: 1 !important; transform: none !important; }
-      .card { border: 1px solid #ccc; background: #f9f9f9; break-inside: avoid; }
-      .carbon-wrap, .chalk { break-inside: avoid; }
-      .carbon-window, .chalk-window { box-shadow: none; }
-      .g2, .g3, .g4 { grid-template-columns: repeat(2, 1fr) !important; }
-      .stats { grid-template-columns: repeat(4, 1fr) !important; }
-      h1 { font-size: 3rem !important; }
-      h2 { font-size: 1.8rem !important; }
-      a[href]::after { content: " (" attr(href) ")"; font-size: 8pt; color: #666; }
-      .sep { background: #ccc; }
+
+      /* ── Page A4 ── */
+      @page {
+        size: A4 portrait;
+        margin: 14mm 12mm 14mm 12mm;
+      }
+      @page :first { margin-top: 0; }
+
+      /* ── Reset scroll & selection ── */
+      html { scroll-behavior: auto !important; }
+      * { -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important; }
+
+      /* ── Masquer éléments non imprimables ── */
+      nav,
+      #progress,
+      .sep,
+      .nav-group,
+      .nav-links,
+      iframe { display: none !important; }
+
+      /* ── Corps ── */
+      body {
+        background: #fff !important;
+        color: #1a1917 !important;
+        font-size: 10pt !important;
+        line-height: 1.55 !important;
+        font-family: 'Inter', Arial, sans-serif !important;
+      }
+
+      /* ── Animations désactivées ── */
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+
+      /* ── Chaque section commence sur nouvelle page ── */
+      section {
+        page-break-before: always;
+        break-before: page;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        padding: 1.5rem 1rem 1rem !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+      }
+      section:first-of-type { page-break-before: auto; }
+
+      /* ── Titres — ne jamais couper après ── */
+      h1, h2, h3, h4 {
+        page-break-after: avoid;
+        break-after: avoid;
+        orphans: 3;
+        widows: 3;
+      }
+      h1 { font-size: 2rem !important; }
+      h2 { font-size: 1.5rem !important; line-height: 1.25 !important; }
+      h3 { font-size: 1.05rem !important; }
+
+      /* ── Hero ── */
+      #hero {
+        background: #1a1917 !important;
+        color: #fff !important;
+        padding: 3rem 2rem !important;
+        min-height: unset !important;
+      }
+      #hero h1, #hero p, #hero .eyebrow,
+      #hero .badge, #hero span { color: #fff !important; }
+
+      /* ── Eyebrow ── */
+      .eyebrow { font-size: 0.6rem !important; }
+      .eyebrow .n { font-size: 0.65rem !important; }
+
+      /* ── Cards ── */
+      .card {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        background: #f8f8f6 !important;
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
+        padding: 0.75rem !important;
+      }
+      .card-tag { font-size: 0.6rem !important; }
+
+      /* ── Grilles — max 2 cols en print ── */
+      .g2, .g3, .g4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.6rem !important;
+      }
+      .stats {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 0.5rem !important;
+      }
+
+      /* ── Code windows — fond sombre préservé ── */
+      .carbon-wrap {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        padding: 0.5rem !important;
+        background: linear-gradient(135deg, #6d28d9 0%, #2e1065 50%, #0d0424 100%) !important;
+        border-radius: 6px !important;
+      }
+      .carbon-window {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        box-shadow: none !important;
+      }
+      .carbon-body { font-size: 7.5pt !important; }
+      .carbon-ln { min-width: 1.6rem !important; font-size: 7pt !important; }
+
+      /* ── Chalk ── */
+      .chalk, .chalk-window {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        box-shadow: none !important;
+      }
+      .chalk-line { font-size: 8pt !important; }
+
+      /* ── SVG (ERD, diagrammes) ── */
+      svg {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        max-width: 100% !important;
+      }
+
+      /* ── Tableaux ── */
+      table {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        font-size: 8.5pt !important;
+        width: 100% !important;
+      }
+      th, td { padding: 0.4rem 0.6rem !important; }
+
+      /* ── Images ── */
+      img {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        max-width: 100% !important;
+        height: auto !important;
+      }
+
+      /* ── Badges & tags ── */
+      .badge { font-size: 0.58rem !important; }
+
+      /* ── Liens — ne pas afficher l'URL ── */
+      a[href]::after { content: none !important; }
+
+      /* ── Éléments à cacher en PDF ── */
+      .tool-why,
+      [style*="position: fixed"],
+      [style*="position:fixed"] { display: none !important; }
+
+      /* ── Kanban ── */
+      .kanban-col,
+      [style*="grid-template-columns:repeat(3"] {
+        grid-template-columns: repeat(3, 1fr) !important;
+      }
+
+      /* ── Footer ── */
+      footer {
+        page-break-before: avoid;
+        break-before: avoid;
+        font-size: 8pt !important;
+      }
     }
   </style>
 </head>
