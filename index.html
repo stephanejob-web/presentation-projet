@@ -2639,6 +2639,151 @@
     </div>
   </div>
 
+  <!-- ── KANBAN ── -->
+  <div class="reveal" style="margin-top:4rem">
+    <div class="eyebrow">Gestion de projet — Kanban</div>
+    <h3>Une issue = une branche = une feature</h3>
+    <p style="max-width:72ch;color:var(--g400)">Chaque fonctionnalité commence par un ticket numéroté (<code style="font-family:var(--mono);color:var(--white)">#31</code>, <code style="font-family:var(--mono);color:var(--white)">#47</code>…). Je crée une branche <code style="font-family:var(--mono);color:var(--white)">feature/</code> dédiée, je développe, je merge dans <code style="font-family:var(--mono);color:var(--white)">develop</code>. Le ticket avance sur le tableau au fil du travail. Méthode inspirée de Trello/Jira — appliquée en solo pour garder une vision claire de l'avancement.</p>
+  </div>
+
+  <!-- Mini Kanban visuel -->
+  <div class="reveal" style="margin-top:1.5rem">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem">
+
+      <!-- COL 1 : TO DO -->
+      <div style="background:var(--g100);border:1px solid var(--g200);border-radius:8px;padding:1rem">
+        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem">
+          <span style="width:10px;height:10px;border-radius:50%;background:#e74c3c;flex-shrink:0"></span>
+          <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--g400)">À faire</span>
+          <span style="margin-left:auto;font-size:0.65rem;font-weight:700;background:var(--g200);color:var(--g400);border-radius:999px;padding:0.1rem 0.5rem">3</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0.75rem">
+
+          <div style="background:white;border:1px solid var(--g200);border-radius:6px;padding:0.75rem;box-shadow:0 1px 4px rgba(0,0,0,0.05)">
+            <div style="display:flex;align-items:center;gap:0.4rem;margin-bottom:0.4rem">
+              <span style="font-size:0.62rem;font-weight:700;color:#8e44ad;font-family:var(--mono)">#52</span>
+              <span style="font-size:0.62rem;background:#f3e8ff;color:#8e44ad;padding:0.1rem 0.4rem;border-radius:3px">frontend</span>
+            </div>
+            <p style="font-size:0.78rem;font-weight:600;color:var(--g600);margin:0 0 0.35rem">Filtres avancés carte — type + distance</p>
+            <p style="font-size:0.72rem;color:var(--g400);margin:0">Ajouter radius slider + checkbox types d'église sur la carte publique</p>
+            <div style="margin-top:0.5rem;font-size:0.62rem;color:var(--g300);font-family:var(--mono)">feature/map-advanced-filters</div>
+          </div>
+
+          <div style="background:white;border:1px solid var(--g200);border-radius:6px;padding:0.75rem;box-shadow:0 1px 4px rgba(0,0,0,0.05)">
+            <div style="display:flex;align-items:center;gap:0.4rem;margin-bottom:0.4rem">
+              <span style="font-size:0.62rem;font-weight:700;color:#e67e22;font-family:var(--mono)">#53</span>
+              <span style="font-size:0.62rem;background:#fff4e6;color:#e67e22;padding:0.1rem 0.4rem;border-radius:3px">backend</span>
+            </div>
+            <p style="font-size:0.78rem;font-weight:600;color:var(--g600);margin:0 0 0.35rem">Export CSV — liste des membres</p>
+            <p style="font-size:0.72rem;color:var(--g400);margin:0">Route GET /api/church/:id/members/export avec header Content-Type CSV</p>
+            <div style="margin-top:0.5rem;font-size:0.62rem;color:var(--g300);font-family:var(--mono)">feature/export-members-csv</div>
+          </div>
+
+          <div style="background:white;border:1px solid var(--g200);border-radius:6px;padding:0.75rem;box-shadow:0 1px 4px rgba(0,0,0,0.05)">
+            <div style="display:flex;align-items:center;gap:0.4rem;margin-bottom:0.4rem">
+              <span style="font-size:0.62rem;font-weight:700;color:#3498db;font-family:var(--mono)">#54</span>
+              <span style="font-size:0.62rem;background:#e8f4fd;color:#3498db;padding:0.1rem 0.4rem;border-radius:3px">UX</span>
+            </div>
+            <p style="font-size:0.78rem;font-weight:600;color:var(--g600);margin:0 0 0.35rem">Dark mode — toggle global</p>
+            <p style="font-size:0.72rem;color:var(--g400);margin:0">CSS variables + localStorage pour persister le choix entre les sessions</p>
+            <div style="margin-top:0.5rem;font-size:0.62rem;color:var(--g300);font-family:var(--mono)">feature/dark-mode</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- COL 2 : IN PROGRESS -->
+      <div style="background:#fffbf0;border:1px solid #f0d875;border-radius:8px;padding:1rem">
+        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem">
+          <span style="width:10px;height:10px;border-radius:50%;background:#f39c12;flex-shrink:0"></span>
+          <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#b7860b">En cours</span>
+          <span style="margin-left:auto;font-size:0.65rem;font-weight:700;background:#f0d875;color:#b7860b;border-radius:999px;padding:0.1rem 0.5rem">2</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0.75rem">
+
+          <div style="background:white;border:1px solid #f0d875;border-radius:6px;padding:0.75rem;box-shadow:0 1px 6px rgba(243,156,18,0.10)">
+            <div style="display:flex;align-items:center;gap:0.4rem;margin-bottom:0.4rem">
+              <span style="font-size:0.62rem;font-weight:700;color:#8e44ad;font-family:var(--mono)">#47</span>
+              <span style="font-size:0.62rem;background:#f3e8ff;color:#8e44ad;padding:0.1rem 0.4rem;border-radius:3px">frontend</span>
+              <span style="margin-left:auto;font-size:0.6rem;color:#f39c12;font-weight:700">● EN COURS</span>
+            </div>
+            <p style="font-size:0.78rem;font-weight:600;color:var(--g600);margin:0 0 0.35rem">Tableau de bord — statistiques en temps réel</p>
+            <p style="font-size:0.72rem;color:var(--g400);margin:0">Graphiques MUI X Charts : membres/mois, types d'événements, taux de participation</p>
+            <div style="margin-top:0.5rem;font-size:0.62rem;color:var(--g300);font-family:var(--mono)">feature/dashboard-charts</div>
+          </div>
+
+          <div style="background:white;border:1px solid #f0d875;border-radius:6px;padding:0.75rem;box-shadow:0 1px 6px rgba(243,156,18,0.10)">
+            <div style="display:flex;align-items:center;gap:0.4rem;margin-bottom:0.4rem">
+              <span style="font-size:0.62rem;font-weight:700;color:#e67e22;font-family:var(--mono)">#49</span>
+              <span style="font-size:0.62rem;background:#fff4e6;color:#e67e22;padding:0.1rem 0.4rem;border-radius:3px">backend</span>
+              <span style="margin-left:auto;font-size:0.6rem;color:#f39c12;font-weight:700">● EN COURS</span>
+            </div>
+            <p style="font-size:0.78rem;font-weight:600;color:var(--g600);margin:0 0 0.35rem">Notifications — système d'alertes pasteur</p>
+            <p style="font-size:0.72rem;color:var(--g400);margin:0">Stocker les notifs en DB, route GET /api/notifications non-lues, marquage lu</p>
+            <div style="margin-top:0.5rem;font-size:0.62rem;color:var(--g300);font-family:var(--mono)">feature/notification-system</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- COL 3 : DONE -->
+      <div style="background:#f0fff4;border:1px solid #a8e6b8;border-radius:8px;padding:1rem">
+        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem">
+          <span style="width:10px;height:10px;border-radius:50%;background:#27ae60;flex-shrink:0"></span>
+          <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#1e8449">Terminé</span>
+          <span style="margin-left:auto;font-size:0.65rem;font-weight:700;background:#a8e6b8;color:#1e8449;border-radius:999px;padding:0.1rem 0.5rem">3</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0.75rem">
+
+          <div style="background:white;border:1px solid #a8e6b8;border-radius:6px;padding:0.75rem;box-shadow:0 1px 6px rgba(39,174,96,0.08)">
+            <div style="display:flex;align-items:center;gap:0.4rem;margin-bottom:0.4rem">
+              <span style="font-size:0.62rem;font-weight:700;color:#8e44ad;font-family:var(--mono)">#31</span>
+              <span style="font-size:0.62rem;background:#f3e8ff;color:#8e44ad;padding:0.1rem 0.4rem;border-radius:3px">frontend</span>
+              <span style="margin-left:auto;font-size:0.6rem;color:#27ae60;font-weight:700">✓ MERGÉ</span>
+            </div>
+            <p style="font-size:0.78rem;font-weight:600;color:var(--g600);margin:0 0 0.35rem">Barre de navigation responsive</p>
+            <p style="font-size:0.72rem;color:var(--g400);margin:0">Menu hamburger mobile, scroll-spy active link, dropdowns groupés par section</p>
+            <div style="margin-top:0.5rem;font-size:0.62rem;color:var(--g300);font-family:var(--mono)">feature/navigation-bar → develop → main</div>
+          </div>
+
+          <div style="background:white;border:1px solid #a8e6b8;border-radius:6px;padding:0.75rem;box-shadow:0 1px 6px rgba(39,174,96,0.08)">
+            <div style="display:flex;align-items:center;gap:0.4rem;margin-bottom:0.4rem">
+              <span style="font-size:0.62rem;font-weight:700;color:#e67e22;font-family:var(--mono)">#38</span>
+              <span style="font-size:0.62rem;background:#fff4e6;color:#e67e22;padding:0.1rem 0.4rem;border-radius:3px">backend</span>
+              <span style="margin-left:auto;font-size:0.6rem;color:#27ae60;font-weight:700">✓ MERGÉ</span>
+            </div>
+            <p style="font-size:0.78rem;font-weight:600;color:var(--g600);margin:0 0 0.35rem">Auth JWT — login + middleware</p>
+            <p style="font-size:0.72rem;color:var(--g400);margin:0">bcrypt.compare, jwt.sign, verifyToken middleware, vérification statut compte</p>
+            <div style="margin-top:0.5rem;font-size:0.62rem;color:var(--g300);font-family:var(--mono)">feature/jwt-auth → develop → main</div>
+          </div>
+
+          <div style="background:white;border:1px solid #a8e6b8;border-radius:6px;padding:0.75rem;box-shadow:0 1px 6px rgba(39,174,96,0.08)">
+            <div style="display:flex;align-items:center;gap:0.4rem;margin-bottom:0.4rem">
+              <span style="font-size:0.62rem;font-weight:700;color:#3498db;font-family:var(--mono)">#44</span>
+              <span style="font-size:0.62rem;background:#e8f4fd;color:#3498db;padding:0.1rem 0.4rem;border-radius:3px">fullstack</span>
+              <span style="margin-left:auto;font-size:0.6rem;color:#27ae60;font-weight:700">✓ MERGÉ</span>
+            </div>
+            <p style="font-size:0.78rem;font-weight:600;color:var(--g600);margin:0 0 0.35rem">Carte publique — clustering géographique</p>
+            <p style="font-size:0.72rem;color:var(--g400);margin:0">Supercluster + useSupercluster hook, SPATIAL INDEX MySQL, ST_GeomFromText</p>
+            <div style="margin-top:0.5rem;font-size:0.62rem;color:var(--g300);font-family:var(--mono)">feature/map-clustering → develop → main</div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Légende workflow -->
+    <div style="margin-top:1.25rem;display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center;font-size:0.75rem;color:var(--g400)">
+      <span><strong style="color:var(--g600)">Convention :</strong> ticket numéroté → branche <code style="font-family:var(--mono)">feature/#XX-nom-court</code> → merge <code style="font-family:var(--mono)">develop</code> → <code style="font-family:var(--mono)">main</code> → CI/CD auto</span>
+      <div style="display:flex;gap:0.75rem;flex-wrap:wrap">
+        <span style="display:flex;align-items:center;gap:0.3rem"><span style="width:8px;height:8px;border-radius:2px;background:#f3e8ff;border:1px solid #8e44ad;display:inline-block"></span>frontend</span>
+        <span style="display:flex;align-items:center;gap:0.3rem"><span style="width:8px;height:8px;border-radius:2px;background:#fff4e6;border:1px solid #e67e22;display:inline-block"></span>backend</span>
+        <span style="display:flex;align-items:center;gap:0.3rem"><span style="width:8px;height:8px;border-radius:2px;background:#e8f4fd;border:1px solid #3498db;display:inline-block"></span>fullstack/UX</span>
+      </div>
+    </div>
+  </div>
+
 </section>
 <div class="sep"></div>
 
