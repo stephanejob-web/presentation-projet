@@ -367,6 +367,7 @@
       <div class="nav-drop">
         <a href="#difficultes">07 · Difficultés</a>
         <a href="#outils">07b · Env.</a>
+        <a href="#infrastructure">07d · Docker</a>
         <a href="#ia">07c · IA</a>
         <div class="drop-sep"></div>
         <a href="#competences">08 · Compétences</a>
@@ -5464,6 +5465,301 @@
       <span class="card-tag">Zsh + NVM</span>
       <h3>Shell puissant</h3>
       <p>Zsh avec autocomplétion, historique, aliases. NVM pour switcher de version Node sans sudo ni conflit. Standard de l'industrie pour le dev Node.js.</p>
+    </div>
+  </div>
+</section>
+<div class="sep"></div>
+
+<!-- ══════════════════════ 07d · INFRASTRUCTURE ══════════════════════ -->
+<section id="infrastructure" style="max-width:1280px;margin:0 auto;padding:8rem 5rem 5rem">
+  <div class="reveal"><div class="eyebrow"><span class="n">07d</span>Infrastructure & Déploiement</div><h2>Docker en production,<br/>LAMP pour comprendre.</h2></div>
+  <div class="reveal" style="margin-top:0.75rem">
+    <p style="max-width:72ch;font-size:1.05rem;color:var(--g400)">Deux approches complémentaires : Docker pour standardiser et déployer, LAMP installé manuellement pour comprendre chaque brique de l'infrastructure web. Développer sur Linux signifie travailler dans les mêmes conditions que le serveur de production.</p>
+  </div>
+
+  <!-- ── DOCKER ── -->
+  <div class="reveal" style="margin-top:3rem">
+    <div class="eyebrow">Docker — Conteneurisation</div>
+    <h3>Un environnement identique partout</h3>
+  </div>
+  <div class="g2" style="margin-top:1rem">
+    <div class="reveal">
+      <div class="card" style="border-left:3px solid #2496ed">
+        <span class="card-tag" style="color:#2496ed">Pourquoi Docker ?</span>
+        <h3>Reproductibilité garantie</h3>
+        <p>Sans Docker, le classique "ça marche sur ma machine" est inévitable. Docker empaquète chaque service avec son environnement exact — version Node, MySQL, config Nginx. Le même conteneur tourne en dev et en production, sans surprise.</p>
+        <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--g200);font-size:0.85rem;color:var(--g400)">
+          <strong>3 services orchestrés</strong> : MySQL 8 (données), Express 5 (API), Nginx+React (frontend). Traefik gère le reverse proxy, les certificats SSL et la redirection HTTP→HTTPS automatiquement.
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="card" style="border-left:3px solid #2496ed">
+        <span class="card-tag" style="color:#2496ed">Ce que j'ai compris</span>
+        <h3>Isolation et orchestration</h3>
+        <p>Chaque conteneur est un processus isolé avec son propre réseau, ses volumes, ses variables d'environnement. <code style="font-family:var(--mono);color:var(--white)">docker compose</code> orchestre leur démarrage dans l'ordre correct avec les health checks.</p>
+        <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--g200);font-size:0.85rem;color:var(--g400)">
+          <strong>Leçon concrète</strong> : <code style="font-family:var(--mono)">docker compose down</code> supprime les conteneurs. <code style="font-family:var(--mono)">docker compose stop</code> les arrête seulement. MySQL est préservé entre chaque déploiement — les données survivent.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carbon : docker-compose.yml -->
+  <div class="reveal" style="margin-top:2rem">
+    <h3>docker-compose.yml — Orchestration des services</h3>
+    <p style="margin-bottom:0">Chaque service est déclaré avec ses dépendances, ses volumes et ses variables d'environnement. <code style="font-family:var(--mono);color:var(--white)">depends_on</code> avec <code style="font-family:var(--mono);color:var(--white)">condition: service_healthy</code> garantit que MySQL est prêt avant que le backend démarre.</p>
+    <div class="carbon-wrap">
+      <div class="carbon-window">
+        <div class="carbon-header">
+          <div class="carbon-dots"><div class="carbon-dot red"></div><div class="carbon-dot yellow"></div><div class="carbon-dot green"></div></div>
+          <div class="carbon-lang">YML</div>
+          <div class="carbon-filename">docker-compose.yml</div>
+        </div>
+        <div class="carbon-body">
+          <div class="carbon-line"><span class="carbon-ln">1</span><span class="carbon-code"><span class="cfn">services</span>:</span></div>
+          <div class="carbon-line"><span class="carbon-ln">2</span><span class="carbon-code">  <span class="cfn">mysql</span>:                               <span class="cmt"># Service 1 — Base de données</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">3</span><span class="carbon-code">    image: <span class="cs">mysql:8.0</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">4</span><span class="carbon-code">    <span class="cfn">command</span>: --default-time-zone=<span class="cs">'+01:00'</span> --character-set-server=<span class="cs">utf8mb4</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">5</span><span class="carbon-code">    <span class="cfn">healthcheck</span>:                         <span class="cmt"># MySQL doit être prêt avant le backend</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">6</span><span class="carbon-code">      test: [<span class="cs">"CMD"</span>, <span class="cs">"mysqladmin"</span>, <span class="cs">"ping"</span>, <span class="cs">"-h"</span>, <span class="cs">"localhost"</span>]</span></div>
+          <div class="carbon-line"><span class="carbon-ln">7</span><span class="carbon-code">      timeout: <span class="cs">20s</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">8</span><span class="carbon-code">      retries: <span class="cs">10</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">9</span><span class="carbon-code"></span></div>
+          <div class="carbon-line"><span class="carbon-ln">10</span><span class="carbon-code">  <span class="cfn">backend</span>:                              <span class="cmt"># Service 2 — API Node.js/Express</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">11</span><span class="carbon-code">    build: { context: <span class="cs">./lightchurch-backend</span>, dockerfile: <span class="cs">Dockerfile</span> }</span></div>
+          <div class="carbon-line"><span class="carbon-ln">12</span><span class="carbon-code">    <span class="cfn">depends_on</span>:</span></div>
+          <div class="carbon-line"><span class="carbon-ln">13</span><span class="carbon-code">      mysql: { condition: <span class="cs">service_healthy</span> }  <span class="cmt"># Attend le healthcheck MySQL</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">14</span><span class="carbon-code">    <span class="cfn">environment</span>:</span></div>
+          <div class="carbon-line"><span class="carbon-ln">15</span><span class="carbon-code">      DB_HOST: <span class="cs">mysql</span>             <span class="cmt"># Nom du service = hostname Docker</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">16</span><span class="carbon-code">      JWT_SECRET: <span class="cs">${JWT_SECRET}</span>  <span class="cmt"># Injecté depuis .env, jamais hardcodé</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">17</span><span class="carbon-code"></span></div>
+          <div class="carbon-line"><span class="carbon-ln">18</span><span class="carbon-code">  <span class="cfn">frontend</span>:                             <span class="cmt"># Service 3 — Nginx + build React</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">19</span><span class="carbon-code">    build: { context: <span class="cs">./lightchurch-frontend</span>, dockerfile: <span class="cs">Dockerfile</span> }</span></div>
+          <div class="carbon-line"><span class="carbon-ln">20</span><span class="carbon-code">    <span class="cfn">labels</span>:                              <span class="cmt"># Traefik lit ces labels automatiquement</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">21</span><span class="carbon-code">      - <span class="cs">"traefik.http.routers.lightchurch.rule=Host(`lightchurch.fr`)"</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">22</span><span class="carbon-code">      - <span class="cs">"traefik.http.routers.lightchurch.tls.certresolver=letsencrypt"</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">23</span><span class="carbon-code"></span></div>
+          <div class="carbon-line"><span class="carbon-ln">24</span><span class="carbon-code"><span class="cfn">volumes</span>:                                <span class="cmt"># Données persistantes hors des conteneurs</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">25</span><span class="carbon-code">  mysql_data:   <span class="cmt"># DB survit aux redémarrages</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">26</span><span class="carbon-code">  uploads_data: <span class="cmt"># Images uploadées préservées</span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Architecture Docker SVG -->
+  <div class="reveal" style="margin-top:2.5rem">
+    <h3>Architecture Docker — flux de déploiement</h3>
+    <p style="margin-bottom:1rem">Chaque requête HTTP passe par Traefik (reverse proxy), qui route vers Nginx/React. Le frontend appelle l'API Express via le réseau Docker interne. Express interroge MySQL sur le même réseau isolé.</p>
+    <div style="background:#0e0d0b;border-radius:8px;padding:2.5rem;overflow-x:auto">
+      <svg viewBox="0 0 880 200" width="100%" style="max-width:860px;display:block;margin:0 auto" font-family="monospace">
+        <!-- Internet -->
+        <rect x="10" y="70" width="110" height="60" rx="6" fill="#1a1a2e" stroke="#6272a4" stroke-width="1.5"/>
+        <text x="65" y="94" text-anchor="middle" fill="#cdd6f4" font-size="11" font-weight="700">INTERNET</text>
+        <text x="65" y="112" text-anchor="middle" fill="#6272a4" font-size="9">Client / Browser</text>
+        <!-- Arrow 1 -->
+        <line x1="120" y1="100" x2="165" y2="100" stroke="#8be9fd" stroke-width="2" marker-end="url(#arr-infra)"/>
+        <text x="142" y="93" text-anchor="middle" fill="#8be9fd" font-size="8">HTTPS</text>
+        <!-- Traefik -->
+        <rect x="165" y="55" width="130" height="90" rx="6" fill="#1e1e2e" stroke="#ff79c6" stroke-width="1.5"/>
+        <rect x="165" y="55" width="130" height="24" rx="6" fill="#ff79c6" opacity="0.15"/>
+        <text x="230" y="71" text-anchor="middle" fill="#ff79c6" font-size="10" font-weight="700">TRAEFIK</text>
+        <text x="230" y="89" text-anchor="middle" fill="#cdd6f4" font-size="9">Reverse Proxy</text>
+        <text x="230" y="104" text-anchor="middle" fill="#6272a4" font-size="8">SSL/TLS Terminaison</text>
+        <text x="230" y="117" text-anchor="middle" fill="#6272a4" font-size="8">HTTP → HTTPS redirect</text>
+        <text x="230" y="130" text-anchor="middle" fill="#6272a4" font-size="8">Routing par domain</text>
+        <!-- Arrow 2 -->
+        <line x1="295" y1="100" x2="340" y2="100" stroke="#8be9fd" stroke-width="2" marker-end="url(#arr-infra)"/>
+        <text x="318" y="93" text-anchor="middle" fill="#8be9fd" font-size="8">:80</text>
+        <!-- Frontend -->
+        <rect x="340" y="55" width="140" height="90" rx="6" fill="#1e1e2e" stroke="#50fa7b" stroke-width="1.5"/>
+        <rect x="340" y="55" width="140" height="24" rx="6" fill="#50fa7b" opacity="0.15"/>
+        <text x="410" y="71" text-anchor="middle" fill="#50fa7b" font-size="10" font-weight="700">FRONTEND</text>
+        <text x="410" y="89" text-anchor="middle" fill="#cdd6f4" font-size="9">Nginx + React (build)</text>
+        <text x="410" y="104" text-anchor="middle" fill="#6272a4" font-size="8">Sert les fichiers statiques</text>
+        <text x="410" y="117" text-anchor="middle" fill="#6272a4" font-size="8">SPA — routes côté client</text>
+        <text x="410" y="130" text-anchor="middle" fill="#6272a4" font-size="8">Proxy /api → backend</text>
+        <!-- Arrow 3 -->
+        <line x1="480" y1="100" x2="525" y2="100" stroke="#8be9fd" stroke-width="2" marker-end="url(#arr-infra)"/>
+        <text x="502" y="93" text-anchor="middle" fill="#8be9fd" font-size="8">/api/*</text>
+        <!-- Backend -->
+        <rect x="525" y="55" width="140" height="90" rx="6" fill="#1e1e2e" stroke="#ffb86c" stroke-width="1.5"/>
+        <rect x="525" y="55" width="140" height="24" rx="6" fill="#ffb86c" opacity="0.15"/>
+        <text x="595" y="71" text-anchor="middle" fill="#ffb86c" font-size="10" font-weight="700">BACKEND</text>
+        <text x="595" y="89" text-anchor="middle" fill="#cdd6f4" font-size="9">Node.js / Express 5</text>
+        <text x="595" y="104" text-anchor="middle" fill="#6272a4" font-size="8">JWT auth middleware</text>
+        <text x="595" y="117" text-anchor="middle" fill="#6272a4" font-size="8">REST API endpoints</text>
+        <text x="595" y="130" text-anchor="middle" fill="#6272a4" font-size="8">Validation + métier</text>
+        <!-- Arrow 4 -->
+        <line x1="665" y1="100" x2="710" y2="100" stroke="#8be9fd" stroke-width="2" marker-end="url(#arr-infra)"/>
+        <text x="688" y="93" text-anchor="middle" fill="#8be9fd" font-size="8">SQL</text>
+        <!-- MySQL -->
+        <rect x="710" y="55" width="140" height="90" rx="6" fill="#1e1e2e" stroke="#f1fa8c" stroke-width="1.5"/>
+        <rect x="710" y="55" width="140" height="24" rx="6" fill="#f1fa8c" opacity="0.12"/>
+        <text x="780" y="71" text-anchor="middle" fill="#f1fa8c" font-size="10" font-weight="700">MYSQL 8</text>
+        <text x="780" y="89" text-anchor="middle" fill="#cdd6f4" font-size="9">Base de données</text>
+        <text x="780" y="104" text-anchor="middle" fill="#6272a4" font-size="8">SPATIAL INDEX</text>
+        <text x="780" y="117" text-anchor="middle" fill="#6272a4" font-size="8">FULLTEXT INDEX</text>
+        <text x="780" y="130" text-anchor="middle" fill="#6272a4" font-size="8">Volume persistant</text>
+        <!-- Arrow marker -->
+        <defs>
+          <marker id="arr-infra" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L7,3 z" fill="#8be9fd"/>
+          </marker>
+        </defs>
+        <!-- Network label -->
+        <text x="440" y="185" text-anchor="middle" fill="#6272a4" font-size="9">lightchurch-network (Docker bridge) — services communiquent par nom de service</text>
+        <rect x="165" y="175" width="685" height="1" fill="#6272a4" opacity="0.3"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ── LAMP ── -->
+  <div class="reveal" style="margin-top:4rem">
+    <div class="eyebrow">LAMP — Installation manuelle</div>
+    <h3>Comprendre chaque brique avant d'utiliser Docker</h3>
+  </div>
+  <div class="reveal" style="margin-top:0.5rem">
+    <p style="max-width:72ch;color:var(--g400)">Installer LAMP manuellement sur Linux m'a permis de comprendre ce que Docker abstrait. Savoir qu'Apache écoute sur le port 80, que PHP est un module Apache, que MariaDB tourne en service systemd — c'est une connaissance qui rend Docker plus compréhensible, pas remplaçable par lui.</p>
+  </div>
+
+  <!-- LAMP composants cards -->
+  <div class="g4" style="margin-top:1.5rem">
+    <div class="card reveal" style="border-top:3px solid #e74c3c">
+      <span class="card-tag" style="color:#e74c3c">Linux</span>
+      <h3>Système hôte</h3>
+      <p style="font-size:0.85rem">Ubuntu 24.04 LTS. Même OS que le VPS de production. Commandes, permissions, services systemd — identiques entre dev et prod.</p>
+    </div>
+    <div class="card reveal" style="border-top:3px solid #e67e22">
+      <span class="card-tag" style="color:#e67e22">Apache2</span>
+      <h3>Serveur web</h3>
+      <p style="font-size:0.85rem">Reçoit les requêtes HTTP. Modules activables (<code style="font-family:var(--mono)">a2enmod</code>). Sert les fichiers PHP et statiques. VirtualHosts pour plusieurs sites.</p>
+    </div>
+    <div class="card reveal" style="border-top:3px solid #3498db">
+      <span class="card-tag" style="color:#3498db">MariaDB</span>
+      <h3>Base de données</h3>
+      <p style="font-size:0.85rem">Fork de MySQL, 100% compatible. <code style="font-family:var(--mono)">mysql_secure_installation</code> supprime les accès anonymes et sécurise le root.</p>
+    </div>
+    <div class="card reveal" style="border-top:3px solid #8e44ad">
+      <span class="card-tag" style="color:#8e44ad">PHP</span>
+      <h3>Langage serveur</h3>
+      <p style="font-size:0.85rem">Exécuté côté serveur par Apache. Extensions : <code style="font-family:var(--mono)">php-mysql</code>, <code style="font-family:var(--mono)">php-curl</code>, <code style="font-family:var(--mono)">php-mbstring</code>. phpinfo() pour vérifier l'installation.</p>
+    </div>
+  </div>
+
+  <!-- Carbon : script d'installation LAMP -->
+  <div class="reveal" style="margin-top:2rem">
+    <h3>Script d'installation LAMP — Ubuntu 24.04</h3>
+    <p style="margin-bottom:0">Chaque commande a son rôle. Comprendre ce script, c'est comprendre l'architecture d'un serveur web traditionnel — ce que toute application web tourne sur en production avant Docker.</p>
+    <div class="carbon-wrap">
+      <div class="carbon-window">
+        <div class="carbon-header">
+          <div class="carbon-dots"><div class="carbon-dot red"></div><div class="carbon-dot yellow"></div><div class="carbon-dot green"></div></div>
+          <div class="carbon-lang">SH</div>
+          <div class="carbon-filename">install-lamp.sh — Installation complète</div>
+        </div>
+        <div class="carbon-body">
+          <div class="carbon-line"><span class="carbon-ln">1</span><span class="carbon-code"><span class="cmt">#!/bin/bash</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">2</span><span class="carbon-code"><span class="cmt"># Script d'installation LAMP sur Ubuntu</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">3</span><span class="carbon-code"></span></div>
+          <div class="carbon-line"><span class="carbon-ln">4</span><span class="carbon-code"><span class="cmt"># ── Mise à jour du système ─────────────────────────────────</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">5</span><span class="carbon-code"><span class="cfn">sudo</span> apt update && <span class="cfn">sudo</span> apt upgrade -y</span></div>
+          <div class="carbon-line"><span class="carbon-ln">6</span><span class="carbon-code"><span class="cmt"># Synchronise la liste des paquets, applique les mises à jour de sécurité</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">7</span><span class="carbon-code"></span></div>
+          <div class="carbon-line"><span class="carbon-ln">8</span><span class="carbon-code"><span class="cmt"># ── Apache — Serveur web ───────────────────────────────────</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">9</span><span class="carbon-code"><span class="cfn">sudo</span> apt install -y apache2</span></div>
+          <div class="carbon-line"><span class="carbon-ln">10</span><span class="carbon-code"><span class="cmt"># Démarre automatiquement. Écoute sur :80. systemctl start/stop/status apache2</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">11</span><span class="carbon-code"></span></div>
+          <div class="carbon-line"><span class="carbon-ln">12</span><span class="carbon-code"><span class="cmt"># ── MariaDB — Base de données ──────────────────────────────</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">13</span><span class="carbon-code"><span class="cfn">sudo</span> apt install -y mariadb-server</span></div>
+          <div class="carbon-line"><span class="carbon-ln">14</span><span class="carbon-code"><span class="cfn">sudo</span> mysql_secure_installation     <span class="cmt"># Supprime accès anonymes, sécurise root</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">15</span><span class="carbon-code"></span></div>
+          <div class="carbon-line"><span class="carbon-ln">16</span><span class="carbon-code"><span class="cmt"># ── PHP + Extensions ───────────────────────────────────────</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">17</span><span class="carbon-code"><span class="cfn">sudo</span> apt install -y php libapache2-mod-php php-mysql <span class="cs">\</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">18</span><span class="carbon-code">    php-cli php-curl php-xml php-mbstring</span></div>
+          <div class="carbon-line"><span class="carbon-ln">19</span><span class="carbon-code"><span class="cmt"># libapache2-mod-php : intègre PHP comme module Apache (pas CGI)</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">20</span><span class="carbon-code"><span class="cmt"># php-mysql : permet à PHP de parler à MariaDB</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">21</span><span class="carbon-code"></span></div>
+          <div class="carbon-line"><span class="carbon-ln">22</span><span class="carbon-code"><span class="cmt"># ── phpMyAdmin — Interface web DB ──────────────────────────</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">23</span><span class="carbon-code"><span class="cfn">sudo</span> apt install -y phpmyadmin</span></div>
+          <div class="carbon-line"><span class="carbon-ln">24</span><span class="carbon-code"></span></div>
+          <div class="carbon-line"><span class="carbon-ln">25</span><span class="carbon-code"><span class="cmt"># ── Activation du module PHP dans Apache ───────────────────</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">26</span><span class="carbon-code"><span class="cfn">sudo</span> a2enmod php*              <span class="cmt"># Active le module PHP détecté automatiquement</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">27</span><span class="carbon-code"><span class="cfn">sudo</span> systemctl restart apache2 <span class="cmt"># Rechargement nécessaire pour prendre le module en compte</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">28</span><span class="carbon-code"></span></div>
+          <div class="carbon-line"><span class="carbon-ln">29</span><span class="carbon-code"><span class="cmt"># ── Test de l'installation PHP ─────────────────────────────</span></span></div>
+          <div class="carbon-line"><span class="carbon-ln">30</span><span class="carbon-code"><span class="cfn">echo</span> <span class="cs">"&lt;?php phpinfo(); ?&gt;"</span> | <span class="cfn">sudo</span> tee /var/www/html/info.php &gt; /dev/null</span></div>
+          <div class="carbon-line"><span class="carbon-ln">31</span><span class="carbon-code"><span class="cmt"># Accéder à http://localhost/info.php — vérifie version PHP, modules actifs</span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tableau comparatif Docker vs LAMP -->
+  <div class="reveal" style="margin-top:3rem">
+    <h3>Docker vs LAMP manuel — deux approches complémentaires</h3>
+    <p style="margin-bottom:1.5rem;color:var(--g400)">Pas une question de "lequel est mieux" — les deux ont leur place. LAMP pour apprendre, Docker pour déployer.</p>
+    <div style="overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;font-size:0.88rem">
+        <thead>
+          <tr>
+            <th style="padding:0.75rem 1rem;text-align:left;border-bottom:2px solid var(--g200);color:var(--g500);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase">Critère</th>
+            <th style="padding:0.75rem 1rem;text-align:left;border-bottom:2px solid #2496ed;color:#2496ed;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase">Docker</th>
+            <th style="padding:0.75rem 1rem;text-align:left;border-bottom:2px solid #e67e22;color:#e67e22;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase">LAMP manuel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--g100)">
+            <td style="padding:0.7rem 1rem;font-weight:600;color:var(--g500)">Reproductibilité</td>
+            <td style="padding:0.7rem 1rem;color:var(--g400)">✅ Identique partout (dev/prod/CI)</td>
+            <td style="padding:0.7rem 1rem;color:var(--g400)">⚠️ Dépend de la machine hôte</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--g100);background:rgba(0,0,0,0.02)">
+            <td style="padding:0.7rem 1rem;font-weight:600;color:var(--g500)">Compréhension</td>
+            <td style="padding:0.7rem 1rem;color:var(--g400)">⚠️ Abstrait les détails système</td>
+            <td style="padding:0.7rem 1rem;color:var(--g400)">✅ Tout est visible et configurable</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--g100)">
+            <td style="padding:0.7rem 1rem;font-weight:600;color:var(--g500)">Déploiement</td>
+            <td style="padding:0.7rem 1rem;color:var(--g400)">✅ <code style="font-family:var(--mono)">docker compose up -d</code></td>
+            <td style="padding:0.7rem 1rem;color:var(--g400)">⚠️ Script manuel, versionning difficile</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--g100);background:rgba(0,0,0,0.02)">
+            <td style="padding:0.7rem 1rem;font-weight:600;color:var(--g500)">Isolation</td>
+            <td style="padding:0.7rem 1rem;color:var(--g400)">✅ Chaque service dans son conteneur</td>
+            <td style="padding:0.7rem 1rem;color:var(--g400)">❌ Tout sur le même OS</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--g100)">
+            <td style="padding:0.7rem 1rem;font-weight:600;color:var(--g500)">CI/CD</td>
+            <td style="padding:0.7rem 1rem;color:var(--g400)">✅ GitHub Actions → SSH → docker compose</td>
+            <td style="padding:0.7rem 1rem;color:var(--g400)">⚠️ Scripts shell fragiles</td>
+          </tr>
+          <tr style="background:rgba(0,0,0,0.02)">
+            <td style="padding:0.7rem 1rem;font-weight:600;color:var(--g500)">Apprentissage</td>
+            <td style="padding:0.7rem 1rem;color:var(--g400)">⚠️ Courbe d'apprentissage plus haute</td>
+            <td style="padding:0.7rem 1rem;color:var(--g400)">✅ Idéal pour comprendre les bases</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Explication vision -->
+  <div class="g2" style="margin-top:2rem">
+    <div class="reveal">
+      <div class="card" style="border-left:3px solid #27ae60">
+        <span class="card-tag" style="color:#27ae60">Vision double</span>
+        <h3>Théorie + pratique</h3>
+        <p>Installer LAMP manuellement, c'est comprendre ce qu'Apache fait quand Nginx démarre dans un conteneur. C'est savoir pourquoi MariaDB refuse une connexion root sans mot de passe. Docker sans cette base reste une boîte noire.</p>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="card" style="border-left:3px solid #2496ed">
+        <span class="card-tag" style="color:#2496ed">En production</span>
+        <h3>Docker pour tout déployer</h3>
+        <p>LightChurch tourne sur un VPS avec Docker Compose. Chaque <code style="font-family:var(--mono);color:var(--white)">git push main</code> déclenche GitHub Actions, qui SSH dans le VPS et relance les conteneurs backend + frontend sans toucher MySQL ni les données.</p>
+      </div>
     </div>
   </div>
 </section>
