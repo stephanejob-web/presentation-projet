@@ -2290,6 +2290,229 @@
     </div>
   </div>
 
+
+  <!-- ── CRÉER UN MONOREPO — A à Z ── -->
+  <div class="reveal" style="margin-top:3rem">
+    <div class="eyebrow">Créer un monorepo — De zéro à production</div>
+    <h3>Étape par étape : comment j'ai structuré LightChurch</h3>
+    <p style="max-width:72ch;color:var(--g400);margin-bottom:1.5rem">Un monorepo n'est pas un outil particulier — c'est une <strong>convention d'organisation</strong>. Voici exactement les étapes suivies pour créer le dépôt LightChurch avec backend, frontend et Docker dans le même repo.</p>
+  </div>
+
+  <!-- Étapes numérotées -->
+  <div style="display:flex;flex-direction:column;gap:1.5rem;margin-top:0.5rem">
+
+    <!-- Étape 1 -->
+    <div class="reveal" style="display:flex;gap:1.25rem;align-items:flex-start">
+      <div style="flex-shrink:0;width:2rem;height:2rem;border-radius:50%;background:#8e44ad;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#fff;margin-top:0.2rem">1</div>
+      <div style="flex:1">
+        <h3 style="margin-bottom:0.4rem">Initialiser le dépôt racine</h3>
+        <p style="font-size:0.85rem;color:var(--g400);margin-bottom:0.75rem">Un seul <code style="font-family:var(--mono);color:var(--white)">git init</code> à la racine — c'est ce dossier qui contiendra tout. Pas un dépôt par projet.</p>
+        <div class="carbon-wrap" style="margin:0">
+          <div class="carbon-window">
+            <div class="carbon-header">
+              <div class="carbon-dots"><div class="carbon-dot red"></div><div class="carbon-dot yellow"></div><div class="carbon-dot green"></div></div>
+              <div class="carbon-lang">bash</div>
+              <div class="carbon-filename">Étape 1 — Init Git racine</div>
+            </div>
+            <div class="carbon-body">
+              <div class="carbon-line"><span class="carbon-ln">1</span><span class="carbon-code"><span class="cfn">mkdir</span> lighchurch && <span class="cfn">cd</span> lighchurch</span></div>
+              <div class="carbon-line"><span class="carbon-ln">2</span><span class="carbon-code"><span class="cfn">git</span> init                        <span class="cmt"># Un seul dépôt pour tout</span></span></div>
+              <div class="carbon-line"><span class="carbon-ln">3</span><span class="carbon-code"><span class="cfn">git</span> checkout -b develop          <span class="cmt"># Branche de développement</span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Étape 2 -->
+    <div class="reveal" style="display:flex;gap:1.25rem;align-items:flex-start">
+      <div style="flex-shrink:0;width:2rem;height:2rem;border-radius:50%;background:#2496ed;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#fff;margin-top:0.2rem">2</div>
+      <div style="flex:1">
+        <h3 style="margin-bottom:0.4rem">Créer les sous-projets</h3>
+        <p style="font-size:0.85rem;color:var(--g400);margin-bottom:0.75rem">Chaque application vit dans son propre sous-dossier avec son <code style="font-family:var(--mono);color:var(--white)">package.json</code> indépendant. Pas de <code style="font-family:var(--mono);color:var(--white)">git init</code> dans les sous-dossiers — un seul Git à la racine.</p>
+        <div class="carbon-wrap" style="margin:0">
+          <div class="carbon-window">
+            <div class="carbon-header">
+              <div class="carbon-dots"><div class="carbon-dot red"></div><div class="carbon-dot yellow"></div><div class="carbon-dot green"></div></div>
+              <div class="carbon-lang">bash</div>
+              <div class="carbon-filename">Étape 2 — Scaffolding backend + frontend</div>
+            </div>
+            <div class="carbon-body">
+              <div class="carbon-line"><span class="carbon-ln">1</span><span class="carbon-code"><span class="cmt"># Backend Node.js — init manuel</span></span></div>
+              <div class="carbon-line"><span class="carbon-ln">2</span><span class="carbon-code"><span class="cfn">mkdir</span> lightchurch-backend && <span class="cfn">cd</span> lightchurch-backend</span></div>
+              <div class="carbon-line"><span class="carbon-ln">3</span><span class="carbon-code"><span class="cfn">npm</span> init -y</span></div>
+              <div class="carbon-line"><span class="carbon-ln">4</span><span class="carbon-code"><span class="cfn">npm</span> install express mysql2 jsonwebtoken bcryptjs dotenv</span></div>
+              <div class="carbon-line"><span class="carbon-ln">5</span><span class="carbon-code"><span class="cfn">cd</span> ..</span></div>
+              <div class="carbon-line"><span class="carbon-ln">6</span><span class="carbon-code"></span></div>
+              <div class="carbon-line"><span class="carbon-ln">7</span><span class="carbon-code"><span class="cmt"># Frontend React — Vite scaffold</span></span></div>
+              <div class="carbon-line"><span class="carbon-ln">8</span><span class="carbon-code"><span class="cfn">npm</span> create vite@latest lightchurch-frontend -- --template react-ts</span></div>
+              <div class="carbon-line"><span class="carbon-ln">9</span><span class="carbon-code"><span class="cfn">cd</span> lightchurch-frontend && <span class="cfn">npm</span> install && <span class="cfn">cd</span> ..</span></div>
+              <div class="carbon-line"><span class="carbon-ln">10</span><span class="carbon-code"></span></div>
+              <div class="carbon-line"><span class="carbon-ln">11</span><span class="carbon-code"><span class="cmt"># Résultat : deux projets, un seul git</span></span></div>
+              <div class="carbon-line"><span class="carbon-ln">12</span><span class="carbon-code"><span class="cfn">ls</span>  <span class="cmt"># → lightchurch-backend/  lightchurch-frontend/</span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Étape 3 -->
+    <div class="reveal" style="display:flex;gap:1.25rem;align-items:flex-start">
+      <div style="flex-shrink:0;width:2rem;height:2rem;border-radius:50%;background:#e67e22;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#fff;margin-top:0.2rem">3</div>
+      <div style="flex:1">
+        <h3 style="margin-bottom:0.4rem">.gitignore racine — ignorer les node_modules des deux projets</h3>
+        <p style="font-size:0.85rem;color:var(--g400);margin-bottom:0.75rem">Un seul <code style="font-family:var(--mono);color:var(--white)">.gitignore</code> à la racine couvre tout le monorepo. Les patterns <code style="font-family:var(--mono);color:var(--white)">**/node_modules</code> et <code style="font-family:var(--mono);color:var(--white)">**/.env</code> s'appliquent récursivement dans tous les sous-dossiers.</p>
+        <div class="carbon-wrap" style="margin:0">
+          <div class="carbon-window">
+            <div class="carbon-header">
+              <div class="carbon-dots"><div class="carbon-dot red"></div><div class="carbon-dot yellow"></div><div class="carbon-dot green"></div></div>
+              <div class="carbon-lang">git</div>
+              <div class="carbon-filename">.gitignore — racine du monorepo</div>
+            </div>
+            <div class="carbon-body">
+              <div class="carbon-line"><span class="carbon-ln">1</span><span class="carbon-code"><span class="cmt"># Dépendances — tous les sous-projets</span></span></div>
+              <div class="carbon-line"><span class="carbon-ln">2</span><span class="carbon-code"><span class="cs">**/node_modules</span></span></div>
+              <div class="carbon-line"><span class="carbon-ln">3</span><span class="carbon-code"></span></div>
+              <div class="carbon-line"><span class="carbon-ln">4</span><span class="carbon-code"><span class="cmt"># Variables d'environnement — jamais dans Git</span></span></div>
+              <div class="carbon-line"><span class="carbon-ln">5</span><span class="carbon-code"><span class="cs">**/.env</span></span></div>
+              <div class="carbon-line"><span class="carbon-ln">6</span><span class="carbon-code"><span class="cs">.env</span></span></div>
+              <div class="carbon-line"><span class="carbon-ln">7</span><span class="carbon-code"></span></div>
+              <div class="carbon-line"><span class="carbon-ln">8</span><span class="carbon-code"><span class="cmt"># Builds frontend</span></span></div>
+              <div class="carbon-line"><span class="carbon-ln">9</span><span class="carbon-code"><span class="cs">lightchurch-frontend/dist</span></span></div>
+              <div class="carbon-line"><span class="carbon-ln">10</span><span class="carbon-code"></span></div>
+              <div class="carbon-line"><span class="carbon-ln">11</span><span class="carbon-code"><span class="cmt"># Uploads utilisateurs</span></span></div>
+              <div class="carbon-line"><span class="carbon-ln">12</span><span class="carbon-code"><span class="cs">lightchurch-backend/uploads/*</span></span></div>
+              <div class="carbon-line"><span class="carbon-ln">13</span><span class="carbon-code"><span class="cs">!lightchurch-backend/uploads/.gitkeep</span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Étape 4 -->
+    <div class="reveal" style="display:flex;gap:1.25rem;align-items:flex-start">
+      <div style="flex-shrink:0;width:2rem;height:2rem;border-radius:50%;background:#27ae60;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#fff;margin-top:0.2rem">4</div>
+      <div style="flex:1">
+        <h3 style="margin-bottom:0.4rem">Dockerfile par sous-projet</h3>
+        <p style="font-size:0.85rem;color:var(--g400);margin-bottom:0.75rem">Chaque sous-projet a son propre <code style="font-family:var(--mono);color:var(--white)">Dockerfile</code>. Docker Compose les référence avec <code style="font-family:var(--mono);color:var(--white)">context:</code> pour builder depuis le bon dossier.</p>
+        <div class="g2" style="gap:0.75rem">
+          <div class="carbon-wrap" style="margin:0">
+            <div class="carbon-window">
+              <div class="carbon-header">
+                <div class="carbon-dots"><div class="carbon-dot red"></div><div class="carbon-dot yellow"></div><div class="carbon-dot green"></div></div>
+                <div class="carbon-lang">docker</div>
+                <div class="carbon-filename">lightchurch-backend/Dockerfile</div>
+              </div>
+              <div class="carbon-body">
+                <div class="carbon-line"><span class="carbon-ln">1</span><span class="carbon-code"><span class="ck">FROM</span> node:<span class="cs">20-alpine</span></span></div>
+                <div class="carbon-line"><span class="carbon-ln">2</span><span class="carbon-code"><span class="ck">WORKDIR</span> <span class="cs">/app</span></span></div>
+                <div class="carbon-line"><span class="carbon-ln">3</span><span class="carbon-code"><span class="ck">COPY</span> package*.json ./</span></div>
+                <div class="carbon-line"><span class="carbon-ln">4</span><span class="carbon-code"><span class="ck">RUN</span> npm ci --omit=dev</span></div>
+                <div class="carbon-line"><span class="carbon-ln">5</span><span class="carbon-code"><span class="ck">COPY</span> . .</span></div>
+                <div class="carbon-line"><span class="carbon-ln">6</span><span class="carbon-code"><span class="ck">CMD</span> [<span class="cs">"node"</span>, <span class="cs">"app.js"</span>]</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="carbon-wrap" style="margin:0">
+            <div class="carbon-window">
+              <div class="carbon-header">
+                <div class="carbon-dots"><div class="carbon-dot red"></div><div class="carbon-dot yellow"></div><div class="carbon-dot green"></div></div>
+                <div class="carbon-lang">docker</div>
+                <div class="carbon-filename">lightchurch-frontend/Dockerfile</div>
+              </div>
+              <div class="carbon-body">
+                <div class="carbon-line"><span class="carbon-ln">1</span><span class="carbon-code"><span class="ck">FROM</span> node:<span class="cs">20-alpine</span> <span class="ck">AS</span> build</span></div>
+                <div class="carbon-line"><span class="carbon-ln">2</span><span class="carbon-code"><span class="ck">WORKDIR</span> <span class="cs">/app</span></span></div>
+                <div class="carbon-line"><span class="carbon-ln">3</span><span class="carbon-code"><span class="ck">COPY</span> package*.json ./ && <span class="ck">RUN</span> npm ci</span></div>
+                <div class="carbon-line"><span class="carbon-ln">4</span><span class="carbon-code"><span class="ck">COPY</span> . . && <span class="ck">RUN</span> npm run build</span></div>
+                <div class="carbon-line"><span class="carbon-ln">5</span><span class="carbon-code"><span class="ck">FROM</span> nginx:<span class="cs">alpine</span>        <span class="cmt"># Multi-stage</span></span></div>
+                <div class="carbon-line"><span class="carbon-ln">6</span><span class="carbon-code"><span class="ck">COPY</span> --from=build /app/dist /usr/share/nginx/html</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Étape 5 -->
+    <div class="reveal" style="display:flex;gap:1.25rem;align-items:flex-start">
+      <div style="flex-shrink:0;width:2rem;height:2rem;border-radius:50%;background:#e74c3c;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#fff;margin-top:0.2rem">5</div>
+      <div style="flex:1">
+        <h3 style="margin-bottom:0.4rem">docker-compose.yml — coller les deux avec context:</h3>
+        <p style="font-size:0.85rem;color:var(--g400);margin-bottom:0.75rem">Le fichier Compose est à la racine du monorepo. Il pointe vers chaque sous-projet via <code style="font-family:var(--mono);color:var(--white)">context:</code>. C'est le ciment du monorepo.</p>
+        <div class="carbon-wrap" style="margin:0">
+          <div class="carbon-window">
+            <div class="carbon-header">
+              <div class="carbon-dots"><div class="carbon-dot red"></div><div class="carbon-dot yellow"></div><div class="carbon-dot green"></div></div>
+              <div class="carbon-lang">yml</div>
+              <div class="carbon-filename">docker-compose.yml — racine du monorepo</div>
+            </div>
+            <div class="carbon-body">
+              <div class="carbon-line"><span class="carbon-ln">1</span><span class="carbon-code"><span class="cfn">services</span>:</span></div>
+              <div class="carbon-line"><span class="carbon-ln">2</span><span class="carbon-code">  <span class="cfn">backend</span>:</span></div>
+              <div class="carbon-line"><span class="carbon-ln">3</span><span class="carbon-code">    <span class="cfn">build</span>:</span></div>
+              <div class="carbon-line"><span class="carbon-ln">4</span><span class="carbon-code">      context: <span class="cs">./lightchurch-backend</span>   <span class="cmt"># ← pointe dans le sous-dossier</span></span></div>
+              <div class="carbon-line"><span class="carbon-ln">5</span><span class="carbon-code">      dockerfile: <span class="cs">Dockerfile</span></span></div>
+              <div class="carbon-line"><span class="carbon-ln">6</span><span class="carbon-code"></span></div>
+              <div class="carbon-line"><span class="carbon-ln">7</span><span class="carbon-code">  <span class="cfn">frontend</span>:</span></div>
+              <div class="carbon-line"><span class="carbon-ln">8</span><span class="carbon-code">    <span class="cfn">build</span>:</span></div>
+              <div class="carbon-line"><span class="carbon-ln">9</span><span class="carbon-code">      context: <span class="cs">./lightchurch-frontend</span>  <span class="cmt"># ← pointe dans l'autre sous-dossier</span></span></div>
+              <div class="carbon-line"><span class="carbon-ln">10</span><span class="carbon-code">      dockerfile: <span class="cs">Dockerfile</span></span></div>
+              <div class="carbon-line"><span class="carbon-ln">11</span><span class="carbon-code"></span></div>
+              <div class="carbon-line"><span class="carbon-ln">12</span><span class="carbon-code"><span class="cmt"># Un seul fichier à la racine orchestre les deux projets</span></span></div>
+              <div class="carbon-line"><span class="carbon-ln">13</span><span class="carbon-code"><span class="cmt"># Lancer : docker compose up</span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Étape 6 -->
+    <div class="reveal" style="display:flex;gap:1.25rem;align-items:flex-start">
+      <div style="flex-shrink:0;width:2rem;height:2rem;border-radius:50%;background:#f1fa8c;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;color:#1a1917;margin-top:0.2rem">6</div>
+      <div style="flex:1">
+        <h3 style="margin-bottom:0.4rem">Premier commit — tout ensemble</h3>
+        <p style="font-size:0.85rem;color:var(--g400);margin-bottom:0.75rem">Le premier commit capture backend, frontend et config d'un coup. Toute l'histoire du projet est dans une seule timeline Git.</p>
+        <div class="carbon-wrap" style="margin:0">
+          <div class="carbon-window">
+            <div class="carbon-header">
+              <div class="carbon-dots"><div class="carbon-dot red"></div><div class="carbon-dot yellow"></div><div class="carbon-dot green"></div></div>
+              <div class="carbon-lang">bash</div>
+              <div class="carbon-filename">Étape 6 — Premier commit monorepo</div>
+            </div>
+            <div class="carbon-body">
+              <div class="carbon-line"><span class="carbon-ln">1</span><span class="carbon-code"><span class="cfn">git</span> add .gitignore docker-compose.yml</span></div>
+              <div class="carbon-line"><span class="carbon-ln">2</span><span class="carbon-code"><span class="cfn">git</span> add lightchurch-backend/ lightchurch-frontend/</span></div>
+              <div class="carbon-line"><span class="carbon-ln">3</span><span class="carbon-code"><span class="cfn">git</span> commit -m <span class="cs">"init: monorepo backend + frontend + docker"</span></span></div>
+              <div class="carbon-line"><span class="carbon-ln">4</span><span class="carbon-code"></span></div>
+              <div class="carbon-line"><span class="carbon-ln">5</span><span class="carbon-code"><span class="cfn">git</span> remote add origin https://github.com/stephane-job/lighchurch.git</span></div>
+              <div class="carbon-line"><span class="carbon-ln">6</span><span class="carbon-code"><span class="cfn">git</span> push -u origin develop</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Résumé visuel -->
+  <div class="reveal" style="margin-top:2rem;background:var(--g100);border-radius:8px;padding:1.25rem 1.5rem">
+    <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--g400);margin-bottom:0.75rem">Récapitulatif — Monorepo en 6 étapes</div>
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center">
+      <span style="display:flex;align-items:center;gap:0.4rem;font-size:0.78rem;color:var(--g500)"><span style="width:1.4rem;height:1.4rem;border-radius:50%;background:#8e44ad;display:inline-flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;color:#fff">1</span>git init racine</span>
+      <span style="color:var(--g300)">→</span>
+      <span style="display:flex;align-items:center;gap:0.4rem;font-size:0.78rem;color:var(--g500)"><span style="width:1.4rem;height:1.4rem;border-radius:50%;background:#2496ed;display:inline-flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;color:#fff">2</span>sous-dossiers backend + frontend</span>
+      <span style="color:var(--g300)">→</span>
+      <span style="display:flex;align-items:center;gap:0.4rem;font-size:0.78rem;color:var(--g500)"><span style="width:1.4rem;height:1.4rem;border-radius:50%;background:#e67e22;display:inline-flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;color:#fff">3</span>.gitignore **/node_modules</span>
+      <span style="color:var(--g300)">→</span>
+      <span style="display:flex;align-items:center;gap:0.4rem;font-size:0.78rem;color:var(--g500)"><span style="width:1.4rem;height:1.4rem;border-radius:50%;background:#27ae60;display:inline-flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;color:#fff">4</span>Dockerfile dans chaque projet</span>
+      <span style="color:var(--g300)">→</span>
+      <span style="display:flex;align-items:center;gap:0.4rem;font-size:0.78rem;color:var(--g500)"><span style="width:1.4rem;height:1.4rem;border-radius:50%;background:#e74c3c;display:inline-flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;color:#fff">5</span>docker-compose.yml racine avec context:</span>
+      <span style="color:var(--g300)">→</span>
+      <span style="display:flex;align-items:center;gap:0.4rem;font-size:0.78rem;color:var(--g500)"><span style="width:1.4rem;height:1.4rem;border-radius:50%;background:#f1fa8c;display:inline-flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;color:#1a1917">6</span>Premier commit → push</span>
+    </div>
+  </div>
+
   <div class="reveal" style="margin-top:1rem">
     <div style="background:var(--g100);border-left:3px solid var(--g300);border-radius:4px;padding:0.85rem 1rem;font-size:0.82rem;color:var(--g400);max-width:72ch">
       <strong style="color:var(--g600)">Différence avec un polyrepo :</strong> avec deux dépôts séparés, chaque changement d'API nécessite un commit dans le backend ET un dans le frontend, avec des versions à synchroniser. Le monorepo élimine ce friction — une branche <code style="font-family:var(--mono)">feature/</code> peut modifier les deux projets atomiquement.
