@@ -207,6 +207,24 @@
     transform: rotate(90deg);
   }
 
+  /* ── PAGE NUMBERING ── */
+  body { counter-reset: pagenum; }
+  .page { counter-increment: pagenum; }
+  .page::after {
+    content: counter(pagenum);
+    position: absolute;
+    bottom: 10mm;
+    right: 14mm;
+    font-size: 8pt;
+    color: #bbb;
+    font-family: var(--font);
+    line-height: 1;
+    pointer-events: none;
+  }
+  @media print {
+    .page::after { color: #999; }
+  }
+
   /* ── SOMMAIRE ── */
   .sommaire-title {
     color: var(--pink);
@@ -239,10 +257,15 @@
     padding: 5px 10px 5px 24px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-size: 10pt;
     border-bottom: 1px dotted #e0e0e0;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.15s;
   }
-  .sommaire-cp::before { content: "► "; color: var(--pink); margin-right: 4px; }
+  .sommaire-cp::before { content: "► "; color: var(--pink); margin-right: 4px; flex-shrink: 0; }
+  a.sommaire-cp:hover { background: #fff5f9; color: var(--pink); border-radius: 2px; }
   .sommaire-cp-page { display: flex; gap: 4px; align-items: center; }
   .sommaire-cp-page span { border: 1px solid var(--gray-border); padding: 1px 4px; min-width: 22px; text-align: center; font-size: 9pt; }
   .sommaire-bottom { margin-top: 20px; }
@@ -534,45 +557,45 @@
 
   <div class="sommaire-at">
     <div class="at-text">Activité-type 1 : Développer la partie front-end d'une application web ou web mobile sécurisée</div>
-    <div class="at-page">p. <span>5</span></div>
+    <div class="at-page">p. <span>6</span></div>
   </div>
-  <div class="sommaire-cp">
+  <a class="sommaire-cp" href="#section-cp1">
     <span>CP 1 — Installer et configurer son environnement de travail en fonction du projet web ou web mobile</span>
-    <div class="sommaire-cp-page">p. <span>5</span></div>
-  </div>
-  <div class="sommaire-cp">
+    <div class="sommaire-cp-page">p. <span>6</span></div>
+  </a>
+  <a class="sommaire-cp" href="#section-cp2">
     <span>CP 2 — Maquetter des interfaces utilisateur web ou web mobile</span>
     <div class="sommaire-cp-page">p. <span>8</span></div>
-  </div>
-  <div class="sommaire-cp">
+  </a>
+  <a class="sommaire-cp" href="#section-cp3">
     <span>CP 3 — Réaliser des interfaces utilisateur statiques web ou web mobile</span>
-    <div class="sommaire-cp-page">p. <span>11</span></div>
-  </div>
-  <div class="sommaire-cp">
+    <div class="sommaire-cp-page">p. <span>15</span></div>
+  </a>
+  <a class="sommaire-cp" href="#section-cp4">
     <span>CP 4 — Développer la partie dynamique des interfaces utilisateur web ou web mobile</span>
-    <div class="sommaire-cp-page">p. <span>14</span></div>
-  </div>
+    <div class="sommaire-cp-page">p. <span>9</span></div>
+  </a>
 
   <div class="sommaire-at" style="margin-top:12px">
     <div class="at-text">Activité-type 2 : Développer la partie back-end d'une application web ou web mobile sécurisée</div>
-    <div class="at-page">p. <span>18</span></div>
+    <div class="at-page">p. <span>10</span></div>
   </div>
-  <div class="sommaire-cp">
+  <a class="sommaire-cp" href="#section-cp5">
     <span>CP 5 — Mettre en place une base de données relationnelle</span>
-    <div class="sommaire-cp-page">p. <span>18</span></div>
-  </div>
-  <div class="sommaire-cp">
+    <div class="sommaire-cp-page">p. <span>10</span></div>
+  </a>
+  <a class="sommaire-cp" href="#section-cp6">
     <span>CP 6 — Développer des composants d'accès aux données SQL et NoSQL</span>
-    <div class="sommaire-cp-page">p. <span>21</span></div>
-  </div>
-  <div class="sommaire-cp">
+    <div class="sommaire-cp-page">p. <span>11</span></div>
+  </a>
+  <a class="sommaire-cp" href="#section-cp6">
     <span>CP 7 — Développer des composants métier côté serveur</span>
-    <div class="sommaire-cp-page">p. <span>24</span></div>
-  </div>
-  <div class="sommaire-cp">
+    <div class="sommaire-cp-page">p. <span>11</span></div>
+  </a>
+  <a class="sommaire-cp" href="#section-cp8">
     <span>CP 8 — Développer des composants métier côté serveur (déploiement, conteneurisation, CI/CD)</span>
-    <div class="sommaire-cp-page">p. <span>27</span></div>
-  </div>
+    <div class="sommaire-cp-page">p. <span>12</span></div>
+  </a>
 
   <div class="sommaire-bottom">
     <div class="sommaire-bottom-item">
@@ -638,7 +661,7 @@
 </div>
 
 <!-- ══════════════════════ PAGE 5 : ACTIVITÉ-TYPE 1 — CP1 ══════════════════════ -->
-<div class="page">
+<div class="page" id="section-cp1">
 
   <div class="at-header">
     <div style="background:var(--pink);color:#fff;font-size:0.57rem;font-weight:700;padding:2px 10px;border-radius:2px;letter-spacing:0.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px">◉ Projet 1 — LightChurch</div>
@@ -1313,7 +1336,7 @@
 </div>
 
 <!-- ══════════════════════ PAGE 5c : CP2 — FIGMA · MAQUETTAGE ══════════════════════ -->
-<div class="page">
+<div class="page" id="section-cp2">
 
   <div class="at-header">
     <div style="background:var(--pink);color:#fff;font-size:0.57rem;font-weight:700;padding:2px 10px;border-radius:2px;letter-spacing:0.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px">◉ Projet 1 — LightChurch</div>
@@ -2003,7 +2026,7 @@
 </div>
 
 <!-- ══════════════════════ PAGE 6 : AT1 — DÉVELOPPEMENT REACT ══════════════════════ -->
-<div class="page">
+<div class="page" id="section-cp4">
 
   <div class="at-header">
     <div style="background:var(--pink);color:#fff;font-size:0.57rem;font-weight:700;padding:2px 10px;border-radius:2px;letter-spacing:0.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px">◉ Projet 1 — LightChurch</div>
@@ -2170,7 +2193,7 @@
 </div>
 
 <!-- ══════════════════════ PAGE 7 : ACTIVITÉ-TYPE 2 — CP4 ══════════════════════ -->
-<div class="page">
+<div class="page" id="section-cp5">
 
   <div class="at-header">
     <div style="background:var(--pink);color:#fff;font-size:0.57rem;font-weight:700;padding:2px 10px;border-radius:2px;letter-spacing:0.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px">◉ Projet 1 — LightChurch</div>
@@ -2472,7 +2495,7 @@
 </div>
 
 <!-- ══════════════════════ PAGE 8 : AT2 — API REST + JWT ══════════════════════ -->
-<div class="page">
+<div class="page" id="section-cp6">
 
   <div class="at-header">
     <div style="background:var(--pink);color:#fff;font-size:0.57rem;font-weight:700;padding:2px 10px;border-radius:2px;letter-spacing:0.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px">◉ Projet 1 — LightChurch</div>
@@ -2585,7 +2608,7 @@ const token = jwt.sign({ id, role }, process.env.JWT_SECRET, { expiresIn: '24h' 
 </div>
 
 <!-- ══════════════════════ PAGE 9 : ACTIVITÉ-TYPE 3 ══════════════════════ -->
-<div class="page">
+<div class="page" id="section-cp8">
 
   <div class="at-header">
     <div style="background:var(--pink);color:#fff;font-size:0.57rem;font-weight:700;padding:2px 10px;border-radius:2px;letter-spacing:0.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px">◉ Projet 1 — LightChurch</div>
@@ -3102,7 +3125,7 @@ const token = jwt.sign({ id, role }, process.env.JWT_SECRET, { expiresIn: '24h' 
 </div>
 
 <!-- ══════════════════════ PAGE ADD-B : AT1 CP3 — FRONT-END ADD LA SEYNE ══════════════════════ -->
-<div class="page">
+<div class="page" id="section-cp3">
 
   <div class="at-header">
     <div style="background:#0066cc;color:#fff;font-size:0.57rem;font-weight:700;padding:2px 10px;border-radius:2px;letter-spacing:0.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px">◉ Projet 2 — ADD La Seyne</div>
