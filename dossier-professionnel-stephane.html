@@ -956,69 +956,92 @@
   <!-- ══════════════════════ PAGE 3 : SOMMAIRE ══════════════════════ -->
   <div class="page">
 
-    <h1 class="sommaire-title">Sommaire</h1>
+    <!-- Titre Sommaire -->
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:4px">
+      <h1 style="color:var(--pink);font-size:24pt;font-weight:800;margin:0;letter-spacing:-0.5px">Sommaire</h1>
+      <div style="flex:1;height:3px;background:linear-gradient(90deg,var(--pink),var(--pink) 40%,#e0e0e0 40%)"></div>
+    </div>
+    <div style="font-size:9pt;color:#999;margin-bottom:18px;font-style:italic">Dossier Professionnel — Développeur Web et Web Mobile (DWWM)</div>
 
-    <div class="sommaire-sub">Exemples de pratique professionnelle</div>
+    <!-- ═══ PROJETS ═══ -->
+    <div style="font-size:10pt;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:10px;padding:5px 0;border-bottom:1.5px solid #e0e0e0">
+      ✦ Réalisations professionnelles — 3 projets
+    </div>
+
+    <!-- Projet 1 : LightChurch -->
+    <div style="display:flex;align-items:center;gap:10px;margin:12px 0 6px;padding:7px 10px;background:linear-gradient(90deg,#fdf0f6,#fff 70%);border-left:4px solid var(--pink);border-radius:0 4px 4px 0">
+      <div style="background:var(--pink);color:#fff;font-size:7.5pt;font-weight:700;padding:3px 10px;border-radius:3px;letter-spacing:0.08em;white-space:nowrap">PROJET 1</div>
+      <div style="flex:1;font-size:11pt;font-weight:700;color:#333">LightChurch</div>
+      <div style="font-size:8.5pt;color:var(--pink);font-weight:600;font-family:monospace">lightchurch.fr</div>
+    </div>
 
     <div class="sommaire-at">
-      <div class="at-text">Activité-type 1 : Développer la partie front-end d'une application web sécurisée</div>
-      <div class="at-page">p. <span>5</span></div>
+      <div class="at-text">Activité-type 1 — Front-end sécurisé</div>
+      <div class="at-page">p. <span>—</span></div>
     </div>
-    <div class="sommaire-cp">
-      <span>CP 1 — Installer et configurer son environnement de travail (Linux, PhpStorm, NVM, Git)</span>
-      <div class="sommaire-cp-page">p. <span>5</span></div>
+    <div class="sommaire-cp"><span>CP 1 — Installer et configurer l'environnement de travail (Linux · PhpStorm · NVM · Git)</span><div class="sommaire-cp-page">p. <span>—</span></div></div>
+    <div class="sommaire-cp"><span>CP 2 — Maquetter les interfaces utilisateur (Figma)</span><div class="sommaire-cp-page">p. <span>—</span></div></div>
+    <div class="sommaire-cp"><span>CP 3 — Réaliser les interfaces statiques et dynamiques (React 19 · TypeScript · MUI)</span><div class="sommaire-cp-page">p. <span>—</span></div></div>
+
+    <div class="sommaire-at" style="margin-top:6px">
+      <div class="at-text">Activité-type 2 — Back-end sécurisé</div>
+      <div class="at-page">p. <span>—</span></div>
     </div>
-    <div class="sommaire-cp">
-      <span>CP 2 — Maquetter et prototyper les interfaces utilisateur</span>
-      <div class="sommaire-cp-page">p. <span>8</span></div>
+    <div class="sommaire-cp"><span>CP 5 — Base de données relationnelle MySQL 8 (14 tables · 3NF · POINT spatial)</span><div class="sommaire-cp-page">p. <span>—</span></div></div>
+    <div class="sommaire-cp"><span>CP 6 — API REST Node.js/Express 5 · composants d'accès aux données</span><div class="sommaire-cp-page">p. <span>—</span></div></div>
+    <div class="sommaire-cp"><span>CP 7 — Composants métier sécurisés (JWT · bcrypt · Zod · RBAC)</span><div class="sommaire-cp-page">p. <span>—</span></div></div>
+
+    <div class="sommaire-at" style="margin-top:6px">
+      <div class="at-text">Activité-type 2 — Déploiement</div>
+      <div class="at-page">p. <span>—</span></div>
     </div>
-    <div class="sommaire-cp">
-      <span>CP 3 — Réaliser les interfaces statiques et dynamiques (React 19 + TypeScript)</span>
-      <div class="sommaire-cp-page">p. <span>10</span></div>
+    <div class="sommaire-cp"><span>CP 8 — Git Flow · Docker Compose · CI/CD GitHub Actions · Traefik v3</span><div class="sommaire-cp-page">p. <span>—</span></div></div>
+
+    <!-- Projet 2 : ADD La Seyne -->
+    <div style="display:flex;align-items:center;gap:10px;margin:16px 0 6px;padding:7px 10px;background:linear-gradient(90deg,#eef4ff,#fff 70%);border-left:4px solid #0066cc;border-radius:0 4px 4px 0">
+      <div style="background:#0066cc;color:#fff;font-size:7.5pt;font-weight:700;padding:3px 10px;border-radius:3px;letter-spacing:0.08em;white-space:nowrap">PROJET 2</div>
+      <div style="flex:1;font-size:11pt;font-weight:700;color:#333">ADD La Seyne</div>
+      <div style="font-size:8.5pt;color:#0066cc;font-weight:600;font-family:monospace">add-laseyne.lightchurch.fr</div>
     </div>
 
-    <div class="sommaire-at" style="margin-top:12px">
-      <div class="at-text">Activité-type 2 : Développer la partie back-end d'une application web sécurisée</div>
-      <div class="at-page">p. <span>14</span></div>
+    <div class="sommaire-at" style="border-left-color:#0066cc">
+      <div class="at-text">AT1 — Front-end HTML5/CSS3/JS · AT2 — MySQL · API · Déploiement</div>
+      <div class="at-page" style="color:#0066cc">p. <span>—</span></div>
     </div>
-    <div class="sommaire-cp">
-      <span>CP 4 — Mettre en place une base de données relationnelle MySQL 8 (14 tables)</span>
-      <div class="sommaire-cp-page">p. <span>14</span></div>
-    </div>
-    <div class="sommaire-cp">
-      <span>CP 5 — Développer l'API REST Node.js/Express 5 et les composants d'accès aux données</span>
-      <div class="sommaire-cp-page">p. <span>17</span></div>
-    </div>
-    <div class="sommaire-cp">
-      <span>CP 6 — Développer les composants métier sécurisés (JWT, bcrypt, validation)</span>
-      <div class="sommaire-cp-page">p. <span>20</span></div>
+    <div class="sommaire-cp"><span>CP 3 — Interfaces statiques HTML5 sémantique · CSS3 · JavaScript vanilla</span><div class="sommaire-cp-page">p. <span>—</span></div></div>
+    <div class="sommaire-cp"><span>CP 5 — Base de données MySQL 8 (3 tables · sermons · contact · donations)</span><div class="sommaire-cp-page">p. <span>—</span></div></div>
+    <div class="sommaire-cp"><span>CP 6–7 — API REST Node.js/Express · Stripe Checkout · Nodemailer</span><div class="sommaire-cp-page">p. <span>—</span></div></div>
+    <div class="sommaire-cp"><span>CP 8 — Docker Compose · Traefik v3 · CI/CD GitHub Actions</span><div class="sommaire-cp-page">p. <span>—</span></div></div>
+
+    <!-- Projet 3 : MarsAI Festival -->
+    <div style="display:flex;align-items:center;gap:10px;margin:16px 0 6px;padding:7px 10px;background:linear-gradient(90deg,#eefaf4,#fff 70%);border-left:4px solid #00875a;border-radius:0 4px 4px 0">
+      <div style="background:#00875a;color:#fff;font-size:7.5pt;font-weight:700;padding:3px 10px;border-radius:3px;letter-spacing:0.08em;white-space:nowrap">PROJET 3</div>
+      <div style="flex:1;font-size:11pt;font-weight:700;color:#333">MarsAI Festival</div>
+      <div style="font-size:8.5pt;color:#00875a;font-weight:600;font-family:monospace">marsai.lightchurch.fr</div>
     </div>
 
-    <div class="sommaire-at" style="margin-top:12px">
-      <div class="at-text">Activité-type 3 : Configurer l'environnement, gérer les versions et déployer</div>
-      <div class="at-page">p. <span>23</span></div>
+    <div class="sommaire-at" style="border-left-color:#00875a">
+      <div class="at-text">AT1 — React 19 + TypeScript · AT2 — MySQL 15 tables · API · Déploiement</div>
+      <div class="at-page" style="color:#00875a">p. <span>—</span></div>
     </div>
-    <div class="sommaire-cp">
-      <span>CP 7 — Git Flow, GitKraken et gestion des branches</span>
-      <div class="sommaire-cp-page">p. <span>23</span></div>
-    </div>
-    <div class="sommaire-cp">
-      <span>CP 8 — Docker Compose, CI/CD GitHub Actions et déploiement VPS</span>
-      <div class="sommaire-cp-page">p. <span>26</span></div>
-    </div>
+    <div class="sommaire-cp"><span>CP 4 — Interfaces dynamiques React 19 · TypeScript · Tailwind 4 · Socket.io · Vitest</span><div class="sommaire-cp-page">p. <span>—</span></div></div>
+    <div class="sommaire-cp"><span>CP 5 — Base de données MySQL 8 (15 tables · 3NF · ENUM · FK cascade)</span><div class="sommaire-cp-page">p. <span>—</span></div></div>
+    <div class="sommaire-cp"><span>CP 6–7 — API REST Express/TypeScript · JWT · MinIO S3 · Brevo · Socket.io</span><div class="sommaire-cp-page">p. <span>—</span></div></div>
+    <div class="sommaire-cp"><span>CP 8 — Docker Compose · Traefik v3 · GitHub Actions · Grafana · Sentry</span><div class="sommaire-cp-page">p. <span>—</span></div></div>
 
-    <div class="sommaire-bottom">
+    <!-- ═══ SECTIONS FINALES ═══ -->
+    <div style="margin-top:18px;border-top:2px solid #e0e0e0;padding-top:10px">
       <div class="sommaire-bottom-item">
-        <span>Déclaration sur l'honneur</span>
-        <div class="page-ref">p. <span>&nbsp;</span></div>
+        <span>📜 Déclaration sur l'honneur</span>
+        <div class="page-ref">p. <span>—</span></div>
       </div>
       <div class="sommaire-bottom-item">
-        <span>Documents illustrant la pratique professionnelle <em style="font-weight:400">(facultatif)</em></span>
-        <div class="page-ref">p. <span>&nbsp;</span></div>
+        <span>📎 Documents illustrant la pratique professionnelle <em style="font-weight:400">(facultatif)</em></span>
+        <div class="page-ref">p. <span>—</span></div>
       </div>
       <div class="sommaire-bottom-item">
-        <span>Annexes <em style="font-weight:400">(Si le RC le prévoit)</em></span>
-        <div class="page-ref">p. <span>&nbsp;</span></div>
+        <span>📑 Annexes <em style="font-weight:400">(si le RC le prévoit)</em></span>
+        <div class="page-ref">p. <span>—</span></div>
       </div>
     </div>
 
