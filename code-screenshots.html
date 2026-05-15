@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<title>Code Screenshots — LightChurch</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #1a1a2e;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    align-items: flex-start;
+  }
+
+  h2 {
+    color: #888;
+    font-size: 11px;
+    font-family: sans-serif;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  /* ── CARBON WINDOW ── */
+  .carbon {
+    display: inline-block;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.06),
+      0 20px 60px rgba(0,0,0,0.7),
+      0 8px 24px rgba(0,0,0,0.5);
+    min-width: 480px;
+    max-width: 860px;
+  }
+
+  /* Window title bar */
+  .carbon-bar {
+    background: #1e1e2e;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .dots { display: flex; gap: 6px; }
+  .dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+  }
+  .dot.r { background: #ff5f56; }
+  .dot.y { background: #ffbd2e; }
+  .dot.g { background: #27c93f; }
+  .bar-title {
+    flex: 1;
+    text-align: center;
+    font-size: 11px;
+    color: #6272a4;
+    letter-spacing: 0.04em;
+  }
+  .bar-lang {
+    font-size: 10px;
+    color: #44475a;
+    background: rgba(255,255,255,0.05);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  /* Code body */
+  .carbon-body {
+    background: #282a36;
+    padding: 20px 24px 24px;
+    overflow-x: auto;
+  }
+
+  .line {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    min-height: 20px;
+    font-size: 13.5px;
+    line-height: 1.65;
+    white-space: pre;
+  }
+  .ln {
+    color: #44475a;
+    min-width: 32px;
+    text-align: right;
+    margin-right: 20px;
+    user-select: none;
+    font-size: 12px;
+    padding-top: 1px;
+  }
+  .code { color: #f8f8f2; }
+
+  /* Syntax colors — Dracula */
+  .kw  { color: #ff79c6; }   /* keywords */
+  .fn  { color: #50fa7b; }   /* functions */
+  .str { color: #f1fa8c; }   /* strings */
+  .num { color: #bd93f9; }   /* numbers / variables */
+  .cmt { color: #6272a4; font-style: italic; }  /* comments */
+  .op  { color: #8be9fd; }   /* operators / special */
+  .ty  { color: #ffb86c; }   /* types */
+  .pn  { color: #f8f8f2; }   /* punctuation */
+  .cl  { color: #ff79c6; }   /* class names */
+  .pr  { color: #8be9fd; }   /* properties */
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; padding: 0; gap: 40px; }
+    h2 { color: #666; }
+    .carbon {
+      box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+      page-break-inside: avoid;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+  1. NVM + NODE.JS — Installation Linux
+══════════════════════════════════════════════ -->
+<div>
+<h2>1 — Installation NVM + Node.js (Ubuntu)</h2>
+<div class="carbon">
+  <div class="carbon-bar">
+    <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+    <div class="bar-title">terminal — installation environnement</div>
+    <div class="bar-lang">bash</div>
+  </div>
+  <div class="carbon-body">
+    <div class="line"><span class="ln">1</span><span class="code"><span class="cmt"># Mise à jour des paquets</span></span></div>
+    <div class="line"><span class="ln">2</span><span class="code"><span class="fn">sudo</span> apt update && <span class="fn">sudo</span> apt install <span class="str">git</span></span></div>
+    <div class="line"><span class="ln">3</span><span class="code"><span class="fn">git</span> --version  <span class="cmt"># → git version 2.43.0</span></span></div>
+    <div class="line"><span class="ln">4</span><span class="code"></span></div>
+    <div class="line"><span class="ln">5</span><span class="code"><span class="cmt"># Installation NVM (Node Version Manager)</span></span></div>
+    <div class="line"><span class="ln">6</span><span class="code"><span class="fn">curl</span> -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40/install.sh | bash</span></div>
+    <div class="line"><span class="ln">7</span><span class="code"><span class="fn">source</span> ~/.zshrc</span></div>
+    <div class="line"><span class="ln">8</span><span class="code"></span></div>
+    <div class="line"><span class="ln">9</span><span class="code"><span class="cmt"># Installation Node.js v24 LTS</span></span></div>
+    <div class="line"><span class="ln">10</span><span class="code"><span class="fn">nvm</span> install <span class="num">24</span></span></div>
+    <div class="line"><span class="ln">11</span><span class="code"><span class="fn">nvm</span> use <span class="num">24</span></span></div>
+    <div class="line"><span class="ln">12</span><span class="code"><span class="fn">node</span> --version  <span class="cmt"># → v24.11.1</span></span></div>
+    <div class="line"><span class="ln">13</span><span class="code"><span class="fn">npm</span>  --version  <span class="cmt"># → 10.x</span></span></div>
+    <div class="line"><span class="ln">14</span><span class="code"></span></div>
+    <div class="line"><span class="ln">15</span><span class="code"><span class="cmt"># Config Git identité</span></span></div>
+    <div class="line"><span class="ln">16</span><span class="code"><span class="fn">git</span> config --global user.name  <span class="str">"Stéphane Bob"</span></span></div>
+    <div class="line"><span class="ln">17</span><span class="code"><span class="fn">git</span> config --global user.email <span class="str">"darksh3ll.js@gmail.com"</span></span></div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+  2. CRÉATION PROJET REACT + VITE
+══════════════════════════════════════════════ -->
+<div>
+<h2>2 — Création projet React 19 + TypeScript (Vite)</h2>
+<div class="carbon">
+  <div class="carbon-bar">
+    <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+    <div class="bar-title">terminal — lightchurch-frontend</div>
+    <div class="bar-lang">bash</div>
+  </div>
+  <div class="carbon-body">
+    <div class="line"><span class="ln">1</span><span class="code"><span class="cmt"># Création du projet React + TypeScript avec Vite</span></span></div>
+    <div class="line"><span class="ln">2</span><span class="code"><span class="fn">npm</span> create vite@latest lightchurch-frontend -- --template <span class="str">react-ts</span></span></div>
+    <div class="line"><span class="ln">3</span><span class="code"><span class="fn">cd</span> lightchurch-frontend && <span class="fn">npm</span> install</span></div>
+    <div class="line"><span class="ln">4</span><span class="code"></span></div>
+    <div class="line"><span class="ln">5</span><span class="code"><span class="cmt"># Dépendances UI</span></span></div>
+    <div class="line"><span class="ln">6</span><span class="code"><span class="fn">npm</span> install @mui/material @emotion/react @emotion/styled</span></div>
+    <div class="line"><span class="ln">7</span><span class="code"><span class="fn">npm</span> install react-router-dom framer-motion</span></div>
+    <div class="line"><span class="ln">8</span><span class="code"></span></div>
+    <div class="line"><span class="ln">9</span><span class="code"><span class="cmt"># Formulaires + validation isomorphe</span></span></div>
+    <div class="line"><span class="ln">10</span><span class="code"><span class="fn">npm</span> install react-hook-form zod @hookform/resolvers</span></div>
+    <div class="line"><span class="ln">11</span><span class="code"></span></div>
+    <div class="line"><span class="ln">12</span><span class="code"><span class="cmt"># Carte interactive + HTTP client</span></span></div>
+    <div class="line"><span class="ln">13</span><span class="code"><span class="fn">npm</span> install leaflet react-leaflet axios</span></div>
+    <div class="line"><span class="ln">14</span><span class="code"></span></div>
+    <div class="line"><span class="ln">15</span><span class="code"><span class="cmt"># Tests</span></span></div>
+    <div class="line"><span class="ln">16</span><span class="code"><span class="fn">npm</span> install -D vitest @testing-library/react @testing-library/jest-dom</span></div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+  3. JWT MIDDLEWARE — verifyToken.js
+══════════════════════════════════════════════ -->
+<div>
+<h2>3 — Middleware JWT (Node.js / Express)</h2>
+<div class="carbon">
+  <div class="carbon-bar">
+    <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+    <div class="bar-title">middleware/verifyToken.js</div>
+    <div class="bar-lang">JavaScript</div>
+  </div>
+  <div class="carbon-body">
+    <div class="line"><span class="ln">1</span><span class="code"><span class="kw">const</span> <span class="op">jwt</span> = <span class="fn">require</span>(<span class="str">'jsonwebtoken'</span>)</span></div>
+    <div class="line"><span class="ln">2</span><span class="code"></span></div>
+    <div class="line"><span class="ln">3</span><span class="code"><span class="kw">const</span> <span class="fn">verifyToken</span> = (<span class="pr">req</span>, <span class="pr">res</span>, <span class="pr">next</span>) => {</span></div>
+    <div class="line"><span class="ln">4</span><span class="code">  <span class="kw">const</span> <span class="op">authHeader</span> = req.headers[<span class="str">'authorization'</span>]</span></div>
+    <div class="line"><span class="ln">5</span><span class="code">  <span class="kw">const</span> <span class="op">token</span> = authHeader && authHeader.<span class="fn">split</span>(<span class="str">' '</span>)[<span class="num">1</span>]</span></div>
+    <div class="line"><span class="ln">6</span><span class="code"></span></div>
+    <div class="line"><span class="ln">7</span><span class="code">  <span class="kw">if</span> (!token)</span></div>
+    <div class="line"><span class="ln">8</span><span class="code">    <span class="kw">return</span> res.<span class="fn">status</span>(<span class="num">401</span>).<span class="fn">json</span>({ message: <span class="str">'Token manquant'</span> })</span></div>
+    <div class="line"><span class="ln">9</span><span class="code"></span></div>
+    <div class="line"><span class="ln">10</span><span class="code">  jwt.<span class="fn">verify</span>(token, process.env.<span class="op">JWT_SECRET</span>, (<span class="pr">err</span>, <span class="pr">decoded</span>) => {</span></div>
+    <div class="line"><span class="ln">11</span><span class="code">    <span class="kw">if</span> (err)</span></div>
+    <div class="line"><span class="ln">12</span><span class="code">      <span class="kw">return</span> res.<span class="fn">status</span>(<span class="num">403</span>).<span class="fn">json</span>({ message: <span class="str">'Token invalide'</span> })</span></div>
+    <div class="line"><span class="ln">13</span><span class="code"></span></div>
+    <div class="line"><span class="ln">14</span><span class="code">    req.user = decoded  <span class="cmt">// { id, role, email }</span></span></div>
+    <div class="line"><span class="ln">15</span><span class="code">    <span class="fn">next</span>()</span></div>
+    <div class="line"><span class="ln">16</span><span class="code">  })</span></div>
+    <div class="line"><span class="ln">17</span><span class="code">}</span></div>
+    <div class="line"><span class="ln">18</span><span class="code"></span></div>
+    <div class="line"><span class="ln">19</span><span class="code">module.exports = { <span class="fn">verifyToken</span> }</span></div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+  4. MYSQL SCHEMA — Table churches
+══════════════════════════════════════════════ -->
+<div>
+<h2>4 — Base de données MySQL 8 — Table churches (POINT géospatial)</h2>
+<div class="carbon">
+  <div class="carbon-bar">
+    <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+    <div class="bar-title">database/schema.sql — Table churches</div>
+    <div class="bar-lang">SQL</div>
+  </div>
+  <div class="carbon-body">
+    <div class="line"><span class="ln">1</span><span class="code"><span class="kw">CREATE TABLE</span> <span class="fn">churches</span> (</span></div>
+    <div class="line"><span class="ln">2</span><span class="code">  <span class="pr">id</span>          <span class="ty">INT</span> <span class="kw">PRIMARY KEY</span> AUTO_INCREMENT,</span></div>
+    <div class="line"><span class="ln">3</span><span class="code">  <span class="pr">name</span>        <span class="ty">VARCHAR</span>(<span class="num">120</span>) <span class="kw">NOT NULL</span>,</span></div>
+    <div class="line"><span class="ln">4</span><span class="code">  <span class="pr">address</span>     <span class="ty">VARCHAR</span>(<span class="num">255</span>) <span class="kw">NOT NULL</span>,</span></div>
+    <div class="line"><span class="ln">5</span><span class="code">  <span class="pr">location</span>    <span class="ty">POINT</span> <span class="kw">NOT NULL</span>,       <span class="cmt">-- Géolocalisation native MySQL 8</span></span></div>
+    <div class="line"><span class="ln">6</span><span class="code">  <span class="pr">status</span>      <span class="ty">ENUM</span>(<span class="str">'pending'</span>, <span class="str">'active'</span>, <span class="str">'suspended'</span>) <span class="kw">DEFAULT</span> <span class="str">'pending'</span>,</span></div>
+    <div class="line"><span class="ln">7</span><span class="code">  <span class="pr">created_by</span>  <span class="ty">INT</span> <span class="kw">NOT NULL</span>,</span></div>
+    <div class="line"><span class="ln">8</span><span class="code">  <span class="pr">created_at</span>  <span class="ty">TIMESTAMP</span> <span class="kw">DEFAULT</span> CURRENT_TIMESTAMP,</span></div>
+    <div class="line"><span class="ln">9</span><span class="code"></span></div>
+    <div class="line"><span class="ln">10</span><span class="code">  <span class="kw">FOREIGN KEY</span> (<span class="pr">created_by</span>) <span class="kw">REFERENCES</span> <span class="fn">admins</span>(<span class="pr">id</span>),</span></div>
+    <div class="line"><span class="ln">11</span><span class="code">  <span class="kw">SPATIAL INDEX</span> <span class="fn">idx_location</span> (<span class="pr">location</span>),   <span class="cmt">-- Requêtes de proximité</span></span></div>
+    <div class="line"><span class="ln">12</span><span class="code">  <span class="kw">FULLTEXT INDEX</span> <span class="fn">idx_search</span> (<span class="pr">name</span>),         <span class="cmt">-- Recherche textuelle</span></span></div>
+    <div class="line"><span class="ln">13</span><span class="code">  <span class="kw">INDEX</span> <span class="fn">idx_status</span> (<span class="pr">status</span>, <span class="pr">created_at</span>)     <span class="cmt">-- Filtres admin</span></span></div>
+    <div class="line"><span class="ln">14</span><span class="code">) ENGINE=<span class="ty">InnoDB</span> CHARSET=<span class="str">utf8mb4</span>;</span></div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+  5. REACT COMPONENT — Axios interceptors
+══════════════════════════════════════════════ -->
+<div>
+<h2>5 — Axios Intercepteurs JWT (React / TypeScript)</h2>
+<div class="carbon">
+  <div class="carbon-bar">
+    <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+    <div class="bar-title">services/api.ts — Intercepteurs Axios</div>
+    <div class="bar-lang">TypeScript</div>
+  </div>
+  <div class="carbon-body">
+    <div class="line"><span class="ln">1</span><span class="code"><span class="kw">import</span> axios <span class="kw">from</span> <span class="str">'axios'</span></span></div>
+    <div class="line"><span class="ln">2</span><span class="code"></span></div>
+    <div class="line"><span class="ln">3</span><span class="code"><span class="kw">const</span> <span class="op">api</span> = axios.<span class="fn">create</span>({</span></div>
+    <div class="line"><span class="ln">4</span><span class="code">  baseURL: import.meta.env.<span class="op">VITE_API_URL</span>,</span></div>
+    <div class="line"><span class="ln">5</span><span class="code">})</span></div>
+    <div class="line"><span class="ln">6</span><span class="code"></span></div>
+    <div class="line"><span class="ln">7</span><span class="code"><span class="cmt">// Injecte le JWT dans chaque requête</span></span></div>
+    <div class="line"><span class="ln">8</span><span class="code">api.interceptors.request.<span class="fn">use</span>((<span class="pr">config</span>) => {</span></div>
+    <div class="line"><span class="ln">9</span><span class="code">  <span class="kw">const</span> <span class="op">token</span> = localStorage.<span class="fn">getItem</span>(<span class="str">'token'</span>)</span></div>
+    <div class="line"><span class="ln">10</span><span class="code">  <span class="kw">if</span> (token)</span></div>
+    <div class="line"><span class="ln">11</span><span class="code">    config.headers.<span class="pr">Authorization</span> = <span class="str">`Bearer <span class="op">${token}</span>`</span></span></div>
+    <div class="line"><span class="ln">12</span><span class="code">  <span class="kw">return</span> config</span></div>
+    <div class="line"><span class="ln">13</span><span class="code">})</span></div>
+    <div class="line"><span class="ln">14</span><span class="code"></span></div>
+    <div class="line"><span class="ln">15</span><span class="code"><span class="cmt">// Gère les 401 (token expiré) globalement</span></span></div>
+    <div class="line"><span class="ln">16</span><span class="code">api.interceptors.response.<span class="fn">use</span>(</span></div>
+    <div class="line"><span class="ln">17</span><span class="code">  (<span class="pr">res</span>) => res,</span></div>
+    <div class="line"><span class="ln">18</span><span class="code">  (<span class="pr">err</span>) => {</span></div>
+    <div class="line"><span class="ln">19</span><span class="code">    <span class="kw">if</span> (err.response?.status === <span class="num">401</span>)</span></div>
+    <div class="line"><span class="ln">20</span><span class="code">      window.location.<span class="fn">replace</span>(<span class="str">'/login'</span>)</span></div>
+    <div class="line"><span class="ln">21</span><span class="code">    <span class="kw">return</span> Promise.<span class="fn">reject</span>(err)</span></div>
+    <div class="line"><span class="ln">22</span><span class="code">  }</span></div>
+    <div class="line"><span class="ln">23</span><span class="code">)</span></div>
+    <div class="line"><span class="ln">24</span><span class="code"></span></div>
+    <div class="line"><span class="ln">25</span><span class="code"><span class="kw">export default</span> <span class="op">api</span></span></div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+  6. DOCKER COMPOSE
+══════════════════════════════════════════════ -->
+<div>
+<h2>6 — Docker Compose — 4 services LightChurch</h2>
+<div class="carbon">
+  <div class="carbon-bar">
+    <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+    <div class="bar-title">docker-compose.yml</div>
+    <div class="bar-lang">YAML</div>
+  </div>
+  <div class="carbon-body">
+    <div class="line"><span class="ln">1</span><span class="code"><span class="kw">services</span>:</span></div>
+    <div class="line"><span class="ln">2</span><span class="code">  <span class="fn">mysql</span>:</span></div>
+    <div class="line"><span class="ln">3</span><span class="code">    image: <span class="str">mysql:8</span></span></div>
+    <div class="line"><span class="ln">4</span><span class="code">    volumes: [<span class="str">mysql_data:/var/lib/mysql</span>]</span></div>
+    <div class="line"><span class="ln">5</span><span class="code">    healthcheck:</span></div>
+    <div class="line"><span class="ln">6</span><span class="code">      test: [<span class="str">"CMD"</span>, <span class="str">"mysqladmin"</span>, <span class="str">"ping"</span>, <span class="str">"-h"</span>, <span class="str">"localhost"</span>]</span></div>
+    <div class="line"><span class="ln">7</span><span class="code"></span></div>
+    <div class="line"><span class="ln">8</span><span class="code">  <span class="fn">backend</span>:</span></div>
+    <div class="line"><span class="ln">9</span><span class="code">    build: <span class="str">./lightchurch-backend</span></span></div>
+    <div class="line"><span class="ln">10</span><span class="code">    depends_on:</span></div>
+    <div class="line"><span class="ln">11</span><span class="code">      mysql: { condition: <span class="str">service_healthy</span> }  <span class="cmt"># attend MySQL</span></span></div>
+    <div class="line"><span class="ln">12</span><span class="code">    labels:</span></div>
+    <div class="line"><span class="ln">13</span><span class="code">      - <span class="str">"traefik.http.routers.api.rule=Host(`api.lightchurch.fr`)"</span></span></div>
+    <div class="line"><span class="ln">14</span><span class="code"></span></div>
+    <div class="line"><span class="ln">15</span><span class="code">  <span class="fn">frontend</span>:</span></div>
+    <div class="line"><span class="ln">16</span><span class="code">    build: <span class="str">./lightchurch-frontend</span></span></div>
+    <div class="line"><span class="ln">17</span><span class="code">    depends_on: [<span class="str">backend</span>]</span></div>
+    <div class="line"><span class="ln">18</span><span class="code">    labels:</span></div>
+    <div class="line"><span class="ln">19</span><span class="code">      - <span class="str">"traefik.http.routers.app.rule=Host(`lightchurch.fr`)"</span></span></div>
+    <div class="line"><span class="ln">20</span><span class="code"></span></div>
+    <div class="line"><span class="ln">21</span><span class="code">  <span class="fn">traefik</span>:</span></div>
+    <div class="line"><span class="ln">22</span><span class="code">    image: <span class="str">traefik:v3</span></span></div>
+    <div class="line"><span class="ln">23</span><span class="code">    command: --certificatesresolvers.le.acme.email=<span class="str">darksh3ll.js@gmail.com</span></span></div>
+    <div class="line"><span class="ln">24</span><span class="code"></span></div>
+    <div class="line"><span class="ln">25</span><span class="code"><span class="kw">volumes</span>:</span></div>
+    <div class="line"><span class="ln">26</span><span class="code">  <span class="pr">mysql_data</span>:  <span class="cmt"># Données persistantes entre redémarrages</span></span></div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+  7. GITHUB ACTIONS CI/CD
+══════════════════════════════════════════════ -->
+<div>
+<h2>7 — CI/CD Pipeline GitHub Actions</h2>
+<div class="carbon">
+  <div class="carbon-bar">
+    <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+    <div class="bar-title">.github/workflows/deploy.yml</div>
+    <div class="bar-lang">YAML</div>
+  </div>
+  <div class="carbon-body">
+    <div class="line"><span class="ln">1</span><span class="code"><span class="kw">name</span>: Deploy LightChurch</span></div>
+    <div class="line"><span class="ln">2</span><span class="code"></span></div>
+    <div class="line"><span class="ln">3</span><span class="code"><span class="kw">on</span>:</span></div>
+    <div class="line"><span class="ln">4</span><span class="code">  push:</span></div>
+    <div class="line"><span class="ln">5</span><span class="code">    branches: [<span class="str">main</span>]  <span class="cmt"># Déclenché sur chaque push main</span></span></div>
+    <div class="line"><span class="ln">6</span><span class="code"></span></div>
+    <div class="line"><span class="ln">7</span><span class="code"><span class="kw">jobs</span>:</span></div>
+    <div class="line"><span class="ln">8</span><span class="code">  <span class="fn">deploy</span>:</span></div>
+    <div class="line"><span class="ln">9</span><span class="code">    runs-on: <span class="str">ubuntu-latest</span></span></div>
+    <div class="line"><span class="ln">10</span><span class="code">    steps:</span></div>
+    <div class="line"><span class="ln">11</span><span class="code">      - <span class="kw">name</span>: Deploy via SSH</span></div>
+    <div class="line"><span class="ln">12</span><span class="code">        uses: <span class="str">appleboy/ssh-action@v1</span></span></div>
+    <div class="line"><span class="ln">13</span><span class="code">        with:</span></div>
+    <div class="line"><span class="ln">14</span><span class="code">          host:     <span class="op">${{ secrets.VPS_HOST }}</span></span></div>
+    <div class="line"><span class="ln">15</span><span class="code">          username: <span class="op">${{ secrets.VPS_USER }}</span></span></div>
+    <div class="line"><span class="ln">16</span><span class="code">          key:      <span class="op">${{ secrets.VPS_KEY }}</span></span></div>
+    <div class="line"><span class="ln">17</span><span class="code">          script: |</span></div>
+    <div class="line"><span class="ln">18</span><span class="code">            <span class="fn">cd</span> ~/lighchurch</span></div>
+    <div class="line"><span class="ln">19</span><span class="code">            <span class="fn">git</span> pull origin main</span></div>
+    <div class="line"><span class="ln">20</span><span class="code">            <span class="fn">docker</span> compose build --no-cache backend frontend</span></div>
+    <div class="line"><span class="ln">21</span><span class="code">            <span class="fn">docker</span> compose up -d  <span class="cmt"># MySQL préservé</span></span></div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+  8. GITFLOW COMMANDS
+══════════════════════════════════════════════ -->
+<div>
+<h2>8 — GitFlow — Workflow de branches LightChurch</h2>
+<div class="carbon">
+  <div class="carbon-bar">
+    <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+    <div class="bar-title">terminal — workflow GitFlow</div>
+    <div class="bar-lang">bash</div>
+  </div>
+  <div class="carbon-body">
+    <div class="line"><span class="ln">1</span><span class="code"><span class="cmt"># 1. Créer une feature branch depuis develop</span></span></div>
+    <div class="line"><span class="ln">2</span><span class="code"><span class="fn">git</span> checkout develop</span></div>
+    <div class="line"><span class="ln">3</span><span class="code"><span class="fn">git</span> checkout -b <span class="str">feature/auth-jwt</span></span></div>
+    <div class="line"><span class="ln">4</span><span class="code"></span></div>
+    <div class="line"><span class="ln">5</span><span class="code"><span class="cmt"># 2. Développer et committer (commits conventionnels)</span></span></div>
+    <div class="line"><span class="ln">6</span><span class="code"><span class="fn">git</span> add src/middleware/verifyToken.js</span></div>
+    <div class="line"><span class="ln">7</span><span class="code"><span class="fn">git</span> commit -m <span class="str">"feat: add JWT verification middleware"</span></span></div>
+    <div class="line"><span class="ln">8</span><span class="code"><span class="fn">git</span> commit -m <span class="str">"feat: add role-based access control"</span></span></div>
+    <div class="line"><span class="ln">9</span><span class="code"></span></div>
+    <div class="line"><span class="ln">10</span><span class="code"><span class="cmt"># 3. Merger dans develop</span></span></div>
+    <div class="line"><span class="ln">11</span><span class="code"><span class="fn">git</span> checkout develop</span></div>
+    <div class="line"><span class="ln">12</span><span class="code"><span class="fn">git</span> merge <span class="str">feature/auth-jwt</span></span></div>
+    <div class="line"><span class="ln">13</span><span class="code"><span class="fn">git</span> push origin develop</span></div>
+    <div class="line"><span class="ln">14</span><span class="code"></span></div>
+    <div class="line"><span class="ln">15</span><span class="code"><span class="cmt"># 4. Release → merge dans main → CI/CD se déclenche 🚀</span></span></div>
+    <div class="line"><span class="ln">16</span><span class="code"><span class="fn">git</span> checkout main</span></div>
+    <div class="line"><span class="ln">17</span><span class="code"><span class="fn">git</span> merge develop</span></div>
+    <div class="line"><span class="ln">18</span><span class="code"><span class="fn">git</span> push origin main  <span class="cmt"># → GitHub Actions deploy automatique</span></span></div>
+  </div>
+</div>
+</div>
+
+</body>
+</html>
