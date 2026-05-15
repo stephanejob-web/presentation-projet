@@ -253,20 +253,44 @@
 
     /* ── PRINT ── */
     @media print {
-      html { scroll-behavior: auto; }
+      @page { margin: 1.5cm; }
+      html { scroll-behavior: auto; overflow: visible !important; }
       #progress, nav { display: none !important; }
-      body { background: #fff; color: #000; font-size: 11pt; }
-      section { padding: 2rem 1.5rem !important; page-break-inside: avoid; }
-      .reveal { opacity: 1 !important; transform: none !important; }
-      .card { border: 1px solid #ccc; background: #f9f9f9; break-inside: avoid; }
-      .carbon-wrap, .chalk { break-inside: avoid; }
-      .carbon-window, .chalk-window { box-shadow: none; }
-      .g2, .g3, .g4 { grid-template-columns: repeat(2, 1fr) !important; }
-      .stats { grid-template-columns: repeat(4, 1fr) !important; }
-      h1 { font-size: 3rem !important; }
-      h2 { font-size: 1.8rem !important; }
+      body { background: #fff; color: #000; font-size: 11pt; line-height: 1.5; overflow: visible !important; }
+      section { 
+        padding: 4rem 0 !important; 
+        min-height: auto !important; 
+        height: auto !important;
+        break-before: page; 
+        overflow: visible !important;
+        display: block !important;
+      }
+      #hero { justify-content: center !important; min-height: 80vh !important; }
+      .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .card, .stats, .stat, .arch, .timeline, .tree, .sl li, .carbon-wrap, .carbon-window, img, .quote, .why-card, .tl-item, tr { 
+        break-inside: avoid; 
+        page-break-inside: avoid; 
+      }
+      img { max-height: 10cm !important; object-fit: contain !important; margin: 1rem 0 !important; }
+      .card { border: 1px solid #ddd; background: #fafafa; margin-bottom: 1.5rem; }
+      .carbon-window, .chalk-window { box-shadow: none; border: 1px solid #ccc; }
+      .g2, .g3, .g4 { 
+        display: grid !important; 
+        grid-template-columns: 1fr 1fr !important; 
+        gap: 1.5rem !important;
+      }
+      .stats { 
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; 
+      }
+      h1 { font-size: 3.5rem !important; margin-bottom: 1rem; line-height: 1.1; }
+      h2 { font-size: 2.2rem !important; margin-top: 0; line-height: 1.2; }
+      p { max-width: 100% !important; }
+      .lead { font-size: 1.2rem !important; color: #444 !important; }
       a[href]::after { content: " (" attr(href) ")"; font-size: 8pt; color: #666; }
-      .sep { background: #ccc; }
+      .sep { background: #eee; margin: 2rem 0 !important; height: 1px !important; }
+      .hero-bg, .hero-meta { position: static !important; }
+      .hero-bg, .aflow-btn, .aflow-label { display: none !important; }
     }
   </style>
 </head>
@@ -473,24 +497,6 @@
         <span class="af-lbl">Cerveau</span>
         <span class="af-name">Express API</span>
         <span class="af-sub">Logique + JWT</span>
-      </div>
-      <div class="aflow-arr"><div class="aflow-pkt" id="pkt3"></div></div>
-      <div class="aflow-box" id="af4">
-        <span class="af-icon">🗄️</span>
-        <span class="af-lbl">Mémoire</span>
-        <span class="af-name">MySQL 8</span>
-        <span class="af-sub">Données persistées</span>
-      </div>
-    </div>
-    <div class="aflow-label" id="af-label">Clique sur ▶ pour voir le voyage d'une requête</div>
-    <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
-      <button class="aflow-btn" onclick="runArchAnim()">▶ Lancer l'animation</button>
-      <span style="font-family:var(--mono);font-size:0.72rem;color:var(--g400)">Montre comment ton navigateur parle à la base de données</span>
-    </div>
-  </div>
-</section>
-<div class="sep"></div>
-
 <!-- ══════════════════════ 02c · USE CASES & USER STORIES ══════════════════════ -->
 <section id="use-cases" style="max-width:1280px;margin:0 auto;padding:8rem 5rem 5rem">
   <div class="reveal"><div class="eyebrow"><span class="n">02c</span>Analyse — Use Cases &amp; User Stories</div><h2>Comprendre le besoin<br/>avant de coder.</h2></div>
@@ -532,13 +538,11 @@
       <span class="uc-def-tag" style="color:#9b59b6">Use Case — Cas d'utilisation</span>
       <h3>La description détaillée d'un scénario</h3>
       <p style="font-size:0.85rem;line-height:1.65">Décrit <strong>étape par étape</strong> ce qui se passe — y compris les erreurs et cas limites. Exhaustif, technique, utile pour la documentation et les tests.</p>
-      <p style="font-size:0.82rem;color:var(--g400);margin-top:0.75rem">Analogie : la <em>notice technique</em> d'une fonctionnalité. Tout y est, même ce qui plante.</p>
     </div>
     <div class="uc-def">
       <span class="uc-def-tag" style="color:#f39c12">User Story — Histoire utilisateur</span>
       <h3>Le besoin en une phrase du point de vue utilisateur</h3>
       <p style="font-size:0.85rem;line-height:1.65">Dit <strong>qui veut quoi et pourquoi</strong> en une phrase. Simple, lisible par tous, adapté aux méthodes agiles. Force à se mettre à la place de l'utilisateur.</p>
-      <p style="font-size:0.82rem;color:var(--g400);margin-top:0.75rem">Analogie : le <em>post-it</em> sur le tableau Kanban. Court, clair, actionnable.</p>
     </div>
   </div>
 
@@ -552,7 +556,6 @@
           <div><span class="us-je-veux">Je veux</span>     <span style="color:var(--g500)">[action / fonctionnalité]</span><span class="us-comment">  ← QUOI</span></div>
           <div><span class="us-afin">Afin de</span>      <span style="color:var(--g500)">[bénéfice / objectif]</span><span class="us-comment">  ← POURQUOI</span></div>
         </div>
-        <p style="font-size:0.82rem;color:var(--g400);margin-top:0.75rem">⚠ Le <strong style="color:#27ae60">"Afin de"</strong> est crucial. Si on ne trouve pas le bénéfice → la fonctionnalité n'est peut-être pas nécessaire.</p>
       </div>
       <div style="background:var(--g100);border:1px solid var(--g200);border-radius:6px;padding:1.4rem">
         <div style="font-family:var(--mono);font-size:0.62rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--g400);margin-bottom:1rem">Exemple — Login LightChurch</div>
@@ -561,20 +564,16 @@
           <div><span class="us-je-veux">Je veux</span>     <span style="color:var(--white)">me connecter avec email + mot de passe</span></div>
           <div><span class="us-afin">Afin de</span>      <span style="color:var(--white)">accéder à la gestion de mon église</span></div>
         </div>
-        <div style="margin-top:1rem;font-family:var(--mono);font-size:0.68rem;color:var(--g400);line-height:1.8">
-          <div>Critères d'acceptation :</div>
-          <div>→ Mauvais mdp → "Identifiants incorrects"</div>
-          <div>→ Compte PENDING → "En attente de validation"</div>
-          <div>→ Compte SUSPENDED → "Compte suspendu"</div>
-          <div>→ Succès → redirection /dashboard</div>
-        </div>
       </div>
     </div>
   </div>
+</section>
+<div class="sep"></div>
 
+<section id="use-cases-stories">
+  <div class="reveal"><div class="eyebrow"><span class="n">02c</span>Analyse — User Stories</div><h2>Besoin par rôle</h2></div>
   <!-- Stories LightChurch -->
   <div class="reveal" style="margin-top:2.5rem">
-    <div class="eyebrow">User Stories réelles — LightChurch par rôle</div>
     <div class="us-grid">
 
       <div class="us-card reveal">
@@ -636,11 +635,13 @@
 
     </div>
   </div>
+</section>
+<div class="sep"></div>
 
+<section id="use-cases-table">
+  <div class="reveal"><div class="eyebrow"><span class="n">02c</span>Analyse — Use Case complet</div><h2>Logique détaillée</h2></div>
   <!-- Use Case login complet -->
   <div class="reveal" style="margin-top:2.5rem">
-    <div class="eyebrow">Use Case complet — Connexion d'un pasteur</div>
-    <p style="margin-bottom:1rem">Le Use Case va plus loin : chaque étape, chaque erreur, les postconditions. C'est ce qui m'a permis de coder <strong>tous les cas d'erreur</strong> dans la route login.</p>
     <div style="border:1px solid var(--g200);border-radius:6px;overflow:hidden">
       <table class="uc-table">
         <thead><tr><th style="width:130px">Élément</th><th>Description</th><th style="width:120px">Statut</th></tr></thead>
@@ -656,6 +657,7 @@
       </table>
     </div>
   </div>
+</section>
 
   <!-- Ce que ça m'a apporté -->
   <div class="reveal" style="margin-top:2.5rem">
@@ -887,10 +889,12 @@
     </div>
   </div>
 
-  <!-- Relations expliquées -->
-  <div class="reveal" style="margin-top:3rem">
-    <div class="eyebrow">Relations et cardinalités détaillées</div>
   </div>
+</section>
+<div class="sep"></div>
+
+<section id="bdd-relations">
+  <div class="reveal"><div class="eyebrow"><span class="n">02b</span>Base de données (Suite)</div><h2>Relations et cardinalités détaillées</h2></div>
   <div class="g3">
     <div class="card reveal">
       <span class="card-tag">admins → churches (1:N)</span>
@@ -924,10 +928,15 @@
     </div>
   </div>
 
+  </div>
+</section>
+<div class="sep"></div>
+
+<section id="bdd-code">
+  <div class="reveal"><div class="eyebrow"><span class="n">02b</span>Base de données (Fin)</div><h2>Implémentation et Index</h2></div>
   <!-- Carbon code : Points géospatiaux -->
   <div class="reveal" style="margin-top:2.5rem">
     <h3>Géolocalisation native — type POINT et colonnes générées</h3>
-    <p style="margin-bottom:0">MySQL stocke les coordonnées dans un type POINT (binaire optimisé). Les colonnes <code style="font-family:var(--mono);color:var(--white)">latitude</code> et <code style="font-family:var(--mono);color:var(--white)">longitude</code> sont <strong style="color:var(--white)">calculées automatiquement</strong> — pas de redondance, pas de désynchronisation possible.</p>
     <div class="carbon-wrap">
       <div class="carbon-window">
         <div class="carbon-header">
@@ -1033,8 +1042,12 @@
     <div class="card reveal"><span class="card-tag">Framer Motion</span><h3>Animations</h3><p>Transitions de pages, animations d'entrée, micro-interactions. API déclarative React — pas de CSS animation à la main. Performances optimisées (GPU).</p></div>
     <div class="card reveal"><span class="card-tag">Vitest + Testing Library</span><h3>Tests unitaires</h3><p>Framework de tests compatible Vite. Rendu et interaction des composants React. Coverage V8. Syntaxe Jest identique, démarrage 10× plus rapide.</p><div style="margin-top:1rem"><span class="badge">Coverage V8</span> <span class="badge" style="margin-left:.5rem">jsdom</span></div></div>
   </div>
+</section>
+<div class="sep"></div>
 
-  <div class="eyebrow reveal" style="margin-top:3rem">Backend</div>
+<!-- ══════════════════════ 03 · STACK (BACKEND) ══════════════════════ -->
+<section id="stack-backend">
+  <div class="reveal"><div class="eyebrow"><span class="n">03</span>Technologies (Suite)</div><h2>Backend</h2></div>
   <div class="g3">
     <div class="card reveal"><span class="card-tag">Node.js + Express 5</span><h3>Serveur API REST</h3><p>Runtime JS côté serveur. Express 5 : gestion d'erreurs async native, routing modulaire par domaine. Non-bloquant, idéal pour les I/O concurrentes.</p><div style="margin-top:1rem"><span class="badge">CommonJS</span> <span class="badge" style="margin-left:.5rem">REST</span></div></div>
     <div class="card reveal"><span class="card-tag">JWT + bcryptjs</span><h3>Authentification sécurisée</h3><p>Tokens JWT signés (HMAC-SHA256), expiration 24h. Mots de passe hashés bcrypt 10 rounds. Middleware <code style="font-family:var(--mono);font-size:0.8rem">verifyToken</code> sur toutes les routes protégées.</p><div style="margin-top:1rem"><span class="badge">Stateless</span> <span class="badge" style="margin-left:.5rem">bcrypt 10r</span></div></div>
@@ -1046,8 +1059,12 @@
     <div class="card reveal"><span class="card-tag">Jest + Supertest</span><h3>Tests d'intégration</h3><p>Tests des routes API en conditions réelles. Supertest simule des requêtes HTTP sans démarrer un vrai serveur. Couverture des endpoints auth, church, profile.</p></div>
     <div class="card reveal"><span class="card-tag">Géocodage dual-API</span><h3>Localisation des églises</h3><p>data.gouv.fr en primaire (France, rapide), Nominatim OpenStreetMap en fallback automatique. Service TypeScript avec gestion d'erreur et statut de l'API utilisée.</p></div>
   </div>
+</section>
+<div class="sep"></div>
 
-  <div class="eyebrow reveal" style="margin-top:3rem">Infrastructure &amp; DevOps</div>
+<!-- ══════════════════════ 03 · STACK (DEVOPS) ══════════════════════ -->
+<section id="stack-devops">
+  <div class="reveal"><div class="eyebrow"><span class="n">03</span>Technologies (Suite)</div><h2>Infrastructure &amp; DevOps</h2></div>
   <div class="g4">
     <div class="card reveal"><span class="card-tag">Docker + Compose</span><h3>Conteneurisation</h3><p>4 services : mysql, backend, frontend, traefik. Réseau interne, volumes persistants, healthcheck MySQL.</p></div>
     <div class="card reveal"><span class="card-tag">Traefik v3</span><h3>Reverse Proxy</h3><p>Détection auto via labels Docker. SSL Let's Encrypt, redirection HTTP→HTTPS, routing par hostname.</p></div>
@@ -4826,6 +4843,13 @@
       <p>data.gouv.fr couvre bien la France mais peut être indisponible. Nominatim est international mais plus lent. Il fallait une stratégie automatique transparente pour l'utilisateur.</p>
       <div style="margin-top:0.75rem"><span class="badge">Solution</span> <span style="font-size:0.85rem;color:var(--g500);margin-left:0.75rem">Fallback chain TypeScript avec timeout 10s, retry automatique sur Nominatim, statut de l'API utilisée exposé</span></div>
     </div>
+  </div>
+</section>
+<div class="sep"></div>
+
+<section id="difficultes-suite">
+  <div class="reveal"><div class="eyebrow"><span class="n">07</span>Difficultés (Suite)</div><h2>Solutions et apprentissages</h2></div>
+  <div class="timeline reveal">
     <div class="tl-item">
       <span class="tl-num">06</span>
       <h3>CORS — les requêtes frontend bloquées par le navigateur</h3>
