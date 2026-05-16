@@ -976,26 +976,22 @@
     </div>
 
     <div class="sommaire-at">
-      <div class="at-text">Activité-type 1 — Front-end sécurisé</div>
+      <div class="at-text">Activité-type 1 — Développer la partie front-end</div>
       <div class="at-page">p. <span>6</span></div>
     </div>
-    <div class="sommaire-cp"><span>CP 1 — Installer et configurer l'environnement de travail (Linux · PhpStorm · NVM · Git)</span><div class="sommaire-cp-page">p. <span>6</span></div></div>
-    <div class="sommaire-cp"><span>CP 2 — Maquetter les interfaces utilisateur (Figma)</span><div class="sommaire-cp-page">p. <span>8</span></div></div>
-    <div class="sommaire-cp"><span>CP 3 — Réaliser les interfaces statiques et dynamiques (React 19 · TypeScript · MUI)</span><div class="sommaire-cp-page">p. <span>9</span></div></div>
+    <div class="sommaire-cp"><span>CP 1 — Installer et configurer l'environnement de travail (Linux · Ubuntu · PhpStorm · NVM · Git)</span><div class="sommaire-cp-page">p. <span>6</span></div></div>
+    <div class="sommaire-cp"><span>CP 2 — Maquetter des interfaces utilisateur (Figma)</span><div class="sommaire-cp-page">p. <span>8</span></div></div>
+    <div class="sommaire-cp"><span>CP 3 — Réaliser des interfaces utilisateur statiques (React 19 · TypeScript · Composants MUI)</span><div class="sommaire-cp-page">p. <span>9</span></div></div>
+    <div class="sommaire-cp"><span>CP 4 — Développer la partie dynamique des interfaces utilisateur (React Router · hooks · état global)</span><div class="sommaire-cp-page">p. <span>9</span></div></div>
 
     <div class="sommaire-at" style="margin-top:6px">
-      <div class="at-text">Activité-type 2 — Back-end sécurisé</div>
+      <div class="at-text">Activité-type 2 — Développer la partie back-end</div>
       <div class="at-page">p. <span>10</span></div>
     </div>
-    <div class="sommaire-cp"><span>CP 5 — Base de données relationnelle MySQL 8 (14 tables · 3NF · POINT spatial)</span><div class="sommaire-cp-page">p. <span>10</span></div></div>
-    <div class="sommaire-cp"><span>CP 6 — API REST Node.js/Express 5 · composants d'accès aux données</span><div class="sommaire-cp-page">p. <span>11</span></div></div>
-    <div class="sommaire-cp"><span>CP 7 — Composants métier sécurisés (JWT · bcrypt · Zod · RBAC)</span><div class="sommaire-cp-page">p. <span>11</span></div></div>
-
-    <div class="sommaire-at" style="margin-top:6px">
-      <div class="at-text">Activité-type 2 — Déploiement</div>
-      <div class="at-page">p. <span>12</span></div>
-    </div>
-    <div class="sommaire-cp"><span>CP 8 — Git Flow · Docker Compose · CI/CD GitHub Actions · Traefik v3</span><div class="sommaire-cp-page">p. <span>12</span></div></div>
+    <div class="sommaire-cp"><span>CP 5 — Mettre en place une base de données relationnelle (MySQL 8 · 14 tables · 3NF · POINT spatial)</span><div class="sommaire-cp-page">p. <span>10</span></div></div>
+    <div class="sommaire-cp"><span>CP 6 — Développer des composants d'accès aux données (API REST Node.js/Express 5)</span><div class="sommaire-cp-page">p. <span>11</span></div></div>
+    <div class="sommaire-cp"><span>CP 7 — Développer des composants métier côté serveur (JWT · bcrypt · Zod · RBAC)</span><div class="sommaire-cp-page">p. <span>11</span></div></div>
+    <div class="sommaire-cp"><span>CP 8 — Déployer une application web (Git Flow · Docker Compose · CI/CD GitHub Actions · Traefik v3)</span><div class="sommaire-cp-page">p. <span>12</span></div></div>
 
     <!-- Projet 2 : ADD La Seyne -->
     <div style="display:flex;align-items:center;gap:10px;margin:16px 0 6px;padding:7px 10px;background:linear-gradient(90deg,#eef4ff,#fff 70%);border-left:4px solid #0066cc;border-radius:0 4px 4px 0">
@@ -4285,6 +4281,122 @@ const token = jwt.sign({ id, role }, process.env.JWT_SECRET, { expiresIn: '24h' 
 
   </div>
 
+  <!-- ══════════════════════ PAGE ADD-CP1 : CP1 — macOS SEQUOIA — ADD LA SEYNE ══════════════════════ -->
+  <div class="page">
+
+    <div class="at-header">
+      <div
+        style="background:#0066cc;color:#fff;font-size:0.57rem;font-weight:700;padding:2px 10px;border-radius:2px;letter-spacing:0.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px">
+        ◉ Projet 2 — ADD La Seyne</div>
+      <div class="at-number">Activité-type 1</div>
+      <div class="at-desc">ADD La Seyne — Installer et configurer l'environnement de travail</div>
+    </div>
+    <div class="cp-row">
+      <div class="cp-label">CP 1 ►</div>
+      <div class="cp-desc">Installer et configurer son environnement de travail — macOS Sequoia · Homebrew · NVM · Node.js · PhpStorm · Git</div>
+    </div>
+    <div class="at-divider"></div>
+
+    <div class="content-block">
+
+      <h3>Pourquoi macOS Sequoia ?</h3>
+      <p>Pour les projets ADD La Seyne et MarsAI Festival, j'ai travaillé sur <strong>macOS Sequoia 15</strong> (Darwin 24.x, puce Apple Silicon). Le choix d'Apple repose sur trois piliers fondamentaux pour le développement web professionnel :</p>
+
+      <ul class="pink-arrow">
+        <li><strong>Système Unix natif (BSD)</strong> — macOS est bâti sur Darwin/BSD, un noyau certifié POSIX. Les outils Unix (<code>ssh</code>, <code>curl</code>, <code>grep</code>, <code>awk</code>, <code>sed</code>) sont disponibles nativement, sans couche de compatibilité. L'environnement local reste cohérent avec le serveur Linux de production.</li>
+        <li><strong>Stabilité et continuité</strong> — Les mises à jour macOS n'impactent pas les environnements de développement. Homebrew isole proprement les dépendances système. Docker Desktop natif Apple Silicon offre des performances sans overhead de virtualisation lourde.</li>
+        <li><strong>Sécurité renforcée</strong> — Gatekeeper (vérification des signatures d'applications), System Integrity Protection (SIP), chiffrement FileVault natif du disque, et mises à jour de sécurité rapides constituent un poste de travail sécurisé et fiable pour un usage professionnel.</li>
+      </ul>
+
+      <h3>Outils installés :</h3>
+      <ul class="pink-arrow">
+        <li><strong>Homebrew 4</strong> — Gestionnaire de paquets macOS (équivalent APT sur Debian/Ubuntu). Permet d'installer et mettre à jour les outils de développement de manière reproductible</li>
+        <li><strong>NVM via Homebrew</strong> — Node Version Manager : gestion de plusieurs versions de Node.js en parallèle, switch instantané selon le projet</li>
+        <li><strong>Node.js v24 LTS + npm 10</strong> — Installés et gérés via NVM</li>
+        <li><strong>Git 2.x</strong> — Pré-installé via Xcode Command Line Tools, mis à jour via Homebrew. Workflow GitFlow appliqué</li>
+        <li><strong>PhpStorm 2024</strong> — Via JetBrains Toolbox App (build natif Apple Silicon M-series)</li>
+        <li><strong>Terminal macOS (zsh)</strong> — Shell par défaut depuis macOS Catalina, personnalisé avec Oh My Zsh</li>
+      </ul>
+
+      <!-- Carbon Block 1 — bash — macOS : Homebrew + NVM + Node.js -->
+      <div class="carbon">
+        <div class="carbon-bar">
+          <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+          <div class="bar-title">Terminal macOS — Homebrew · NVM · Node.js v24 LTS</div>
+          <div class="bar-lang">bash</div>
+        </div>
+        <div class="carbon-body">
+          <div class="cline"><span class="ln">1</span><span class="cc"><span class="cmt"># Installation Homebrew (gestionnaire de paquets macOS)</span></span></div>
+          <div class="cline"><span class="ln">2</span><span class="cc">/bin/bash -c <span class="str">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</span></span></div>
+          <div class="cline"><span class="ln">3</span><span class="cc"><span class="fn">brew</span> --version <span class="cmt"># → Homebrew 4.4.x</span></span></div>
+          <div class="cline"><span class="ln">4</span><span class="cc"></span></div>
+          <div class="cline"><span class="ln">5</span><span class="cc"><span class="cmt"># Installation NVM via Homebrew</span></span></div>
+          <div class="cline"><span class="ln">6</span><span class="cc"><span class="fn">brew</span> install <span class="str">nvm</span></span></div>
+          <div class="cline"><span class="ln">7</span><span class="cc"><span class="fn">echo</span> <span class="str">'export NVM_DIR="$HOME/.nvm"'</span> &gt;&gt; ~/.zshrc</span></div>
+          <div class="cline"><span class="ln">8</span><span class="cc"><span class="fn">echo</span> <span class="str">'source $(brew --prefix nvm)/nvm.sh'</span> &gt;&gt; ~/.zshrc</span></div>
+          <div class="cline"><span class="ln">9</span><span class="cc"><span class="fn">source</span> ~/.zshrc</span></div>
+          <div class="cline"><span class="ln">10</span><span class="cc"></span></div>
+          <div class="cline"><span class="ln">11</span><span class="cc"><span class="cmt"># Installation Node.js v24 LTS</span></span></div>
+          <div class="cline"><span class="ln">12</span><span class="cc"><span class="fn">nvm</span> install <span class="num">24</span>  <span class="cmt"># → v24.x.x</span></span></div>
+          <div class="cline"><span class="ln">13</span><span class="cc"><span class="fn">nvm</span> use <span class="num">24</span></span></div>
+          <div class="cline"><span class="ln">14</span><span class="cc"><span class="fn">node</span> --version  <span class="cmt"># → v24.x.x</span></span></div>
+          <div class="cline"><span class="ln">15</span><span class="cc"><span class="fn">npm</span> --version   <span class="cmt"># → 10.x</span></span></div>
+        </div>
+      </div>
+
+      <!-- Carbon Block 2 — bash — macOS : Git configuration -->
+      <div class="carbon">
+        <div class="carbon-bar">
+          <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+          <div class="bar-title">Terminal macOS — Configuration Git globale</div>
+          <div class="bar-lang">bash</div>
+        </div>
+        <div class="carbon-body">
+          <div class="cline"><span class="ln">1</span><span class="cc"><span class="cmt"># Git préinstallé via Xcode Command Line Tools</span></span></div>
+          <div class="cline"><span class="ln">2</span><span class="cc"><span class="fn">git</span> --version  <span class="cmt"># → git version 2.47.x</span></span></div>
+          <div class="cline"><span class="ln">3</span><span class="cc"></span></div>
+          <div class="cline"><span class="ln">4</span><span class="cc"><span class="cmt"># Configuration identité développeur</span></span></div>
+          <div class="cline"><span class="ln">5</span><span class="cc"><span class="fn">git</span> config --global user.name  <span class="str">"Stéphane Bob"</span></span></div>
+          <div class="cline"><span class="ln">6</span><span class="cc"><span class="fn">git</span> config --global user.email <span class="str">"stephane.job@protonmail.com"</span></span></div>
+          <div class="cline"><span class="ln">7</span><span class="cc"><span class="fn">git</span> config --global init.defaultBranch main</span></div>
+          <div class="cline"><span class="ln">8</span><span class="cc"></span></div>
+          <div class="cline"><span class="ln">9</span><span class="cc"><span class="cmt"># Vérification</span></span></div>
+          <div class="cline"><span class="ln">10</span><span class="cc"><span class="fn">git</span> config --list | <span class="fn">grep</span> user</span></div>
+          <div class="cline"><span class="ln">11</span><span class="cc"><span class="cmt"># user.name=Stéphane Bob</span></span></div>
+          <div class="cline"><span class="ln">12</span><span class="cc"><span class="cmt"># user.email=stephane.job@protonmail.com</span></span></div>
+          <div class="cline"><span class="ln">13</span><span class="cc"></span></div>
+          <div class="cline"><span class="ln">14</span><span class="cc"><span class="fn">git</span> config --global core.editor <span class="str">"phpstorm --wait"</span></span></div>
+          <div class="cline"><span class="ln">15</span><span class="cc"><span class="fn">git</span> flow init  <span class="cmt"># → Workflow GitFlow activé</span></span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <table class="qa-table" style="margin-top:14px">
+      <tr><td class="q-label">1. Décrivez ce que vous avez réalisé :</td></tr>
+      <tr><td class="q-answer">Configuration complète de l'environnement de développement sur <strong>macOS Sequoia 15</strong> : installation Homebrew, NVM + Node.js v24 LTS, Git avec workflow GitFlow, PhpStorm 2024 via JetBrains Toolbox (natif Apple Silicon). macOS choisi pour sa base Unix (BSD), sa stabilité et sa sécurité native (Gatekeeper, SIP, FileVault).</td></tr>
+      <tr><td class="q-label">2. Précisez les moyens utilisés :</td></tr>
+      <tr><td class="q-answer"><ul>
+        <li>macOS Sequoia 15 — Darwin/BSD (POSIX), Apple Silicon M-series, Terminal zsh</li>
+        <li>Homebrew 4 — gestionnaire de paquets macOS, gestion isolée des dépendances</li>
+        <li>NVM (via Homebrew) — gestion multi-versions Node.js, .nvmrc par projet</li>
+        <li>Git 2.x + GitFlow — versionnage, branches feature/develop/main</li>
+        <li>PhpStorm 2024 — IDE JetBrains natif Apple Silicon, intégration Git, terminal intégré</li>
+      </ul></td></tr>
+      <tr><td class="q-label">3. Avec qui avez-vous travaillé ?</td></tr>
+      <tr><td class="q-answer">Seul. Projet ADD La Seyne réalisé de façon autonome dans le cadre de ma formation DWWM à La Plateforme Toulon.</td></tr>
+      <tr><td class="q-label">4. Contexte</td></tr>
+      <tr><td style="padding:0;border:1px solid var(--gray-border);border-top:none">
+        <div class="contexte-grid">
+          <div class="contexte-item"><div class="c-label">Entreprise ►</div><div class="c-val">La Plateforme Toulon</div></div>
+          <div class="contexte-item"><div class="c-label">Chantier ►</div><div class="c-val">ADD La Seyne — DWWM</div></div>
+          <div class="contexte-item" style="grid-column:1/-1"><div class="c-label">Période ►</div><div class="c-val">Du : Décembre 2025 &nbsp; au : Mai 2026</div></div>
+        </div>
+      </td></tr>
+    </table>
+
+  </div>
+
   <!-- ══════════════════════ PAGE ADD-A : AT1 CP1+CP2 — ADD LA SEYNE ══════════════════════ -->
   <div class="page">
 
@@ -4296,72 +4408,13 @@ const token = jwt.sign({ id, role }, process.env.JWT_SECRET, { expiresIn: '24h' 
       <div class="at-desc">ADD La Seyne-sur-Mer — Site vitrine institutionnel</div>
     </div>
     <div class="cp-row">
-      <div class="cp-label">CP 1 ►</div>
-      <div class="cp-desc">Installation de l'environnement — identique à LightChurch (Ubuntu · PhpStorm · NVM · Git)
-      </div>
+      <div class="cp-label">CP 2 ►</div>
+      <div class="cp-desc">Maquetter des interfaces utilisateur web ou web mobile — Figma</div>
     </div>
-    <div class="at-divider"></div>
+    <div class="at-divider" style="background:#0066cc"></div>
 
     <div class="content-block">
 
-      <h3>Environnement de développement :</h3>
-      <p>L'environnement utilisé pour ADD La Seyne est <strong>identique à LightChurch</strong> : Ubuntu 24.04 LTS,
-        PhpStorm 2024, NVM + Node.js v24, Git + GitFlow, Docker + Docker Compose, VPS OVH. Voir section CP1 —
-        LightChurch pour le détail complet de l'installation.</p>
-      <p>Différence notable : ADD La Seyne est un site <strong>multi-pages HTML statiques</strong> (aucun bundler
-        requis), contrairement à LightChurch qui utilise Vite + React. Initialisation du projet en moins de 2 minutes.
-      </p>
-
-      <!-- Carbon: project structure -->
-      <div class="carbon">
-        <div class="carbon-bar">
-          <div class="dots">
-            <div class="dot r"></div>
-            <div class="dot y"></div>
-            <div class="dot g"></div>
-          </div>
-          <div class="bar-title">terminal — Structure du projet add-laseyne/</div>
-          <div class="bar-lang">bash</div>
-        </div>
-        <div class="carbon-body">
-          <div class="cline"><span class="ln">1</span><span class="cc">add-laseyne/</span></div>
-          <div class="cline"><span class="ln">2</span><span class="cc">├── <span class="fn">index.html</span> <span
-                class="cmt"># Accueil</span></span></div>
-          <div class="cline"><span class="ln">3</span><span class="cc">├── <span class="fn">about.html</span> <span
-                class="cmt"># À propos + équipe pastorale</span></span></div>
-          <div class="cline"><span class="ln">4</span><span class="cc">├── <span class="fn">sermons.html</span> <span
-                class="cmt"># Rediffusions YouTube</span></span></div>
-          <div class="cline"><span class="ln">5</span><span class="cc">├── <span class="fn">events.html</span> <span
-                class="cmt"># Événements</span></span></div>
-          <div class="cline"><span class="ln">6</span><span class="cc">├── <span class="fn">children.html</span> <span
-                class="cmt"># Enfants &amp; Jeunes</span></span></div>
-          <div class="cline"><span class="ln">7</span><span class="cc">├── <span class="fn">meetings.html</span> <span
-                class="cmt"># Horaires des réunions</span></span></div>
-          <div class="cline"><span class="ln">8</span><span class="cc">├── <span class="fn">donations.html</span> <span
-                class="cmt"># Dons Stripe</span></span></div>
-          <div class="cline"><span class="ln">9</span><span class="cc">├── <span class="fn">contact.html</span> <span
-                class="cmt"># Formulaire de contact</span></span></div>
-          <div class="cline"><span class="ln">10</span><span class="cc">├── <span class="fn">css/</span></span></div>
-          <div class="cline"><span class="ln">11</span><span class="cc">│ ├── <span class="fn">variables.css</span>
-              <span class="cmt"># --primary, --font-*, spacing</span></span></div>
-          <div class="cline"><span class="ln">12</span><span class="cc">│ └── <span class="fn">style.css</span> <span
-                class="cmt"># Styles globaux + responsive</span></span></div>
-          <div class="cline"><span class="ln">13</span><span class="cc">├── <span class="fn">js/</span></span></div>
-          <div class="cline"><span class="ln">14</span><span class="cc">│ ├── <span class="fn">nav.js</span> <span
-                class="cmt"># Menu burger mobile</span></span></div>
-          <div class="cline"><span class="ln">15</span><span class="cc">│ ├── <span class="fn">sermons.js</span> <span
-                class="cmt"># YouTube Iframe API</span></span></div>
-          <div class="cline"><span class="ln">16</span><span class="cc">│ └── <span class="fn">donations.js</span> <span
-                class="cmt"># Stripe Checkout redirect</span></span></div>
-          <div class="cline"><span class="ln">17</span><span class="cc">└── <span class="fn">backend/</span> <span
-                class="cmt"># Node.js + Express API</span></span></div>
-        </div>
-      </div>
-
-      <div class="cp-row" style="margin-top:14px;margin-bottom:8px">
-        <div class="cp-label">CP 2 ►</div>
-        <div class="cp-desc">Maquetter les interfaces — Figma — Wireframes ADD La Seyne (3 écrans)</div>
-      </div>
       <p>Avant de coder les 8 pages, j'ai maquetté les 3 écrans clés dans <strong>Figma</strong> en wireframes greyscale
         : Accueil (hero + navigation + cards), Rediffusions (grille YouTube), et la page combinée Contact + Dons.</p>
 
@@ -5378,6 +5431,122 @@ const token = jwt.sign({ id, role }, process.env.JWT_SECRET, { expiresIn: '24h' 
       </div>
       <div style="font-size:0.73rem;color:#555;text-align:center">Méthodologie Scrum · Sprints de 2 semaines · Daily standups · Backlog Notion · Sprint Review · Rétrospective</div>
     </div>
+
+  </div>
+
+  <!-- ══════════════════════ PAGE MARSAI-CP1 : CP1 — macOS SEQUOIA — MARSAI FESTIVAL ══════════════════════ -->
+  <div class="page">
+
+    <div class="at-header">
+      <div
+        style="background:#00875a;color:#fff;font-size:0.57rem;font-weight:700;padding:2px 10px;border-radius:2px;letter-spacing:0.1em;text-transform:uppercase;display:inline-block;margin-bottom:6px">
+        ◉ Projet 3 — MarsAI Festival</div>
+      <div class="at-number" style="color:#00875a">Activité-type 1</div>
+      <div class="at-desc">MarsAI Festival — Installer et configurer l'environnement de travail</div>
+    </div>
+    <div class="cp-row">
+      <div class="cp-label">CP 1 ►</div>
+      <div class="cp-desc">Installer et configurer son environnement de travail — macOS Sequoia · Homebrew · NVM · Node.js · PhpStorm · Git</div>
+    </div>
+    <div class="at-divider" style="background:#00875a"></div>
+
+    <div class="content-block">
+
+      <h3>Pourquoi macOS Sequoia ?</h3>
+      <p>Pour le projet MarsAI Festival, j'ai travaillé sur <strong>macOS Sequoia 15</strong> (Darwin 24.x, puce Apple Silicon). Le choix d'Apple repose sur trois piliers fondamentaux pour le développement web professionnel :</p>
+
+      <ul class="pink-arrow">
+        <li><strong>Système Unix natif (BSD)</strong> — macOS est bâti sur Darwin/BSD, un noyau certifié POSIX. Les outils Unix (<code>ssh</code>, <code>curl</code>, <code>grep</code>, <code>awk</code>, <code>sed</code>) sont disponibles nativement, sans couche de compatibilité. L'environnement local reste cohérent avec le serveur Linux de production.</li>
+        <li><strong>Stabilité et continuité</strong> — Les mises à jour macOS n'impactent pas les environnements de développement. Homebrew isole proprement les dépendances système. Docker Desktop natif Apple Silicon offre des performances sans overhead de virtualisation lourde.</li>
+        <li><strong>Sécurité renforcée</strong> — Gatekeeper (vérification des signatures d'applications), System Integrity Protection (SIP), chiffrement FileVault natif du disque, et mises à jour de sécurité rapides constituent un poste de travail sécurisé et fiable pour un usage professionnel.</li>
+      </ul>
+
+      <h3>Outils installés :</h3>
+      <ul class="pink-arrow">
+        <li><strong>Homebrew 4</strong> — Gestionnaire de paquets macOS (équivalent APT sur Debian/Ubuntu). Permet d'installer et mettre à jour les outils de développement de manière reproductible</li>
+        <li><strong>NVM via Homebrew</strong> — Node Version Manager : gestion de plusieurs versions de Node.js en parallèle, switch instantané selon le projet</li>
+        <li><strong>Node.js v24 LTS + npm 10</strong> — Installés et gérés via NVM. Stack TypeScript full-stack React 19 + Express</li>
+        <li><strong>Git 2.x</strong> — Pré-installé via Xcode Command Line Tools, mis à jour via Homebrew. Workflow GitFlow appliqué en équipe (5 développeurs)</li>
+        <li><strong>PhpStorm 2024</strong> — Via JetBrains Toolbox App (build natif Apple Silicon M-series)</li>
+        <li><strong>Terminal macOS (zsh)</strong> — Shell par défaut depuis macOS Catalina, personnalisé avec Oh My Zsh</li>
+      </ul>
+
+      <!-- Carbon Block 1 — bash — macOS : Homebrew + NVM + Node.js -->
+      <div class="carbon">
+        <div class="carbon-bar">
+          <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+          <div class="bar-title">Terminal macOS — Homebrew · NVM · Node.js v24 LTS</div>
+          <div class="bar-lang">bash</div>
+        </div>
+        <div class="carbon-body">
+          <div class="cline"><span class="ln">1</span><span class="cc"><span class="cmt"># Installation Homebrew (gestionnaire de paquets macOS)</span></span></div>
+          <div class="cline"><span class="ln">2</span><span class="cc">/bin/bash -c <span class="str">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</span></span></div>
+          <div class="cline"><span class="ln">3</span><span class="cc"><span class="fn">brew</span> --version <span class="cmt"># → Homebrew 4.4.x</span></span></div>
+          <div class="cline"><span class="ln">4</span><span class="cc"></span></div>
+          <div class="cline"><span class="ln">5</span><span class="cc"><span class="cmt"># Installation NVM via Homebrew</span></span></div>
+          <div class="cline"><span class="ln">6</span><span class="cc"><span class="fn">brew</span> install <span class="str">nvm</span></span></div>
+          <div class="cline"><span class="ln">7</span><span class="cc"><span class="fn">echo</span> <span class="str">'export NVM_DIR="$HOME/.nvm"'</span> &gt;&gt; ~/.zshrc</span></div>
+          <div class="cline"><span class="ln">8</span><span class="cc"><span class="fn">echo</span> <span class="str">'source $(brew --prefix nvm)/nvm.sh'</span> &gt;&gt; ~/.zshrc</span></div>
+          <div class="cline"><span class="ln">9</span><span class="cc"><span class="fn">source</span> ~/.zshrc</span></div>
+          <div class="cline"><span class="ln">10</span><span class="cc"></span></div>
+          <div class="cline"><span class="ln">11</span><span class="cc"><span class="cmt"># Installation Node.js v24 LTS (stack MarsAI: React 19 + TypeScript + Express)</span></span></div>
+          <div class="cline"><span class="ln">12</span><span class="cc"><span class="fn">nvm</span> install <span class="num">24</span>  <span class="cmt"># → v24.x.x</span></span></div>
+          <div class="cline"><span class="ln">13</span><span class="cc"><span class="fn">nvm</span> use <span class="num">24</span></span></div>
+          <div class="cline"><span class="ln">14</span><span class="cc"><span class="fn">node</span> --version  <span class="cmt"># → v24.x.x</span></span></div>
+          <div class="cline"><span class="ln">15</span><span class="cc"><span class="fn">npm</span> --version   <span class="cmt"># → 10.x</span></span></div>
+        </div>
+      </div>
+
+      <!-- Carbon Block 2 — bash — macOS : Git configuration -->
+      <div class="carbon">
+        <div class="carbon-bar">
+          <div class="dots"><div class="dot r"></div><div class="dot y"></div><div class="dot g"></div></div>
+          <div class="bar-title">Terminal macOS — Configuration Git + clone dépôt MarsAI</div>
+          <div class="bar-lang">bash</div>
+        </div>
+        <div class="carbon-body">
+          <div class="cline"><span class="ln">1</span><span class="cc"><span class="cmt"># Git préinstallé via Xcode Command Line Tools</span></span></div>
+          <div class="cline"><span class="ln">2</span><span class="cc"><span class="fn">git</span> --version  <span class="cmt"># → git version 2.47.x</span></span></div>
+          <div class="cline"><span class="ln">3</span><span class="cc"></span></div>
+          <div class="cline"><span class="ln">4</span><span class="cc"><span class="cmt"># Configuration identité développeur</span></span></div>
+          <div class="cline"><span class="ln">5</span><span class="cc"><span class="fn">git</span> config --global user.name  <span class="str">"Stéphane Bob"</span></span></div>
+          <div class="cline"><span class="ln">6</span><span class="cc"><span class="fn">git</span> config --global user.email <span class="str">"stephane.job@protonmail.com"</span></span></div>
+          <div class="cline"><span class="ln">7</span><span class="cc"><span class="fn">git</span> config --global init.defaultBranch main</span></div>
+          <div class="cline"><span class="ln">8</span><span class="cc"></span></div>
+          <div class="cline"><span class="ln">9</span><span class="cc"><span class="cmt"># Clone du dépôt équipe MarsAI Festival (5 développeurs)</span></span></div>
+          <div class="cline"><span class="ln">10</span><span class="cc"><span class="fn">git</span> clone git@github.com:org/MarsAiFestival.git</span></div>
+          <div class="cline"><span class="ln">11</span><span class="cc"><span class="fn">cd</span> MarsAiFestival</span></div>
+          <div class="cline"><span class="ln">12</span><span class="cc"><span class="fn">git</span> flow init  <span class="cmt"># → Workflow GitFlow en équipe</span></span></div>
+          <div class="cline"><span class="ln">13</span><span class="cc"></span></div>
+          <div class="cline"><span class="ln">14</span><span class="cc"><span class="cmt"># Installation des dépendances (monorepo frontend + backend)</span></span></div>
+          <div class="cline"><span class="ln">15</span><span class="cc"><span class="fn">npm</span> install  <span class="cmt"># → React 19, TypeScript, Tailwind 4, Vite 7, Vitest…</span></span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <table class="qa-table" style="margin-top:14px">
+      <tr><td class="q-label">1. Décrivez ce que vous avez réalisé :</td></tr>
+      <tr><td class="q-answer">Configuration complète de l'environnement de développement sur <strong>macOS Sequoia 15</strong> pour le projet collectif MarsAI Festival : installation Homebrew, NVM + Node.js v24 LTS, Git avec workflow GitFlow en équipe de 5 développeurs, PhpStorm 2024 via JetBrains Toolbox (natif Apple Silicon). macOS choisi pour sa base Unix (BSD), sa stabilité et sa sécurité native (Gatekeeper, SIP, FileVault).</td></tr>
+      <tr><td class="q-label">2. Précisez les moyens utilisés :</td></tr>
+      <tr><td class="q-answer"><ul>
+        <li>macOS Sequoia 15 — Darwin/BSD (POSIX), Apple Silicon M-series, Terminal zsh</li>
+        <li>Homebrew 4 — gestionnaire de paquets macOS, gestion isolée des dépendances</li>
+        <li>NVM (via Homebrew) — gestion multi-versions Node.js, .nvmrc par projet</li>
+        <li>Git 2.x + GitFlow — versionnage en équipe, branches feature/develop/main</li>
+        <li>PhpStorm 2024 — IDE JetBrains natif Apple Silicon, intégration Git, terminal intégré</li>
+      </ul></td></tr>
+      <tr><td class="q-label">3. Avec qui avez-vous travaillé ?</td></tr>
+      <tr><td class="q-answer">En équipe de 5 développeurs (Stéphane — Scrum Master, Dylan, Valérie, Jean-Denis, stephane-job). Projet MarsAI Festival réalisé dans le cadre de ma formation DWWM à La Plateforme Toulon.</td></tr>
+      <tr><td class="q-label">4. Contexte</td></tr>
+      <tr><td style="padding:0;border:1px solid var(--gray-border);border-top:none">
+        <div class="contexte-grid">
+          <div class="contexte-item"><div class="c-label">Entreprise ►</div><div class="c-val">La Plateforme Toulon</div></div>
+          <div class="contexte-item"><div class="c-label">Chantier ►</div><div class="c-val">MarsAI Festival — DWWM</div></div>
+          <div class="contexte-item" style="grid-column:1/-1"><div class="c-label">Période ►</div><div class="c-val">Du : Mars 2026 &nbsp; au : Mai 2026</div></div>
+        </div>
+      </td></tr>
+    </table>
 
   </div>
 
